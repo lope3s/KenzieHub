@@ -3,7 +3,7 @@ import thunk from "redux-thunk"
 import ListOfUsersReducer from "./modules/listOfUsers/reducer"
 
 const reducers = combineReducers({
-  listOfUser: ListOfUsersReducer,
+  listOfUsers: ListOfUsersReducer,
 })
 
 const store = createStore(reducers, applyMiddleware(thunk))
