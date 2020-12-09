@@ -17,7 +17,7 @@ const Login = () => {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [users, dispatch]);
 
   return <></>;
 };
