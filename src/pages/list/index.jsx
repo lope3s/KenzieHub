@@ -23,7 +23,31 @@ const List = () => {
 
     return(
         <>
-        <button onClick={() => handleSearchButton}>Search</button>
+        {
+            seek === true ? 
+            <div>Loading...</div> : 
+            seek == null ? (
+            <button onClick={() => handleSearchButton}>Search</button>,
+            searchResult ? 
+            <div>
+                <img alt={searchResult.name} src = {searchResult.avatar_url}/>
+                <p>{searchResult.name}</p>
+                <p>{searchResult.course_module}</p>
+                <p>{searchResult.contact}</p>
+            </div> : 
+                listOfUsers.map(({name, course_module, avatar_url, contact}) => (
+                    <div>
+                        <img alt={name} src = {avatar_url}/>
+                        <p>{name}</p>
+                        <p>{course_module}</p>
+                        <p>{contact}</p>
+                    </div>
+                    )                
+                )
+                 
+             ) :
+            <div>No match found</div>
+        }
         </>
     )
 }
