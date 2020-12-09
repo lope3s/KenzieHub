@@ -1,6 +1,6 @@
 import { ADD_USER } from "./actionType"
 
-export const addUsers = (userArr) => ({
+export const addUsers = (userList) => ({
   type: ADD_USER,
-  userArr,
+  userList,
 })
