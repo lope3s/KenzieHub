@@ -7,6 +7,7 @@ import axios from "axios";
 const List = () => {
   const [seek, setSeek] = useState(null);
   const [searchResult, setSearchResult] = useState(undefined);
+  const [search, setSearch] = useState("");
   const listOfUsers = useSelector((state) => state.listOfUsers);
 
   const handleSearchButton = () => {
@@ -19,11 +20,22 @@ const List = () => {
       return setSeek(null);
     }
     setSeek(false);
+    setSearch("");
+  };
+
+  const handleSearchInput = (ev) => {
+    // pegar valor digitado no input
+    setSearch(ev.target.value);
   };
 
   return (
     <>
-      <button onClick={() => handleSearchButton}>Search</button>
+      <input
+        value={search}
+        onChange={handleSearchInput}
+        placeholder="pesquisar usuário"
+      />
+      <button onClick={handleSearchButton}>Search</button>
     </>
   );
 };
