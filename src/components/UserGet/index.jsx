@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { addUsers } from "../../store/modules/listOfUsers/actions";
 
-const Login = () => {
+const UserGet = () => {
   const [users, setUsers] = useState([]);
   const dispatch = useDispatch();
 
@@ -21,4 +21,4 @@ const Login = () => {
 
   return <></>;
 };
-export default Login;
+export default UserGet;
