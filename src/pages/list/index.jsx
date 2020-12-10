@@ -37,28 +37,30 @@ const List = () => {
   }, [seek, search])
 
   const loading = async () => {
-    if (searchResult) {
-      const res = await axios.get(
-        `https://kenziehub.me/users/${searchResult.id}`
-      )
-      const data = await res
-      console.log({ data })
-      //trata o dado de acordo recebido da API e salva no estado searchResult
-      return setSeek(null)
-    }
-    setSeek(false)
+    // if (searchResult) {
+    //   const res = await axios.get(
+    //     `https://kenziehub.me/users/${searchResult.id}`
+    //   )
+    //   const data = await res
+    //   console.log({ data })
+    //   //trata o dado de acordo recebido da API e salva no estado searchResult
+    //   return setSeek(null)
+    // }
+    setSeek(null)
   }
 
   const handleSearchButton = () => {
     //busca na API com o nome salvo no estado search e altera o estado searchResult;
     setSeek(true)
-    setSearchResult(listOfUsers.find((user) => search === user.name))
+    setSearchResult(listOfUsers.filter((user) => user.name.includes(search)))
   }
 
   const handleSearchInput = (ev) => {
     // pegar valor digitado no input
     setSearch(ev.target.value)
   }
+
+  console.log({ seek })
 
   return (
     <>
