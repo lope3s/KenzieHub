@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { useDispatch } from "react-redux"
-import { addUsers } from "../../store/modules/listOfUsers/actions"
+import addUserThunk from "../../store/modules/listOfUsers/thunks"
 import { useSelector } from "react-redux"
 
 import axios from "axios"
@@ -12,55 +12,49 @@ const List = () => {
   const [seek, setSeek] = useState(null)
   const [searchResult, setSearchResult] = useState(undefined)
   const [search, setSearch] = useState("")
+  const [nextUrl, setNextUrl] = useState("https://kenziehub.me/users")
   const listOfUsers = useSelector((state) => state.listOfUsers)
   const dispatch = useDispatch()
 
   useEffect(() => {
-    axios
-      .get("https://kenziehub.me/users")
-      .then((res) => {
-        dispatch(addUsers(res.data))
-      })
-      .catch((err) => {
-        console.log(err)
-      })
-  }, [dispatch])
+    setSeek(true)
+    loading()
+  }, [dispatch, nextUrl])
 
   useEffect(() => {
-    if (seek) {
-      loading()
-    }
     if (search === "") {
       setSearchResult(undefined)
-      setSeek(null)
     }
-  }, [seek, search])
+  }, [search])
 
   const loading = async () => {
-    // if (searchResult) {
-    //   const res = await axios.get(
-    //     `https://kenziehub.me/users/${searchResult.id}`
-    //   )
-    //   const data = await res
-    //   console.log({ data })
-    //   //trata o dado de acordo recebido da API e salva no estado searchResult
-    //   return setSeek(null)
-    // }
-    setSeek(null)
+    try {
+      const res = await axios.get(nextUrl)
+      await dispatch(addUserThunk(res.data))
+      if (res.data.length > 0) {
+        setNextUrl(res.headers.nexturl)
+        console.log(res)
+        return
+      }
+      setSeek(null)
+    } catch (error) {
+      console.log(error)
+    }
   }
 
-  const handleSearchButton = () => {
+  const handleSearchButton = async () => {
     //busca na API com o nome salvo no estado search e altera o estado searchResult;
     setSeek(true)
-    setSearchResult(listOfUsers.filter((user) => user.name.includes(search)))
+    await setSearchResult(
+      listOfUsers.filter((user) => user.name.includes(search))
+    )
+    setSeek(null)
   }
 
   const handleSearchInput = (ev) => {
     // pegar valor digitado no input
     setSearch(ev.target.value)
   }
-
-  console.log({ seek })
 
   return (
     <>
