@@ -1,11 +1,13 @@
-import { Switch, Route } from "react-router-dom";
-import Home from "../pages/home";
-import List from "../pages/list";
-import Profile from "../pages/profile";
-import SignIn from "../pages/signIn";
-import SingnUp from "../pages/signUp";
+import { Switch, Route } from "react-router-dom"
+import Home from "../pages/home"
+import List from "../pages/list"
+import Profile from "../pages/profile"
+import SignIn from "../pages/signIn"
+import SingnUp from "../pages/signUp"
+import { useSelector } from "react-redux"
 
-const Routes = (isAuth) => {
+const Routes = () => {
+  const isAuth = useSelector((state) => state.auth)
   if (isAuth) {
     return (
       <>
@@ -17,7 +19,7 @@ const Routes = (isAuth) => {
           <Route exact path="/signUp" component={SingnUp} />
         </Switch>
       </>
-    );
+    )
   }
   if (!isAuth) {
     return (
@@ -29,8 +31,8 @@ const Routes = (isAuth) => {
           <Route exact path="/signUp" component={SingnUp} />
         </Switch>
       </>
-    );
+    )
   }
-};
+}
 
-export default Routes;
+export default Routes

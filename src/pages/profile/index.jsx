@@ -1,10 +1,12 @@
-import store from "../../store";
-import { Container, ContainerContact } from "./styles";
+import store from "../../store"
+import { Container, ContainerContact } from "./styles"
 const Profile = () => {
-  const User = store.getState().User;
+  // const User = store.getState().User;
+  const user = JSON.parse(localStorage.getItem("infoLogged"))
   return (
     <div>
-      <Container>
+      {user.name}
+      {/* <Container>
         {User.map((element, index) => (
           <div key={index}>
             <div>
@@ -57,9 +59,9 @@ const Profile = () => {
             </div>
           </div>
         </div>
-      ))}
+      ))} */}
     </div>
-  );
-};
+  )
+}
 
-export default Profile;
+export default Profile
