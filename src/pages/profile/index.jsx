@@ -1,6 +1,7 @@
-import { User } from "./User";
+import store from "../../store";
 import { Container, ContainerContact } from "./styles";
 const Profile = () => {
+  const User = store.getState().User;
   return (
     <div>
       <Container>
@@ -17,8 +18,8 @@ const Profile = () => {
           </div>
         ))}
       </Container>
-      {User.map((element) => (
-        <div>
+      {User.map((element, index) => (
+        <div key={index}>
           <div>
             <div>About Me</div>
             <div>{element.user.bio}</div>
@@ -42,13 +43,13 @@ const Profile = () => {
           </div>
         </div>
       ))}
-      {User.map((element) => (
-        <div>
+      {User.map((element, index) => (
+        <div key={index}>
           <div>
             <div>Works</div>
             <div>
-              {element.user.works.map((element) => (
-                <div>
+              {element.user.works.map((element, index) => (
+                <div key={index}>
                   <p>{element.title}</p>
                   <div>{element.description}</div>
                 </div>

@@ -1,14 +1,30 @@
 import { useState, useEffect } from "react"
-
+import { useDispatch } from "react-redux"
+import { addUsers } from "../../store/modules/listOfUsers/actions"
 import { useSelector } from "react-redux"
 
 import axios from "axios"
+
+import UsersFind from "../../components/listComponent-UsersFind"
+import UsersMap from "../../components/listComponent-UsersMap"
 
 const List = () => {
   const [seek, setSeek] = useState(null)
   const [searchResult, setSearchResult] = useState(undefined)
   const [search, setSearch] = useState("")
   const listOfUsers = useSelector((state) => state.listOfUsers)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    axios
+      .get("https://kenziehub.me/users")
+      .then((res) => {
+        dispatch(addUsers(res.data))
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }, [dispatch])
 
   useEffect(() => {
     if (seek) {
@@ -30,7 +46,6 @@ const List = () => {
       return setSeek(null)
     }
     setSeek(false)
-    setSearch("")
   }
 
   const handleSearchButton = () => {
@@ -56,42 +71,9 @@ const List = () => {
         <div>Loading...</div>
       ) : seek === null ? (
         searchResult ? (
-          <div>
-            <img
-              alt={searchResult.name}
-              src={
-                searchResult.avatar_url
-                  ? searchResult.avatar_url
-                  : "https://uploads.metropoles.com/wp-content/uploads/2019/08/05090905/perfilsemfoto.jpg"
-              }
-            />
-            <p>{searchResult.name}</p>
-            <p>
-              {searchResult.course_module !== "undefined" &&
-                searchResult.course_module}
-            </p>
-            <p>
-              {searchResult.contact !== "undefined" && searchResult.contact}
-            </p>
-          </div>
+          <UsersFind searchResult={searchResult} />
         ) : (
-          listOfUsers.map(
-            ({ name, course_module, avatar_url, contact }, index) => (
-              <div key={index}>
-                <img
-                  alt={name}
-                  src={
-                    avatar_url
-                      ? avatar_url
-                      : "https://uploads.metropoles.com/wp-content/uploads/2019/08/05090905/perfilsemfoto.jpg"
-                  }
-                />
-                <p>{name}</p>
-                <p>{course_module !== "undefined" && course_module}</p>
-                <p>{contact !== "undefined" && contact}</p>
-              </div>
-            )
-          )
+          <UsersMap listOfUsers={listOfUsers} />
         )
       ) : (
         <div>No match found</div>
