@@ -5,7 +5,7 @@ const App = () => {
     <>
       <Routes />
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;
