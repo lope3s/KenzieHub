@@ -10,12 +10,18 @@ const SingUp = () =>{
     name:yup
     .string()
     .required("Campo Obrigatório")
-    .min(6),
+    .min(6)
+    .matches(/^(.[a-zÀ-ÿ].+\s).+$/i,"nome deve ter sobrenome, deve ser sem número ou caracter especial"),
 
     password:yup
     .string()
     .required("Campo Obrigatório"),
     
+    email:yup
+    .string()
+    .email("Email invalído")
+    .required("Campo Obrigatório"),    
+
     confirmPassword:yup
     .string()
     .required("Campo Obrigatório")
@@ -34,11 +40,13 @@ const SingUp = () =>{
     return (
       <>
       <form onSubmit ={handleSubmit(handleForm)}>
-        <input type="text" name ="" placeholder="name" ref={register}/>
+        <input type="text" name ="name" placeholder="Name" ref={register}/>
         <p>{errors.name?.message}</p>
-        <input type="text" name ="" placeholder="password" ref={register}/>
+        <input type="text" name ="email" placeholder="E-mail" ref={register}/>
+        <p>{errors.email?.message}</p>
+        <input type="text" name ="password" placeholder="Password" ref={register}/>
         <p>{errors.password?.message}</p>
-        <input type="text" name ="" placeholder="confirmPassword" ref={register}/>
+        <input type="text" name ="confirmPassword" placeholder="Confirm Password" ref={register}/>
         <p>{errors.confirmPassword?.message}</p>
         <button type="submit">Register</button>
       </form>
