@@ -9,4 +9,4 @@ const ButtonRedirect = ({ text, link }) => {
   )
 }
 
-return ButtonRedirect
+export default ButtonRedirect
