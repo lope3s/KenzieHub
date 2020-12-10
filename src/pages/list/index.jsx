@@ -32,6 +32,7 @@ const List = () => {
     }
     if (search === "") {
       setSearchResult(undefined)
+      setSeek(null)
     }
   }, [seek, search])
 
