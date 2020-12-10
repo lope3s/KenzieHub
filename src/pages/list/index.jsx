@@ -52,7 +52,7 @@ const List = () => {
   const handleSearchButton = () => {
     //busca na API com o nome salvo no estado search e altera o estado searchResult;
     setSeek(true)
-    setSearchResult(listOfUsers.find((user) => search === user.name))
+    setSearchResult(listOfUsers.find((user) => user.name.includes(search)))
   }
 
   const handleSearchInput = (ev) => {
