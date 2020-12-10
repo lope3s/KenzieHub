@@ -1,6 +1,6 @@
 import { useHistory } from "react-router-dom"
 
-const Button = (text, link) => {
+const ButtonRedirect = ({ text, link }) => {
   const history = useHistory()
   return (
     <>
@@ -9,4 +9,4 @@ const Button = (text, link) => {
   )
 }
 
-return Button
+return ButtonRedirect
