@@ -1,17 +1,30 @@
 import { useState, useEffect } from "react"
-
+import { useDispatch } from "react-redux"
+import { addUsers } from "../../store/modules/listOfUsers/actions"
 import { useSelector } from "react-redux"
 
 import axios from "axios"
 
-import UsersFind from '../../components/listComponent-UsersFind'
-import UsersMap from '../../components/listComponent-UsersMap'
+import UsersFind from "../../components/listComponent-UsersFind"
+import UsersMap from "../../components/listComponent-UsersMap"
 
 const List = () => {
   const [seek, setSeek] = useState(null)
   const [searchResult, setSearchResult] = useState(undefined)
   const [search, setSearch] = useState("")
   const listOfUsers = useSelector((state) => state.listOfUsers)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    axios
+      .get("https://kenziehub.me/users")
+      .then((res) => {
+        dispatch(addUsers(res.data))
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }, [dispatch])
 
   useEffect(() => {
     if (seek) {
@@ -58,9 +71,9 @@ const List = () => {
         <div>Loading...</div>
       ) : seek === null ? (
         searchResult ? (
-          <UsersFind searchResult ={searchResult} />
+          <UsersFind searchResult={searchResult} />
         ) : (
-          <UsersMap listOfUsers = {listOfUsers} />
+          <UsersMap listOfUsers={listOfUsers} />
         )
       ) : (
         <div>No match found</div>
