@@ -7,6 +7,7 @@ const Home = () => {
       <ButtonRedirect text={"Users List"} link={"list"} />
       <ButtonRedirect text={"Sign In"} link={"signIn"} />
       <ButtonRedirect text={"SignUp"} link={"signUp"} />
+      <ButtonRedirect text={"Profale"} link={"profile"} />
     </div>
   )
 }
