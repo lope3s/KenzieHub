@@ -32,6 +32,7 @@ const List = () => {
     }
     if (search === "") {
       setSearchResult(undefined)
+      setSeek(null)
     }
   }, [seek, search])
 
@@ -58,6 +59,12 @@ const List = () => {
     // pegar valor digitado no input
     setSearch(ev.target.value)
   }
+
+  console.log({
+    search,
+    searchResult,
+    seek,
+  })
 
   return (
     <>
