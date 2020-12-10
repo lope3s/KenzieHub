@@ -4,6 +4,8 @@ import { useDispatch } from "react-redux"
 import { addUsers } from "../../store/modules/listOfUsers/actions"
 import {useHistory} from 'react-router-dom'
 
+import ButtonRedirect from '../../components/ButtonRedirect'
+
 const Home = () => {
   const dispatch = useDispatch()
   const history = useHistory()
@@ -22,7 +24,7 @@ const Home = () => {
   return (
   <div>
     <div>Home</div>
-    <button onClick={() => history.push('/list')}>Lista de uruários</button>
+    <ButtonRedirect text = {'Users List'} link = {'list'}/>
   </div>
   )
 }
