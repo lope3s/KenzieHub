@@ -60,12 +60,6 @@ const List = () => {
     setSearch(ev.target.value)
   }
 
-  console.log({
-    search,
-    searchResult,
-    seek,
-  })
-
   return (
     <>
       <input
