@@ -1,12 +1,17 @@
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
-import { useState } from "react";
+import { useForm } from "react-hook-form"
+import { useHistory } from "react-router-dom"
 
-import axios from "axios";
+import { useState } from "react"
+
+import { yupResolver } from "@hookform/resolvers/yup"
+import * as yup from "yup"
+
+import axios from "axios"
 
 const SingUp = () => {
-  const [error, setError] = useState(false);
+  const [error, setError] = useState(false)
+  const [registerSuccessfully, setRegisterSuccessfully] = useState(false)
+  const history = useHistory()
 
   const schema = yup.object().shape({
     name: yup
@@ -26,14 +31,14 @@ const SingUp = () => {
       .string()
       .required("Campo Obrigatório")
       .oneOf([yup.ref("password")], "Senhas Diferentes"),
-  });
+  })
 
   const { register, handleSubmit, errors } = useForm({
     resolver: yupResolver(schema),
-  });
+  })
 
   const registerUserRequest = async (body) => {
-    //
+    // faz o POST na API dos dados do usuário
     body = {
       email: body.email,
       password: body.password,
@@ -41,27 +46,35 @@ const SingUp = () => {
       bio: "Type your Bio here.",
       contact: "Type your Bio here.",
       course_module: "Type your Bio here.",
-    };
-    try {
-      const response = await axios.post("https://kenziehub.me/users", body);
-      console.log(response);
-      console.log(body);
-    } catch (erro) {
-      setError(true);
-      console.log(erro);
     }
-  };
+    try {
+      const response = await axios.post("https://kenziehub.me/users", body)
+      setRegisterSuccessfully(true) // mostrar mensagem de registrado com sucesso
+      setTimeout(() => {
+        // redirecionar para a página de Login
+        history.push("/signIn")
+      }, 3000)
+      console.log(response)
+    } catch (erro) {
+      setError(true) // mostrar mensagem de erro
+      console.log(erro)
+    }
+  }
 
   const handleForm = (value) => {
-    registerUserRequest(value);
-  };
+    // onClick do formulário
+    registerUserRequest(value)
+  }
 
-  return (
-    <>
-      {error && (
-        <div>Informações de Registro inválida, por favor tente novamente !</div>
-      )}
+  const divMessageSuccess = (
+    <div>
+      <h3>You Have Been Registered Successfully</h3>
+    </div>
+  )
+  const divSingUpForm = (
+    <div>
       <form onSubmit={handleSubmit(handleForm)}>
+        {error && <div>E-mail já cadastrado, por favor tente novamente !</div>}
         <input type="text" name="name" placeholder="Name" ref={register} />
         <p>{errors.name?.message}</p>
         <input type="text" name="email" placeholder="E-mail" ref={register} />
@@ -82,8 +95,10 @@ const SingUp = () => {
         <p>{errors.confirmPassword?.message}</p>
         <button type="submit">Register</button>
       </form>
-    </>
-  );
-};
+    </div>
+  )
 
-export default SingUp;
+  return <div>{registerSuccessfully ? divMessageSuccess : divSingUpForm}</div>
+}
+
+export default SingUp
