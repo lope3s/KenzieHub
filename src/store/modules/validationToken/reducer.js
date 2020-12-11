@@ -1,6 +1,6 @@
 import { VALID } from "./actionType"
 
-const validationReducer = (state = false, action) => {
+const validationReducer = (state = null, action) => {
   switch (action.type) {
     case VALID:
       const { auth } = action

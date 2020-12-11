@@ -1,21 +1,20 @@
 import { useForm } from "react-hook-form"
 import { useState } from "react"
 import { TextField } from "@material-ui/core"
-import validationThunk from "../../store/modules/validationToken/thunks"
+import { validation } from "../../store/modules/validationToken/action"
 import { useDispatch } from "react-redux"
-import { useHistory } from "react-router-dom"
 
 import { yupResolver } from "@hookform/resolvers/yup"
 import * as yup from "yup"
 
 import axios from "axios"
 
-// import {useHistory} from "react-router-dom"
+import { useHistory } from "react-router-dom"
 
 const Login = () => {
   const history = useHistory()
-  const [error, setError] = useState(false)
   const dispatch = useDispatch()
+  const [error, setError] = useState(false)
 
   const schema = yup.object().shape({
     userName: yup.string().required("Cannot be blank"),
@@ -35,9 +34,10 @@ const Login = () => {
       setError(false)
       window.localStorage.setItem("infoLogged", JSON.stringify(data.user))
       window.localStorage.setItem("token", data.token)
-      dispatch(validationThunk())
       // setar componente no state global  ok
       history.push("/profile")
+
+      dispatch(validation(true))
     } catch (err) {
       setError(true)
       console.log(err)
