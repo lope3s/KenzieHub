@@ -1,63 +1,83 @@
-import { Container } from "./styles";
+// import store from "../../store"
+import { Container, ContainerContact } from "./styles";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import validationThunk from "../../store/modules/validationToken/thunks";
+import { useEffect } from "react";
+
 const Profile = () => {
-  const User = [JSON.parse(localStorage.getItem("User"))];
-  console.log(User);
+  const dispatch = useDispatch();
+
+  const auth = useSelector((state) => state.auth);
+  const user = JSON.parse(localStorage.getItem("infoLogged"));
+
+  useEffect(() => {
+    dispatch(validationThunk());
+  }, []);
+  console.log(user);
   return (
     <div>
-      <Container>
-        {User.map((element, index) => (
-          <div key={index}>
-            <div>
-              <img alt={element.user.name} src={element.user.avatar_url}></img>
-            </div>
+      {auth ? (
+        <div>
+          <Container>
             <div>
               <div>
-                <span>{element.user.name}</span>
+                {user.avatar_url ? (
+                  <img alt={user.name} src={user.avatar_url}></img>
+                ) : (
+                  <img
+                    alt={`${user.name}, avatar padrão`}
+                    src="https://uploads.metropoles.com/wp-content/uploads/2019/08/05090905/perfilsemfoto.jpg"
+                  ></img>
+                )}
+              </div>
+              <div>
+                <div>
+                  <span>{user.name}</span>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
-      </Container>
-      {User.map((element, index) => (
-        <div key={index}>
+          </Container>
           <div>
-            <div>About Me</div>
-            <div>{element.user.bio}</div>
-          </div>
-
-          <div>
-            <div>Personal Details</div>
             <div>
-              <div>Email:{element.user.email}</div>
-              <div>Course Module: {element.user.course_module}</div>
+              <div>About Me</div>
+              <div>{user.bio}</div>
             </div>
-          </div>
-
-          <div>Techs</div>
-          <div>
-            {element.user.techs.map((element, index) => (
-              <div key={index}>
-                {element.title} - {element.status}
-              </div>
-            ))}
-          </div>
-        </div>
-      ))}
-      {User.map((element, index) => (
-        <div key={index}>
-          <div>
-            <div>Works</div>
             <div>
-              {element.user.works.map((element, index) => (
+              <div>Personal Details</div>
+              <div>
+                <div>Email:{user.email}</div>
+                <div>Course Module: {user.course_module}</div>
+              </div>
+            </div>
+            <div>Techs</div>
+            <div>
+              {user.techs.map((element, index) => (
                 <div key={index}>
-                  <p>{element.title}</p>
-                  <div>{element.description}</div>
+                  {element.title} - {element.status}
                 </div>
               ))}
             </div>
           </div>
+          <div>
+            <div>
+              <div>Works</div>
+              <div>
+                <div>
+                  {user.works.map((element) => (
+                    <div>
+                      <p>{element.title}</p>
+                      <div>{element.description}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      ))}
+      ) : (
+        <></>
+      )}
     </div>
   );
 };
