@@ -10,12 +10,12 @@ import { useHistory } from "react-router-dom"
 const Routes = () => {
   const isAuth = useSelector((state) => state.auth)
   const history = useHistory()
+  console.log(isAuth)
   return (
     <>
       <Switch>
-        pu
         <Route exact path="/" component={Home} />
-        <Route exact path="/list" component={List} />
+        <Route exact path="/list/:page" component={List} />
         <Route exact path="/profile">
           <Profile />
           {isAuth === false && history.push("/signIn")}
