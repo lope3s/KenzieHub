@@ -1,7 +1,7 @@
 import { useState } from "react"
 import NewTech from "../NewTechs"
 
-const ButtonTechs = () => {
+const ButtonNewTechs = () => {
   const [editTechs, setEditTechs] = useState(false)
   const handleShowTechs = () => {
     setEditTechs(!editTechs)
@@ -14,4 +14,4 @@ const ButtonTechs = () => {
   )
 }
 
-export default ButtonTechs
+export default ButtonNewTechs

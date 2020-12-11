@@ -18,7 +18,11 @@ const Profile = () => {
 
   return (
     <div>
-      {auth && user.name}
+      {auth && (
+        <>
+          <p>{user.name}</p>
+        </>
+      )}
       {/* <Container>
         {User.map((element, index) => (
           <div key={index}>

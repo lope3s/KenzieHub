@@ -7,6 +7,7 @@ import axios from "axios"
 
 const NewTech = () => {
   const [level, setLevel] = useState("")
+  const [error, setError] = useState("")
   const schema = yup.object().shape({
     title: yup.string().required("cannot be blank"),
     status: yup.string().required("cannot be blank"),
@@ -17,19 +18,13 @@ const NewTech = () => {
   })
 
   const handleTechs = (ev) => {
-    console.log({
-      title: ev.title,
-      status: ev.status,
-    })
     const token = localStorage.getItem("token")
     axios
       .post(
         "https://kenziehub.me/users/techs",
         {
-          body: {
-            title: ev.title,
-            status: ev.status,
-          },
+          title: ev.title,
+          status: ev.status,
         },
         {
           headers: {
@@ -37,8 +32,11 @@ const NewTech = () => {
           },
         }
       )
-      .then((res) => console.log(res))
-      .catch((error) => console.log(error))
+      .catch(() =>
+        setError(
+          "User Already have this technology created you can only update it"
+        )
+      )
   }
 
   const handleLevel = (ev) => {
@@ -76,8 +74,9 @@ const NewTech = () => {
           <option value="Avançado">Avançado</option>
         </Select>
         <Button type="" variant="contained" color="primary">
-          Save
+          Add
         </Button>
+        {error && <p>{error}</p>}
       </form>
     </>
   )
