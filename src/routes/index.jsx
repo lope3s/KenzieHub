@@ -11,7 +11,7 @@ const Routes = (isAuth) => {
       <>
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/list" component={List} />
+          <Route exact path="/list/:page" component={List} />
           <Route exact path="/profile" component={Profile} />
           <Route exact path="/signIn" component={SignIn} />
           <Route exact path="/signUp" component={SingnUp} />
@@ -24,7 +24,7 @@ const Routes = (isAuth) => {
       <>
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/list" component={List} />
+          <Route exact path="/list/:page"component={List} />
           <Route exact path="/signIn" component={SignIn} />
           <Route exact path="/signUp" component={SingnUp} />
         </Switch>

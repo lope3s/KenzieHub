@@ -1,22 +1,28 @@
-const UsersMap = ({listOfUsers}) => {
+import {useState, useEffect} from 'react'
+import User from "../Users"
+import { UsersContainer, UsersContainerTitle } from "./style";
+const UsersMap = ({listOfUsers,usersPerPage,page}) => {
+  const [usersInPage, setUsersInPage] = useState([]);
+  useEffect(() => {
+    const initial = usersPerPage * (page - 1);
+    const end = initial + usersPerPage;
+    setUsersInPage(listOfUsers.slice(initial, end));
+  }, [listOfUsers, usersPerPage, page]);
+
     return (
-        listOfUsers.map(
-            ({ name, course_module, avatar_url, contact }, index) => (
-              <div key={index}>
-                <img
-                  alt={name}
-                  src={
-                    avatar_url
-                      ? avatar_url
-                      : "https://uploads.metropoles.com/wp-content/uploads/2019/08/05090905/perfilsemfoto.jpg"
-                  }
-                />
-                <p>{name}</p>
-                <p>{course_module !== "undefined" && course_module}</p>
-                <p>{contact !== "undefined" && contact}</p>
-              </div>
+      <UsersContainer>
+      <UsersContainerTitle>
+        <span>Profile</span>
+        <span>Name</span>
+        <span>Couser Module</span>
+        <span>Contact</span>
+      </UsersContainerTitle>
+     { usersInPage.map(
+            (current, index) => (
+              <User user={current} key ={index}/>
             )
-          )
+          )}
+      </UsersContainer>
     )
 }
 
