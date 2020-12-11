@@ -10,6 +10,7 @@ import { useHistory } from "react-router-dom"
 const Routes = () => {
   const isAuth = useSelector((state) => state.auth)
   const history = useHistory()
+  console.log(isAuth)
   return (
     <>
       <Switch>

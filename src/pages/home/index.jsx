@@ -1,4 +1,4 @@
-import ButtonRedirect from "../../components/ButtonRedirect";
+import ButtonRedirect from "../../components/ButtonRedirect"
 
 const Home = () => {
   return (
@@ -8,7 +8,7 @@ const Home = () => {
       <ButtonRedirect text={"Sign In"} link={"signIn"} />
       <ButtonRedirect text={"SignUp"} link={"signUp"} />
     </div>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home
