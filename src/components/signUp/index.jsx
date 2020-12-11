@@ -16,21 +16,21 @@ const SingUp = () => {
   const schema = yup.object().shape({
     name: yup
       .string()
-      .required("Campo Obrigatório")
+      .required("Required field")
       .min(6)
       .matches(
-        /^(.[a-zÀ-ÿ].+\s).+$/i,
-        "nome deve ter sobrenome, deve ser sem número ou caracter especial"
+        /^(.[a-zÀ-ÿ]).+$/i,
+        "name must be without number or special character"
       ),
 
-    password: yup.string().min(6).required("Campo Obrigatório"),
+    password: yup.string().min(6).required("Required field"),
 
-    email: yup.string().email("Email invalído").required("Campo Obrigatório"),
+    email: yup.string().email("Invalid email").required("Required field"),
 
     confirmPassword: yup
       .string()
-      .required("Campo Obrigatório")
-      .oneOf([yup.ref("password")], "Senhas Diferentes"),
+      .required("Required field")
+      .oneOf([yup.ref("password")], "The passwords are different"),
   })
 
   const { register, handleSubmit, errors } = useForm({
@@ -74,7 +74,7 @@ const SingUp = () => {
   const divSingUpForm = (
     <div>
       <form onSubmit={handleSubmit(handleForm)}>
-        {error && <div>E-mail já cadastrado, por favor tente novamente !</div>}
+        {error && <div>E-mail already registered, please try again!</div>}
         <input type="text" name="name" placeholder="Name" ref={register} />
         <p>{errors.name?.message}</p>
         <input type="text" name="email" placeholder="E-mail" ref={register} />
