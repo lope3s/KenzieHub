@@ -18,7 +18,7 @@ const Routes = () => {
         <Route exact path="/list" component={List} />
         <Route exact path="/profile">
           <Profile />
-          {!isAuth && history.push("/signIn")}
+          {isAuth === false && history.push("/signIn")}
         </Route>
         <Route exact path="/signIn" component={SignIn} />
         <Route exact path="/signUp" component={SingnUp} />
