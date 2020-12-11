@@ -1,10 +1,25 @@
-import store from "../../store";
-import { Container, ContainerContact } from "./styles";
+// import store from "../../store"
+// import { Container, ContainerContact } from "./styles"
+import { useDispatch } from "react-redux"
+import { useSelector } from "react-redux"
+import validationThunk from "../../store/modules/validationToken/thunks"
+import { useEffect } from "react"
+
 const Profile = () => {
-  const User = store.getState().User;
+  // const User = store.getState().User;
+  const dispatch = useDispatch()
+
+  const auth = useSelector((state) => state.auth)
+  const user = JSON.parse(localStorage.getItem("infoLogged"))
+
+  useEffect(() => {
+    dispatch(validationThunk())
+  }, [])
+
   return (
     <div>
-      <Container>
+      {auth && user.name}
+      {/* <Container>
         {User.map((element, index) => (
           <div key={index}>
             <div>
@@ -57,9 +72,9 @@ const Profile = () => {
             </div>
           </div>
         </div>
-      ))}
+      ))} */}
     </div>
-  );
-};
+  )
+}
 
-export default Profile;
+export default Profile
