@@ -15,7 +15,7 @@ const Routes = () => {
       <Switch>
         pu
         <Route exact path="/" component={Home} />
-        <Route exact path="/list" component={List} />
+        <Route exact path="/list/:page" component={List} />
         <Route exact path="/profile">
           <Profile />
           {isAuth === false && history.push("/signIn")}
