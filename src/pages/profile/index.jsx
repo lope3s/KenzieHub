@@ -1,7 +1,7 @@
-import store from "../../store";
-import { Container, ContainerContact } from "./styles";
+import { Container } from "./styles";
 const Profile = () => {
-  const User = store.getState().User;
+  const User = [JSON.parse(localStorage.getItem("User"))];
+  console.log(User);
   return (
     <div>
       <Container>
