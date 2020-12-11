@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form"
 import { useState } from "react"
-import { TextField } from "@material-ui/core"
+import { TextField, Button } from "@material-ui/core"
 import { validation } from "../../store/modules/validationToken/action"
 import { useDispatch } from "react-redux"
 
@@ -69,7 +69,7 @@ const Login = () => {
             helperText={errors.password?.message}
             inputRef={register}
           />
-          <button>submit</button>
+          <Button type="submit">entrar</Button>
         </form>
       </fieldset>
     </div>
