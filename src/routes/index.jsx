@@ -13,6 +13,7 @@ const Routes = () => {
   return (
     <>
       <Switch>
+        pu
         <Route exact path="/" component={Home} />
         <Route exact path="/list" component={List} />
         <Route exact path="/profile">
