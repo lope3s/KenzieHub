@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux"
 import { useSelector } from "react-redux"
 import validationThunk from "../../store/modules/validationToken/thunks"
 import { useState, useEffect } from "react"
+import ButtonNewWorks from "../../components/ButtonNewWorks"
 
 const Profile = () => {
   const dispatch = useDispatch()
@@ -83,6 +84,7 @@ const Profile = () => {
       <button onClick={() => setPublisher(true)}>Edição de Perfil</button>
       {publisher && <div>
         <button onClick={() => setPublisher(false)}>fexar a edição de Perfil</button>
+        <ButtonNewWorks></ButtonNewWorks>
         </div>}
     </div>
   )
