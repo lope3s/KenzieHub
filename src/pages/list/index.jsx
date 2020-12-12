@@ -1,19 +1,27 @@
+<<<<<<< HEAD
 import { useHistory, useParams } from "react-router-dom";
 import { useState, useEffect } from "react"
 import { useDispatch } from "react-redux"
 import addUserThunk from "../../store/modules/listOfUsers/thunks"
 import { useSelector } from "react-redux"
+=======
+import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import addUserThunk from "../../store/modules/listOfUsers/thunks";
+import { useSelector } from "react-redux";
+>>>>>>> d35bf4f2cc89e3e5aefd663ef45171e12cd9c32b
 
-import axios from "axios"
+import axios from "axios";
 
-import UsersFind from "../../components/listComponent-UsersFind"
-import UsersMap from "../../components/listComponent-UsersMap"
+import UsersFind from "../../components/listComponent-UsersFind";
+import UsersMap from "../../components/listComponent-UsersMap";
 
 import Pagination from "@material-ui/lab/Pagination";
 import { Select, MenuItem } from "@material-ui/core";
 import { UsersPageContainer, PaginationContainer } from "./style";
 
 const List = () => {
+<<<<<<< HEAD
   const [seek, setSeek] = useState(null)
   const [searchResult, setSearchResult] = useState(undefined)
   const [search, setSearch] = useState("")
@@ -47,31 +55,50 @@ const List = () => {
   // useEffect(() => {
   //   setUsersPerPage(usersPerPage);
   // }, []);
+=======
+  const [seek, setSeek] = useState(null);
+  const [searchResult, setSearchResult] = useState(undefined);
+  const [search, setSearch] = useState("");
+  const [nextUrl, setNextUrl] = useState("https://kenziehub.me/users");
+  const listOfUsers = useSelector((state) => state.listOfUsers);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    setSeek(true);
+    loading();
+  }, [dispatch, nextUrl]);
+
+  useEffect(() => {
+    if (search === "") {
+      setSearchResult(undefined);
+    }
+  }, [search]);
+>>>>>>> d35bf4f2cc89e3e5aefd663ef45171e12cd9c32b
 
   const loading = async () => {
     try {
-      const res = await axios.get(nextUrl)
-      await dispatch(addUserThunk(res.data))
+      const res = await axios.get(nextUrl);
+      await dispatch(addUserThunk(res.data));
       if (res.data.length > 0) {
-        setNextUrl(res.headers.nexturl)
-        console.log(res)
-        return
+        setNextUrl(res.headers.nexturl);
+        console.log(res);
+        return;
       }
-      setSeek(null)
+      setSeek(null);
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
 
 
   const handleSearchButton = async () => {
     //busca na API com o nome salvo no estado search e altera o estado searchResult;
-    setSeek(true)
+    setSeek(true);
     await setSearchResult(
       listOfUsers.filter((user) => user.name.includes(search))
-    )
-    setSeek(null)
-  }
+    );
+    setSeek(null);
+  };
 
   const handleSetUsersPerPage = (evt) => {
     setUsersPerPage(evt.target.value);
@@ -79,12 +106,17 @@ const List = () => {
 
   const handleSearchInput = (ev) => {
     // pegar valor digitado no input
+<<<<<<< HEAD
     setSearch(ev.target.value)
   }
   const handleSetPage = (evt, value) => {
     history.push(`/list/page=${value}`);
   };
 
+=======
+    setSearch(ev.target.value);
+  };
+>>>>>>> d35bf4f2cc89e3e5aefd663ef45171e12cd9c32b
 
   return (
     <>
@@ -127,7 +159,7 @@ const List = () => {
 
       </UsersPageContainer>
     </>
-  )
-}
+  );
+};
 
-export default List
+export default List;
