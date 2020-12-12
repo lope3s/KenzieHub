@@ -8,14 +8,9 @@ import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 const Routes = () => {
-<<<<<<< HEAD
-  const isAuth = useSelector((state) => state.auth)
-  const history = useHistory()
-  console.log(isAuth)
-=======
   const isAuth = useSelector((state) => state.auth);
   const history = useHistory();
->>>>>>> d35bf4f2cc89e3e5aefd663ef45171e12cd9c32b
+  console.log(isAuth);
   return (
     <>
       <Switch>
