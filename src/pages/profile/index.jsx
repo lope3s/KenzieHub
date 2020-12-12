@@ -3,10 +3,12 @@ import { Container, ContainerContact } from "./styles"
 import { useDispatch } from "react-redux"
 import { useSelector } from "react-redux"
 import validationThunk from "../../store/modules/validationToken/thunks"
-import { useEffect } from "react"
+import { useState, useEffect } from "react"
+import ButtonNewWorks from "../../components/ButtonNewWorks"
 
 const Profile = () => {
   const dispatch = useDispatch()
+  const [publisher, setPublisher] = useState(false)
 
   const auth = useSelector((state) => state.auth)
   const user = JSON.parse(localStorage.getItem("infoLogged"))
@@ -15,6 +17,7 @@ const Profile = () => {
     dispatch(validationThunk())
   }, [])
   console.log(user)
+
   return (
     <div>
       {auth ? (
@@ -78,8 +81,13 @@ const Profile = () => {
       ) : (
         <></>
       )}
+      <button onClick={() => setPublisher(true)}>Edição de Perfil</button>
+      {publisher && <div>
+        <button onClick={() => setPublisher(false)}>fexar a edição de Perfil</button>
+        <ButtonNewWorks></ButtonNewWorks>
+        </div>}
     </div>
   )
 }
 
-export default Profile
+export default Profile;
