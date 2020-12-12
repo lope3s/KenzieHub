@@ -36,6 +36,7 @@ const List = () => {
   useEffect(() => {
     if (search === "") {
       setSearchResult(undefined)
+      setSeek(null)
     }
   }, [search])
   
