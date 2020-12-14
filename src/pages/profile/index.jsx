@@ -83,7 +83,7 @@ const Profile = () => {
       ) : (
         <></>
       )}
-      <button onClick={() => setPublisher(!publisher)}>Edição de Perfil</button>
+      <button onClick={() => setPublisher(!publisher)}>edit profile</button>
       {publisher && <EditInfos />}
     </div>
   )
