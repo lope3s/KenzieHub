@@ -1,15 +1,16 @@
 import { useForm } from "react-hook-form"
+import { useHistory } from "react-router-dom"
+
 import { useState } from "react"
-import { TextField, Button } from "@material-ui/core"
-import { validation } from "../../store/modules/validationToken/action"
 import { useDispatch } from "react-redux"
 
+import { TextField, Button } from "@material-ui/core"
 import { yupResolver } from "@hookform/resolvers/yup"
 import * as yup from "yup"
 
-import axios from "axios"
+import { validation } from "../../store/modules/validationToken/action"
 
-import { useHistory } from "react-router-dom"
+import axios from "axios"
 
 const Login = () => {
   const history = useHistory()
@@ -17,62 +18,62 @@ const Login = () => {
   const [error, setError] = useState(false)
 
   const schema = yup.object().shape({
-    userName: yup.string().required("Cannot be blank"),
+    email: yup.string().email("Invalid E-mail").required("Cannot be blank"),
     password: yup.string().required("Cannot be blank"),
   })
-
   const { register, errors, handleSubmit } = useForm({
     resolver: yupResolver(schema),
   })
+
   const sendData = async (body) => {
-    body = { email: body.userName, password: body.password }
+    body = { email: body.email, password: body.password }
 
     try {
       const res = await axios.post("https://kenziehub.me/sessions", body)
       const data = await res.data
+
       console.log(res)
-      setError(false)
+      setError(false) //não exibir mensagem de erro
+
       window.localStorage.setItem("infoLogged", JSON.stringify(data.user))
       window.localStorage.setItem("token", data.token)
-      // setar componente no state global  ok
-      history.push("/profile")
 
+      history.push("/profile")
       dispatch(validation(true))
     } catch (err) {
-      setError(true)
+      setError(true) //exibir mensagem de erro
       console.log(err)
     }
   }
 
   return (
-    <div>
-      <fieldset>
-        <legend>Login</legend>
-        {error && (
-          <div>Não foi possivel realizar seu Login, tente novamente</div>
-        )}
-        <form onSubmit={handleSubmit(sendData)}>
-          <TextField
-            margin="normal"
-            variant="outlined"
-            name="userName"
-            error={!!errors.userName}
-            helperText={errors.userName?.message}
-            inputRef={register}
-          />
-          <TextField
-            margin="normal"
-            variant="outlined"
-            name="password"
-            type="password"
-            error={!!errors.password}
-            helperText={errors.password?.message}
-            inputRef={register}
-          />
-          <Button type="submit">entrar</Button>
-        </form>
-      </fieldset>
-    </div>
+    <section>
+      <h3>HEY!</h3>
+      <h3>Welcome Back</h3>
+      {error && <span>It was not possible to login, please try again</span>}
+      <form onSubmit={handleSubmit(sendData)}>
+        <TextField
+          margin="normal"
+          variant="outlined"
+          name="email"
+          label="e-mail"
+          error={!!errors.email}
+          helperText={errors.email?.message}
+          inputRef={register}
+        />
+        <TextField
+          margin="normal"
+          variant="outlined"
+          name="password"
+          type="password"
+          label="password"
+          error={!!errors.password}
+          helperText={errors.password?.message}
+          inputRef={register}
+        />
+        <Button type="submit">sign in</Button>
+      </form>
+    </section>
   )
 }
 

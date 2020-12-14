@@ -1,20 +1,24 @@
 // import store from "../../store"
-import { Container, ContainerContact } from "./styles";
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
-import validationThunk from "../../store/modules/validationToken/thunks";
-import { useEffect } from "react";
+import { Container, ContainerContact } from "./styles"
+import { useDispatch } from "react-redux"
+import { useSelector } from "react-redux"
+import validationThunk from "../../store/modules/validationToken/thunks"
+import { useState, useEffect } from "react"
+import EditInfos from "../../components/EditInfos"
 
 const Profile = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
+  const [publisher, setPublisher] = useState(false)
+  const [changeTechStatus, setChangeTechStatus] = useState(false)
 
-  const auth = useSelector((state) => state.auth);
-  const user = JSON.parse(localStorage.getItem("infoLogged"));
+  const auth = useSelector((state) => state.auth)
+  const user = JSON.parse(localStorage.getItem("infoLogged"))
 
   useEffect(() => {
-    dispatch(validationThunk());
-  }, []);
-  console.log(user);
+    dispatch(validationThunk())
+  }, [])
+  console.log(user)
+
   return (
     <div>
       {auth ? (
@@ -78,8 +82,10 @@ const Profile = () => {
       ) : (
         <></>
       )}
+      <button onClick={() => setPublisher(!publisher)}>Edição de Perfil</button>
+      {publisher && <EditInfos />}
     </div>
-  );
-};
+  )
+}
 
-export default Profile;
+export default Profile
