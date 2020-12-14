@@ -5,6 +5,10 @@ import { saveTechID } from "../../store/modules/techId/actions"
 import { useDispatch } from "react-redux"
 import { useState } from "react"
 import axios from "axios"
+import { Container } from "./style"
+import { BsTrashFill } from "react-icons/bs"
+import { AiFillEdit } from "react-icons/ai"
+import { AiOutlineClose } from "react-icons/ai"
 
 const EditInfos = () => {
   const user = JSON.parse(localStorage.getItem("infoLogged"))
@@ -25,39 +29,46 @@ const EditInfos = () => {
   }
 
   return (
-    <>
+    <Container>
       <div className="TechContainer">
-        <span>Techs</span>
-        <div className="NewTechContainer">
-          <ButtonNewTechs />
+        <div className="NewTechAcess">
+          <span>Techs</span>
+          <div className="NewTechContainer">
+            <ButtonNewTechs />
+          </div>
         </div>
-        <div className="TechsListContainer">
-          {user.techs.map((tech, index) => {
-            return (
-              <div className="TechContainer" key={index}>
-                <span className="TechInfo">
-                  {tech.title} - {tech.status}
-                </span>
-                <button
-                  className="EditTechStatusButton"
-                  onClick={() => {
-                    dispatch(saveTechID(tech.id))
-                    setChangeTechStatus(true)
-                  }}
-                >
-                  Edit Status
-                </button>
-                <button
-                  className="RemoveTechButton"
-                  onClick={() => {
-                    handleRemoveTech(tech.id)
-                  }}
-                >
-                  Exluir Tech
-                </button>
-              </div>
-            )
-          })}
+
+        <div className="TechsEdits">
+          <div className="TechListConatainer">
+            {user.techs.map((tech, index) => {
+              return (
+                <div className="TechContainer" key={index}>
+                  <span className="TechInfo">
+                    {tech.title} - {tech.status}
+                  </span>
+                  <div className="buttonsContainer">
+                    <button
+                      className="EditTechStatusButton"
+                      onClick={() => {
+                        dispatch(saveTechID(tech.id))
+                        setChangeTechStatus(true)
+                      }}
+                    >
+                      <AiFillEdit />
+                    </button>
+                    <button
+                      className="RemoveTechButton"
+                      onClick={() => {
+                        handleRemoveTech(tech.id)
+                      }}
+                    >
+                      <BsTrashFill />
+                    </button>
+                  </div>
+                </div>
+              )
+            })}
+          </div>
           {changeTechStatus && (
             <div className="EditTechStatusContainer">
               <EditTechStatus />
@@ -65,22 +76,24 @@ const EditInfos = () => {
                 className="CloseEditTechStatus"
                 onClick={() => setChangeTechStatus(false)}
               >
-                Fechar
+                <AiOutlineClose />
               </button>
             </div>
           )}
         </div>
       </div>
       <div className="WorksContainer">
-        <span>Works</span>
-        <div className="NewWorkContainer">
-          <ButtonNewWorks />
+        <div className="NewWorkAcess">
+          <span>Works</span>
+          <div className="NewWorkContainer">
+            <ButtonNewWorks />
+          </div>
         </div>
       </div>
       <div className="PreferencesContainer">
         <span>Profile Prefrences</span>
       </div>
-    </>
+    </Container>
   )
 }
 

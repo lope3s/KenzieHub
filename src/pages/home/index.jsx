@@ -8,7 +8,10 @@ const Home = () => {
         <div>
           <div>Home</div>
           <div>
-            <ButtonRedirect text={"Users List"} link={"list"}></ButtonRedirect>
+            <ButtonRedirect
+              text={"Users List"}
+              link={"list/page=1"}
+            ></ButtonRedirect>
             <ButtonRedirect text={"Sign In"} link={"signIn"} />
             <ButtonRedirect text={"SignUp"} link={"signUp"} />
           </div>
