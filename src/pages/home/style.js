@@ -41,13 +41,3 @@ export const ContainerImage = styled.div`
     margin-top: 20px;
   }
 `;
-export const ContainerRodape = styled.div`
-  background-color: #293396;
-  color: white;
-  font-family: "Montserrat", sans-serif;
-  font-size: 15px;
-  position: absolute;
-  width: 100vw;
-  height: 17px;
-  top: 756px;
-`;
