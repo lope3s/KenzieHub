@@ -1,21 +1,21 @@
-import { useForm } from "react-hook-form";
-import { useHistory } from "react-router-dom";
+import { useForm } from "react-hook-form"
+import { useHistory } from "react-router-dom"
 
-import { useState } from "react";
+import { useState } from "react"
 
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup"
+import * as yup from "yup"
 
-import axios from "axios";
+import axios from "axios"
 
-import logo from "./page.svg";
+import logo from "./page.svg"
 import { TextField, Button } from "@material-ui/core"
 
-import { Container } from "./style";
+import { Container } from "./style"
 const SingUp = () => {
-  const [error, setError] = useState(false);
-  const [registerSuccessfully, setRegisterSuccessfully] = useState(false);
-  const history = useHistory();
+  const [error, setError] = useState(false)
+  const [registerSuccessfully, setRegisterSuccessfully] = useState(false)
+  const history = useHistory()
 
   const schema = yup.object().shape({
     name: yup
@@ -35,11 +35,11 @@ const SingUp = () => {
       .string()
       .required("Required field")
       .oneOf([yup.ref("password")], "Different Passwords"),
-  });
+  })
 
   const { register, handleSubmit, errors } = useForm({
     resolver: yupResolver(schema),
-  });
+  })
 
   const registerUserRequest = async (body) => {
     // faz o POST na API dos dados do usuário
@@ -50,48 +50,47 @@ const SingUp = () => {
       bio: "Type your Bio here.",
       contact: "Type your Bio here.",
       course_module: "Type your Bio here.",
-    };
+    }
     try {
-      const response = await axios.post("https://kenziehub.me/users", body);
-      setRegisterSuccessfully(true); // mostrar mensagem de registrado com sucesso
+      const response = await axios.post("https://kenziehub.me/users", body)
+      setRegisterSuccessfully(true) // mostrar mensagem de registrado com sucesso
       setTimeout(() => {
         // redirecionar para a página de Login
-        history.push("/signIn");
-      }, 3000);
-      console.log(response);
+        history.push("/signIn")
+      }, 3000)
+      console.log(response)
     } catch (erro) {
-      setError(true); // mostrar mensagem de erro
-      console.log(erro);
+      setError(true) // mostrar mensagem de erro
+      console.log(erro)
     }
-  };
+  }
 
   const handleForm = (value) => {
     // onClick do formulário
-    registerUserRequest(value);
-  };
+    registerUserRequest(value)
+  }
 
   const divMessageSuccess = (
     <div>
       <h3>You Have Been Registered Successfully</h3>
     </div>
-  );
+  )
   const divSingUpForm = (
     <Container>
       <div className="ContainerInputs">
         <div>Hey! Welcome</div>
         <form onSubmit={handleSubmit(handleForm)} className="Form">
-          {error && (
-            <div>Invalid Registration Information</div>
-          )}
+          {error && <div>Invalid Registration Information</div>}
           <div
             style={{
               marginLeft: "-220px",
               marginTop: "10px",
               marginBottom: "10px",
             }}
-          >
-          </div>
+          ></div>
           <TextField
+            variant="outlined"
+            color="primary"
             name="name"
             type="text"
             label="UserName"
@@ -111,10 +110,10 @@ const SingUp = () => {
               marginTop: "10px",
               marginBottom: "10px",
             }}
-          >
-
-          </div>
+          ></div>
           <TextField
+            variant="outlined"
+            color="primary"
             type="text"
             name="email"
             label="E-mail"
@@ -134,10 +133,10 @@ const SingUp = () => {
               marginTop: "10px",
               marginBottom: "10px",
             }}
-          >
-
-          </div>
+          ></div>
           <TextField
+            variant="outlined"
+            color="primary"
             type="password"
             name="password"
             label="Password"
@@ -157,9 +156,10 @@ const SingUp = () => {
               marginTop: "10px",
               marginBottom: "10px",
             }}
-          >
-          </div>
+          ></div>
           <TextField
+            variant="outlined"
+            color="primary"
             type="password"
             name="confirmPassword"
             label="Confirm Password"
@@ -192,15 +192,11 @@ const SingUp = () => {
           </Button>
         </form>
       </div>
-      <img
-        src={logo}
-        alt="Image principal na pagina de cadastro"
-        style={{ marginLeft: "50px" }}
-      ></img>
+      <img src={logo} alt="SigUp" style={{ marginLeft: "110px" }}></img>
     </Container>
-  );
+  )
 
-  return <div>{registerSuccessfully ? divMessageSuccess : divSingUpForm}</div>;
-};
+  return <div>{registerSuccessfully ? divMessageSuccess : divSingUpForm}</div>
+}
 
-export default SingUp;
+export default SingUp
