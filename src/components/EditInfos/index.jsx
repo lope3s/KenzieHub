@@ -9,9 +9,10 @@ import { Container } from "./style"
 import { BsTrashFill } from "react-icons/bs"
 import { AiFillEdit } from "react-icons/ai"
 import { AiOutlineClose } from "react-icons/ai"
-import ProfilePreferences from '../../components/ProfilePreferences'
+import ProfilePreferences from "../../components/ProfilePreferences"
+import { Button } from "@material-ui/core"
 
-const EditInfos = () => {
+const EditInfos = ({ setPublisher }) => {
   const user = JSON.parse(localStorage.getItem("infoLogged"))
   const dispatch = useDispatch()
   const [changeTechStatus, setChangeTechStatus] = useState(false)
@@ -33,7 +34,7 @@ const EditInfos = () => {
     <Container>
       <div className="TechContainer">
         <div className="NewTechAcess">
-          <span>Techs</span>
+          <span className="SessionName">Techs</span>
           <div className="NewTechContainer">
             <ButtonNewTechs />
           </div>
@@ -95,6 +96,13 @@ const EditInfos = () => {
         <span>Profile Prefrences</span>
         <ProfilePreferences />
       </div>
+      <Button
+        className="close"
+        variant="contained"
+        onClick={() => setPublisher(false)}
+      >
+        Close
+      </Button>
     </Container>
   )
 }

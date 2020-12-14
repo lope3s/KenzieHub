@@ -1,4 +1,12 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components"
+
+export const Main = styled.div`
+  ${({ publisher }) =>
+    publisher &&
+    css`
+      background-color: #00000075;
+    `}
+`
 
 export const Container = styled.div`
   text-align: center;
@@ -37,10 +45,10 @@ export const Container = styled.div`
     justify-content: center;
     display: flex;
   }
-`;
+`
 export const ContainerContact = styled.span`
   > span img {
     width: 50px;
     height: 50px;
   }
-`;
+`
