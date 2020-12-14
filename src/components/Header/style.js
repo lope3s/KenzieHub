@@ -27,6 +27,25 @@ export const LinksContent = styled.div`
   .link-home {
     margin-right: auto;
   }
+
+  .profile {
+    height: 100%;
+
+    a {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+    img {
+      width: 40px;
+      border-radius: 100%;
+    }
+    /* border-radius: 100%; */
+  }
   button {
     cursor: pointer;
     color: white;
