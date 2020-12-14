@@ -32,7 +32,7 @@ export const Container = styled.div`
     left: 37.5%;
     right: 37.5%;
 
-    z-index: -1;
+    z-index: -2;
     border-radius: 5px;
 
     justify-content: center;
