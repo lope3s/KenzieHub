@@ -1,5 +1,6 @@
 import { ContainerImage, ContainerRodape } from "./style"
 import logo from "./logo.svg"
+
 const Home = () => {
   return (
     <div>

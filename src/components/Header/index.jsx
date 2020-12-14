@@ -1,11 +1,10 @@
-import ButtonRedirect from "../../components/ButtonRedirect"
-
 import { useState, useEffect } from "react"
 
 import { useSelector, useDispatch } from "react-redux"
 import { validation } from "../../store/modules/validationToken/action"
 
 import { HeaderContent, LinksContent } from "./style"
+import ButtonRedirect from "../../components/ButtonRedirect"
 
 const Header = () => {
   const [isAuth, setAuth] = useState(false)
