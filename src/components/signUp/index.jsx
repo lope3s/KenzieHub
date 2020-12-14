@@ -11,6 +11,7 @@ import axios from "axios";
 import logo from "./page.svg";
 import { TextField, Button } from "@material-ui/core"
 
+import { Container } from "./style";
 const SingUp = () => {
   const [error, setError] = useState(false);
   const [registerSuccessfully, setRegisterSuccessfully] = useState(false);
@@ -75,47 +76,10 @@ const SingUp = () => {
     </div>
   );
   const divSingUpForm = (
-    <div
-      style={{
-        height: "100vh",
-        width: "100vw",
-        display: "flex",
-        alignItems: "center",
-      }}
-    >
-      <div
-        style={{
-          marginLeft: "100px",
-          textAlign: "center",
-          width: "500px",
-          alignItems: "center",
-          height: "500px",
-          background: "rgba(238, 238, 238, 0.04)",
-          borderRadius: "15px",
-        }}
-      >
-        <div
-          style={{
-            marginTop: "20px",
-            marginBottom: "20px",
-            color: "white",
-            fontSize: "25px",
-            fontFamily: "Roboto, sans-serif",
-          }}
-        >
-          Hey! Welcome
-        </div>
-        <form
-          onSubmit={handleSubmit(handleForm)}
-          style={{
-            marginTop: "10px",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            color: "white",
-            fontFamily: "Roboto, sans-serif",
-          }}
-        >
+    <Container>
+      <div className="ContainerInputs">
+        <div>Hey! Welcome</div>
+        <form onSubmit={handleSubmit(handleForm)} className="Form">
           {error && (
             <div>Invalid Registration Information</div>
           )}
@@ -233,7 +197,7 @@ const SingUp = () => {
         alt="Image principal na pagina de cadastro"
         style={{ marginLeft: "50px" }}
       ></img>
-    </div>
+    </Container>
   );
 
   return <div>{registerSuccessfully ? divMessageSuccess : divSingUpForm}</div>;
