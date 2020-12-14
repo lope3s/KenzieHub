@@ -1,5 +1,5 @@
 // import store from "../../store"
-import { Main, Container, ContainerContact } from "./styles"
+import { Main, Container } from "./styles"
 import { useDispatch } from "react-redux"
 import { useSelector } from "react-redux"
 import validationThunk from "../../store/modules/validationToken/thunks"
@@ -36,7 +36,7 @@ const Profile = () => {
                 )}
               </div>
               <div>
-                <div>
+                <div className="Background">
                   <span>{user.name}</span>
                 </div>
               </div>
@@ -72,6 +72,7 @@ const Profile = () => {
                     <div>
                       <p>{element.title}</p>
                       <div>{element.description}</div>
+                      <div>{element.deploy_url}</div>
                     </div>
                   ))}
                 </div>

@@ -11,17 +11,35 @@ import { AiFillEdit } from "react-icons/ai"
 import { AiOutlineClose } from "react-icons/ai"
 import ProfilePreferences from "../../components/ProfilePreferences"
 import { Button } from "@material-ui/core"
+import EditWorkForm from "../EditWorkForm"
 
 const EditInfos = ({ setPublisher }) => {
   const user = JSON.parse(localStorage.getItem("infoLogged"))
   const dispatch = useDispatch()
   const [changeTechStatus, setChangeTechStatus] = useState(false)
+  const [edit, setEdit] = useState(false)
 
   const handleRemoveTech = (id) => {
     console.log(id)
     const token = localStorage.getItem("token")
     axios
       .delete(`https://kenziehub.me/users/techs/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => console.log(res))
+      .catch((error) => console.log(error))
+  }
+
+  const editWork = () => {
+    setEdit(!edit)
+  }
+
+  const deleteWork = (id) => {
+    const token = localStorage.getItem("token")
+    axios
+      .delete(`https://kenziehub.me/users/works/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -90,6 +108,20 @@ const EditInfos = ({ setPublisher }) => {
           <div className="NewWorkContainer">
             <ButtonNewWorks />
           </div>
+        </div>
+        <div>
+          {user.works.map((element) => (
+            <div>
+              <div>
+                <p>{element.title}</p>
+              </div>
+              <button onClick={editWork}>Edit Work</button>
+              <button onClick={() => deleteWork(element.id)}>
+                Delete Work
+              </button>
+              {edit && <EditWorkForm id={element.id} />}
+            </div>
+          ))}
         </div>
       </div>
       <div className="PreferencesContainer">

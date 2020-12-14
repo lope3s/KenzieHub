@@ -57,9 +57,9 @@ const EditTechStatus = () => {
         }}
       >
         <option aria-label="None" value="" />
-        <option value="Iniciante">Iniciante</option>
-        <option value="Intermediário">Intermediário</option>
-        <option value="Avançado">Avançado</option>
+        <option value="Iniciante">Beginner</option>
+        <option value="Intermediário">intermediary</option>
+        <option value="Avançado">Advanced</option>
       </Select>
       <Button type="submit" variant="contained" color="primary">
         Change

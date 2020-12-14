@@ -5,7 +5,7 @@ import { TextField, Button } from "@material-ui/core"
 import { useState } from "react"
 import axios from "axios"
 
-const NewTech = () => {
+const NewWorks = () => {
   const [level, setLevel] = useState("")
   const [error, setError] = useState("")
   const schema = yup.object().shape({
@@ -18,15 +18,16 @@ const NewTech = () => {
     resolver: yupResolver(schema),
   })
 
-  const handleTechs = (ev) => {
+  const handleWorks = (ev) => {
     const token = localStorage.getItem("token")
+    console.log(ev.title,ev.description,ev.deployUrl)
     axios
       .post(
         "https://kenziehub.me/users/works",
         {
           title: ev.title,
           description: ev.description,
-          deployUrl: ev.deployUrl,
+          deploy_url: ev.deployUrl,
         },
         {
           headers: {
@@ -36,20 +37,21 @@ const NewTech = () => {
       )
       .catch(() =>
         setError(
-          "User Already have this technology created you can only update it"
+          "User Already have this Work, created you can only update it"
         )
       )
   }
 
   const handleLevel = (ev) => {
-    const techLevel = ev.target.value
-    setLevel(techLevel)
+    const WorksLevel = ev.target.value
+    setLevel(WorksLevel)
   }
 
   return (
     <>
-      <form onSubmit={handleSubmit(handleTechs)}>
+      <form onSubmit={handleSubmit(handleWorks)}>
       <TextField
+      placeholder="Works Title"
           margin="normal"
           variant="outlined"
           name="title"
@@ -58,6 +60,7 @@ const NewTech = () => {
           inputRef={register}
         />
          <TextField
+         placeholder="Works Description"
           margin="normal"
           variant="outlined"
           name="description"
@@ -66,6 +69,7 @@ const NewTech = () => {
           inputRef={register}
         />
          <TextField
+         placeholder="Works Deploy_url"
           margin="normal"
           variant="outlined"
           name="deployUrl"
@@ -82,4 +86,4 @@ const NewTech = () => {
   )
 }
 
-export default NewTech
+export default NewWorks
