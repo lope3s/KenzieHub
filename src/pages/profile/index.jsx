@@ -72,6 +72,7 @@ const Profile = () => {
                     <div>
                       <p>{element.title}</p>
                       <div>{element.description}</div>
+                      <div>{element.deploy_url}</div>
                     </div>
                   ))}
                 </div>

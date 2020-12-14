@@ -1,23 +1,25 @@
-import ButtonNewTechs from "../ButtonNewTechs"
-import ButtonNewWorks from "../ButtonNewWorks"
-import EditTechStatus from "../../components/EditTechStatus"
-import { saveTechID } from "../../store/modules/techId/actions"
-import { useDispatch } from "react-redux"
-import { useState } from "react"
-import axios from "axios"
-import { Container } from "./style"
-import { BsTrashFill } from "react-icons/bs"
-import { AiFillEdit } from "react-icons/ai"
-import { AiOutlineClose } from "react-icons/ai"
+import ButtonNewTechs from "../ButtonNewTechs";
+import ButtonNewWorks from "../ButtonNewWorks";
+import EditTechStatus from "../../components/EditTechStatus";
+import { saveTechID } from "../../store/modules/techId/actions";
+import { useDispatch } from "react-redux";
+import { useState } from "react";
+import axios from "axios";
+import { Container } from "./style";
+import { BsTrashFill } from "react-icons/bs";
+import { AiFillEdit } from "react-icons/ai";
+import { AiOutlineClose } from "react-icons/ai";
+import EditWorkForm from "../EditWorkForm";
 
 const EditInfos = () => {
-  const user = JSON.parse(localStorage.getItem("infoLogged"))
-  const dispatch = useDispatch()
-  const [changeTechStatus, setChangeTechStatus] = useState(false)
+  const user = JSON.parse(localStorage.getItem("infoLogged"));
+  const dispatch = useDispatch();
+  const [changeTechStatus, setChangeTechStatus] = useState(false);
+  const [edit, setEdit] = useState(false);
 
   const handleRemoveTech = (id) => {
-    console.log(id)
-    const token = localStorage.getItem("token")
+    console.log(id);
+    const token = localStorage.getItem("token");
     axios
       .delete(`https://kenziehub.me/users/techs/${id}`, {
         headers: {
@@ -25,8 +27,24 @@ const EditInfos = () => {
         },
       })
       .then((res) => console.log(res))
-      .catch((error) => console.log(error))
-  }
+      .catch((error) => console.log(error));
+  };
+
+  const editWork = () => {
+    setEdit(!edit);
+  };
+
+  const deleteWork = (id) => {
+    const token = localStorage.getItem("token");
+    axios
+      .delete(`https://kenziehub.me/users/works/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => console.log(res))
+      .catch((error) => console.log(error));
+  };
 
   return (
     <Container>
@@ -50,8 +68,8 @@ const EditInfos = () => {
                     <button
                       className="EditTechStatusButton"
                       onClick={() => {
-                        dispatch(saveTechID(tech.id))
-                        setChangeTechStatus(true)
+                        dispatch(saveTechID(tech.id));
+                        setChangeTechStatus(true);
                       }}
                     >
                       <AiFillEdit />
@@ -59,14 +77,14 @@ const EditInfos = () => {
                     <button
                       className="RemoveTechButton"
                       onClick={() => {
-                        handleRemoveTech(tech.id)
+                        handleRemoveTech(tech.id);
                       }}
                     >
                       <BsTrashFill />
                     </button>
                   </div>
                 </div>
-              )
+              );
             })}
           </div>
           {changeTechStatus && (
@@ -89,12 +107,26 @@ const EditInfos = () => {
             <ButtonNewWorks />
           </div>
         </div>
+        <div>
+          {user.works.map((element) => (
+            <div>
+              <div>
+                <p>{element.title}</p>
+              </div>
+              <button onClick={editWork}>Edit Work</button>
+              <button onClick={() => deleteWork(element.id)}>
+                Delete Work
+              </button>
+              {edit && <EditWorkForm id={element.id} />}
+            </div>
+          ))}
+        </div>
       </div>
       <div className="PreferencesContainer">
         <span>Profile Prefrences</span>
       </div>
     </Container>
-  )
-}
+  );
+};
 
-export default EditInfos
+export default EditInfos;
