@@ -9,18 +9,19 @@ import { Container } from "./style"
 import { BsTrashFill } from "react-icons/bs"
 import { AiFillEdit } from "react-icons/ai"
 import { AiOutlineClose } from "react-icons/ai"
-import ProfilePreferences from '../../components/ProfilePreferences'
-import EditWorkForm from "../EditWorkForm";
+import ProfilePreferences from "../../components/ProfilePreferences"
+import { Button } from "@material-ui/core"
+import EditWorkForm from "../EditWorkForm"
 
-const EditInfos = () => {
-  const user = JSON.parse(localStorage.getItem("infoLogged"));
-  const dispatch = useDispatch();
-  const [changeTechStatus, setChangeTechStatus] = useState(false);
-  const [edit, setEdit] = useState(false);
+const EditInfos = ({ setPublisher }) => {
+  const user = JSON.parse(localStorage.getItem("infoLogged"))
+  const dispatch = useDispatch()
+  const [changeTechStatus, setChangeTechStatus] = useState(false)
+  const [edit, setEdit] = useState(false)
 
   const handleRemoveTech = (id) => {
-    console.log(id);
-    const token = localStorage.getItem("token");
+    console.log(id)
+    const token = localStorage.getItem("token")
     axios
       .delete(`https://kenziehub.me/users/techs/${id}`, {
         headers: {
@@ -28,15 +29,15 @@ const EditInfos = () => {
         },
       })
       .then((res) => console.log(res))
-      .catch((error) => console.log(error));
-  };
+      .catch((error) => console.log(error))
+  }
 
   const editWork = () => {
-    setEdit(!edit);
-  };
+    setEdit(!edit)
+  }
 
   const deleteWork = (id) => {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("token")
     axios
       .delete(`https://kenziehub.me/users/works/${id}`, {
         headers: {
@@ -44,14 +45,14 @@ const EditInfos = () => {
         },
       })
       .then((res) => console.log(res))
-      .catch((error) => console.log(error));
-  };
+      .catch((error) => console.log(error))
+  }
 
   return (
     <Container>
       <div className="TechContainer">
         <div className="NewTechAcess">
-          <span>Techs</span>
+          <span className="SessionName">Techs</span>
           <div className="NewTechContainer">
             <ButtonNewTechs />
           </div>
@@ -69,8 +70,8 @@ const EditInfos = () => {
                     <button
                       className="EditTechStatusButton"
                       onClick={() => {
-                        dispatch(saveTechID(tech.id));
-                        setChangeTechStatus(true);
+                        dispatch(saveTechID(tech.id))
+                        setChangeTechStatus(true)
                       }}
                     >
                       <AiFillEdit />
@@ -78,14 +79,14 @@ const EditInfos = () => {
                     <button
                       className="RemoveTechButton"
                       onClick={() => {
-                        handleRemoveTech(tech.id);
+                        handleRemoveTech(tech.id)
                       }}
                     >
                       <BsTrashFill />
                     </button>
                   </div>
                 </div>
-              );
+              )
             })}
           </div>
           {changeTechStatus && (
@@ -127,8 +128,15 @@ const EditInfos = () => {
         <span>Profile Prefrences</span>
         <ProfilePreferences />
       </div>
+      <Button
+        className="close"
+        variant="contained"
+        onClick={() => setPublisher(false)}
+      >
+        Close
+      </Button>
     </Container>
-  );
-};
+  )
+}
 
-export default EditInfos;
+export default EditInfos
