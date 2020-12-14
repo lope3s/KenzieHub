@@ -51,6 +51,13 @@ export const Container = styled.div`
     margin-top: 10px;
     margin-bottom: 10px;
   }
+  > div form .InputEmail {
+    height: 38px;
+    width: 300px;
+    border-radius: 5px;
+    border: 0;
+    background-color: white;
+  }
   > div form .InputPassword {
     height: 38px;
     width: 300px;

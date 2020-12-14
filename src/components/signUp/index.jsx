@@ -93,17 +93,11 @@ const SingUp = () => {
           <p>{errors.name?.message}</p>
           <div className="PlaceholderEmail">E-mail</div>
           <input
+            className="InputEmail"
             type="text"
             name="email"
             placeholder="E-mail"
             ref={register}
-            style={{
-              height: "38px",
-              width: "300px",
-              borderRadius: "5px",
-              border: "0",
-              backgroundColor: "white",
-            }}
           />
           <p>{errors.email?.message}</p>
           <div className="PlaceholderPassword">Password</div>
