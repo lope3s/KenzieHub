@@ -4,11 +4,12 @@ import { useDispatch } from "react-redux"
 import { useSelector } from "react-redux"
 import validationThunk from "../../store/modules/validationToken/thunks"
 import { useState, useEffect } from "react"
-import ButtonNewWorks from "../../components/ButtonNewWorks"
+import EditInfos from "../../components/EditInfos"
 
 const Profile = () => {
   const dispatch = useDispatch()
   const [publisher, setPublisher] = useState(false)
+  const [changeTechStatus, setChangeTechStatus] = useState(false)
 
   const auth = useSelector((state) => state.auth)
   const user = JSON.parse(localStorage.getItem("infoLogged"))
@@ -81,13 +82,10 @@ const Profile = () => {
       ) : (
         <></>
       )}
-      <button onClick={() => setPublisher(true)}>Edição de Perfil</button>
-      {publisher && <div>
-        <button onClick={() => setPublisher(false)}>fexar a edição de Perfil</button>
-        <ButtonNewWorks></ButtonNewWorks>
-        </div>}
+      <button onClick={() => setPublisher(!publisher)}>Edição de Perfil</button>
+      {publisher && <EditInfos />}
     </div>
   )
 }
 
-export default Profile;
+export default Profile

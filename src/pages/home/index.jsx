@@ -1,6 +1,6 @@
-import ButtonRedirect from "../../components/ButtonRedirect";
-import { Container, ContainerImage, ContainerRodape } from "./style";
-import logo from "./logo.svg";
+import ButtonRedirect from "../../components/ButtonRedirect"
+import { Container, ContainerImage, ContainerRodape } from "./style"
+import logo from "./logo.svg"
 const Home = () => {
   return (
     <div>
@@ -8,7 +8,10 @@ const Home = () => {
         <div>
           <div>Home</div>
           <div>
-            <ButtonRedirect text={"Users List"} link={"list"}></ButtonRedirect>
+            <ButtonRedirect
+              text={"Users List"}
+              link={"list/page=1"}
+            ></ButtonRedirect>
             <ButtonRedirect text={"Sign In"} link={"signIn"} />
             <ButtonRedirect text={"SignUp"} link={"signUp"} />
           </div>
@@ -20,7 +23,7 @@ const Home = () => {
       </ContainerImage>
       <ContainerRodape>KENZIEHUB ©</ContainerRodape>
     </div>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home

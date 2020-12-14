@@ -32,6 +32,7 @@ const NewTech = () => {
           },
         }
       )
+      .then((res) => console.log(res))
       .catch(() =>
         setError(
           "User Already have this technology created you can only update it"
@@ -48,6 +49,7 @@ const NewTech = () => {
     <>
       <form onSubmit={handleSubmit(handleTechs)}>
         <TextField
+          placeholder="Tech Name"
           margin="normal"
           variant="outlined"
           name="title"
@@ -73,7 +75,7 @@ const NewTech = () => {
           <option value="Intermediário">Intermediário</option>
           <option value="Avançado">Avançado</option>
         </Select>
-        <Button type="" variant="contained" color="primary">
+        <Button type="submit" variant="contained" color="primary">
           Add
         </Button>
         {error && <p>{error}</p>}
