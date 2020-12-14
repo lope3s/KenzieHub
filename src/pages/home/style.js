@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "styled-components"
 
 export const Container = styled.div`
   color: white;
@@ -25,7 +25,7 @@ export const Container = styled.div`
     display: flex;
     justify-content: space-between;
   }
-`;
+`
 export const ContainerImage = styled.div`
   color: #3874ac;
   font-family: "Montserrat", sans-serif;
@@ -40,7 +40,7 @@ export const ContainerImage = styled.div`
   > div {
     margin-top: 20px;
   }
-`;
+`
 export const ContainerRodape = styled.div`
   background-color: #293396;
   color: white;
@@ -50,4 +50,4 @@ export const ContainerRodape = styled.div`
   width: 100vw;
   height: 17px;
   top: 756px;
-`;
+`
