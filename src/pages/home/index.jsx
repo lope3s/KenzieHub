@@ -1,29 +1,25 @@
-import ButtonRedirect from "../../components/ButtonRedirect"
-import { Container, ContainerImage, ContainerRodape } from "./style"
+import { ContainerLogo, SectionContent, ImageHomePage } from "./style"
+import homePageImage from "./space discovery wb.svg"
 import logo from "./logo.svg"
+
 const Home = () => {
   return (
-    <div>
-      <Container>
-        <div>
-          <div>Home</div>
-          <div>
-            <ButtonRedirect
-              text={"Users List"}
-              link={"list/page=1"}
-            ></ButtonRedirect>
-            <ButtonRedirect text={"Sign In"} link={"signIn"} />
-            <ButtonRedirect text={"SignUp"} link={"signUp"} />
-          </div>
-        </div>
-      </Container>
-      <ContainerImage>
+    <SectionContent>
+      <ContainerLogo>
         <img src={logo} alt="Logo Home"></img>
-        <div>WELCOME!</div>
-      </ContainerImage>
-      <ContainerRodape>KENZIEHUB ©</ContainerRodape>
-    </div>
+        <p>Hello, Codernaut !</p>
+        <p>Welcome to Our</p>
+        <p>Developer's Space</p>
+      </ContainerLogo>
+      <ImageHomePage>
+        <img src={homePageImage} alt="codernaut" />
+      </ImageHomePage>
+    </SectionContent>
   )
 }
 
 export default Home
+
+{
+  /* <ContainerRodape>KENZIEHUB ©</ContainerRodape> */
+}
