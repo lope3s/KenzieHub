@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const SectionContent = styled.section`
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-evenly;
   align-items: center;
 `
@@ -24,6 +25,31 @@ export const ContainerLogo = styled.div`
 
   margin-block-end: auto;
   margin-top: 12vh;
+`
+
+export const LinkContent = styled.div`
+  width: 21vw;
+  margin-left: auto;
+
+  a {
+    text-decoration: none;
+    padding: 1%;
+
+    font-size: 2.1rem;
+    font-family: "Righteous", cursive;
+
+    background-color: white;
+    border: 3px solid #162864;
+    color: #162864;
+    border-radius: 3px 12px 3px 9px;
+
+    transition: 0.3s;
+  }
+  a:hover {
+    background-color: #162864;
+    border: 3px solid white;
+    color: white;
+  }
 `
 export const ContainerRodape = styled.div`
   /* background-color: #293396;

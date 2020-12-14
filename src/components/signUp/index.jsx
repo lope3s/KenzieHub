@@ -9,6 +9,7 @@ import * as yup from "yup";
 import axios from "axios";
 
 import logo from "./page.svg";
+import { TextField, Button } from "@material-ui/core"
 
 import { Container } from "./style";
 const SingUp = () => {
@@ -32,8 +33,8 @@ const SingUp = () => {
 
     confirmPassword: yup
       .string()
-      .required("Campo Obrigatório")
-      .oneOf([yup.ref("password")], "Senhas Diferentes"),
+      .required("Required field")
+      .oneOf([yup.ref("password")], "Different Passwords"),
   });
 
   const { register, handleSubmit, errors } = useForm({
@@ -80,47 +81,115 @@ const SingUp = () => {
         <div>Hey! Welcome</div>
         <form onSubmit={handleSubmit(handleForm)} className="Form">
           {error && (
-            <div>E-mail já cadastrado, por favor tente novamente !</div>
+            <div>Invalid Registration Information</div>
           )}
-          <div className="PlaceholderUser">UserName</div>
-          <input
-            className="InputName"
-            type="text"
+          <div
+            style={{
+              marginLeft: "-220px",
+              marginTop: "10px",
+              marginBottom: "10px",
+            }}
+          >
+          </div>
+          <TextField
             name="name"
-            placeholder="Name"
-            ref={register}
+            type="text"
+            label="UserName"
+            inputRef={register}
+            style={{
+              width: "300px",
+              borderRadius: "5px",
+              border: "0",
+              backgroundColor: "white",
+            }}
+            helperText={errors.name?.message}
+            error={!!errors.name}
           />
-          <p>{errors.name?.message}</p>
-          <div className="PlaceholderEmail">E-mail</div>
-          <input
-            className="InputEmail"
+          <div
+            style={{
+              marginLeft: "-245px",
+              marginTop: "10px",
+              marginBottom: "10px",
+            }}
+          >
+
+          </div>
+          <TextField
             type="text"
             name="email"
-            placeholder="E-mail"
-            ref={register}
+            label="E-mail"
+            inputRef={register}
+            style={{
+              width: "300px",
+              borderRadius: "5px",
+              border: "0",
+              backgroundColor: "white",
+            }}
+            helperText={errors.email?.message}
+            error={!!errors.email}
           />
-          <p>{errors.email?.message}</p>
-          <div className="PlaceholderPassword">Password</div>
-          <input
-            className="InputPassword"
+          <div
+            style={{
+              marginLeft: "-225px",
+              marginTop: "10px",
+              marginBottom: "10px",
+            }}
+          >
+
+          </div>
+          <TextField
             type="password"
             name="password"
-            placeholder="Password"
-            ref={register}
+            label="Password"
+            inputRef={register}
+            style={{
+              width: "300px",
+              borderRadius: "5px",
+              border: "0",
+              backgroundColor: "white",
+            }}
+            helperText={errors.password?.message}
+            error={!!errors.password}
           />
-          <p>{errors.password?.message}</p>
-          <div className="PlaceholderConfirmPassword">Confirme Password</div>
-          <input
-            className="InputConfirmaPassword"
+          <div
+            style={{
+              marginLeft: "-150px",
+              marginTop: "10px",
+              marginBottom: "10px",
+            }}
+          >
+          </div>
+          <TextField
             type="password"
             name="confirmPassword"
-            placeholder="Confirm Password"
-            ref={register}
+            label="Confirm Password"
+            inputRef={register}
+            style={{
+              width: "300px",
+              borderRadius: "5px",
+              border: "0",
+              backgroundColor: "white",
+            }}
+            helperText={errors.confirmPassword?.message}
+            error={!!errors.confirmPassword}
           />
-          <p>{errors.confirmPassword?.message}</p>
-          <button className="Submit" type="submit">
+          <Button
+            type="submit"
+            style={{
+              marginTop: "10px",
+              background: "#48A3DA",
+              border: "0",
+              boxSizing: "border-box",
+              boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
+              borderRadius: "12px",
+              width: "150px",
+              height: "50px",
+              color: "white",
+              fontSize: "20px",
+            }}
+          >
             Register
-          </button>
+          </Button>
         </form>
       </div>
       <img

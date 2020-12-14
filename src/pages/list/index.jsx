@@ -89,7 +89,7 @@ const List = () => {
       <input
         value={search}
         onChange={handleSearchInput}
-        placeholder="pesquisar usuário"
+        placeholder="search user"
       />
       <button onClick={() => handleSearchButton()}>Search</button>
 
