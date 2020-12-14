@@ -1,26 +1,26 @@
 // import store from "../../store"
-import { Container } from "./styles";
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
-import validationThunk from "../../store/modules/validationToken/thunks";
-import { useState, useEffect } from "react";
-import EditInfos from "../../components/EditInfos";
+import { Main, Container } from "./styles"
+import { useDispatch } from "react-redux"
+import { useSelector } from "react-redux"
+import validationThunk from "../../store/modules/validationToken/thunks"
+import { useState, useEffect } from "react"
+import EditInfos from "../../components/EditInfos"
+import { FiSettings } from "react-icons/fi"
 
 const Profile = () => {
-  const dispatch = useDispatch();
-  const [publisher, setPublisher] = useState(false);
-  const [changeTechStatus, setChangeTechStatus] = useState(false);
+  const dispatch = useDispatch()
+  const [publisher, setPublisher] = useState(false)
 
-  const auth = useSelector((state) => state.auth);
-  const user = JSON.parse(localStorage.getItem("infoLogged"));
+  const auth = useSelector((state) => state.auth)
+  const user = JSON.parse(localStorage.getItem("infoLogged"))
 
   useEffect(() => {
-    dispatch(validationThunk());
-  }, []);
-  console.log(user);
+    dispatch(validationThunk())
+  }, [])
+  console.log(user)
 
   return (
-    <div>
+    <Main publisher={publisher}>
       {auth ? (
         <div>
           <Container>
@@ -83,10 +83,12 @@ const Profile = () => {
       ) : (
         <></>
       )}
-      <button onClick={() => setPublisher(!publisher)}>edit profile</button>
-      {publisher && <EditInfos />}
-    </div>
-  );
-};
+      <button onClick={() => setPublisher(true)}>
+        <FiSettings />
+      </button>
+      {publisher && <EditInfos setPublisher={setPublisher} />}
+    </Main>
+  )
+}
 
-export default Profile;
+export default Profile

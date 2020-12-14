@@ -23,7 +23,7 @@ const Home = () => {
         </ImageHomePage>
       </SectionContent>
       <LinkContent>
-        <Link to="/list/:page">meet our members</Link>
+        <Link to="/list/page=1">meet our members</Link>
       </LinkContent>
     </>
   )

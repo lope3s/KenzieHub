@@ -6,7 +6,7 @@ export const Container = styled.div`
   background-color: #1d2f60;
   padding: 10px;
   min-height: 723px;
-  height: max-content;
+  max-height: 830px;
   width: 671px;
   position: absolute;
   top: 50%;
@@ -15,21 +15,19 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow: auto;
 
   .TechContainer {
-    margin-top: 70px;
+    margin-top: 20px;
 
     .NewTechAcess {
       display: flex;
       align-items: flex-start;
-      span {
+      .SessionName {
         font-family: "Roboto", sans-serif;
         color: #fff;
-        font-size: 35px;
+        font-size: 20px;
         margin-right: 63px;
-      }
-      .NewTechContainer {
-        margin-top: 10px;
       }
     }
     .TechsEdits {
@@ -100,25 +98,34 @@ export const Container = styled.div`
     }
   }
   .WorksContainer {
-    margin-top: 70px;
+    margin-top: 20px;
     .NewWorkAcess {
       display: flex;
       align-items: flex-start;
       span {
         font-family: "Roboto", sans-serif;
         color: #fff;
-        font-size: 35px;
+        font-size: 20px;
         margin-right: 63px;
       }
     }
   }
   .PreferencesContainer {
-    margin: 70px;
+    margin: 20px;
     span {
       font-family: "Roboto", sans-serif;
       color: #fff;
-      font-size: 35px;
+      font-size: 20px;
       margin-right: 63px;
     }
+  }
+
+  .close {
+    background-color: #3f51b5;
+    color: #fff;
+    margin-bottom: 20px;
+  }
+  .close:hover {
+    background-color: #303f9f;
   }
 `
