@@ -9,6 +9,7 @@ import { Container } from "./style"
 import { BsTrashFill } from "react-icons/bs"
 import { AiFillEdit } from "react-icons/ai"
 import { AiOutlineClose } from "react-icons/ai"
+import ProfilePreferences from '../../components/ProfilePreferences'
 
 const EditInfos = () => {
   const user = JSON.parse(localStorage.getItem("infoLogged"))
@@ -92,6 +93,7 @@ const EditInfos = () => {
       </div>
       <div className="PreferencesContainer">
         <span>Profile Prefrences</span>
+        <ProfilePreferences />
       </div>
     </Container>
   )
