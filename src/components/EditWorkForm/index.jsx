@@ -7,15 +7,22 @@ import axios from "axios";
 
 const EditWorkForm = ({id}) => {
   const [error, setError] = useState("");
-  const schema = yup.object().shape({
-    title: yup.string().required("cannot be blank"),
-    description: yup.string().required("cannot be blank"),
-    deployUrl: yup.string().required("cannot be blank"),
+  const titleSchema = yup.object().shape({
+    title: yup.string().required("cannot be blank")
+  });
+  const descriptionSchema =yup.object().shape({
+    description: yup.string().required("cannot be blank")
+  });
+  const deployUrlSchema = yup.object().shape({  
+    deployUrl: yup.string().required("cannot be blank")
   });
 
-  const { register, errors, handleSubmit } = useForm({
-    resolver: yupResolver(schema),
-  });
+  // const { register, errors, handleSubmit } = useForm({
+  //   resolver: yupResolver(schema),
+  // });
+  const titleField = useForm({ resolver: yupResolver(titleSchema) })
+  const descriptionField = useForm({ resolver: yupResolver(descriptionSchema) })
+  const deployUrlField = useForm({ resolver: yupResolver(deployUrlSchema) })
 
   const handleWorks = (ev) => {
     const token = localStorage.getItem("token");
@@ -42,36 +49,45 @@ const EditWorkForm = ({id}) => {
 
   return (
     <>
-      <form onSubmit={handleSubmit(handleWorks)}>
+      <form onSubmit={titleField.handleSubmit(handleWorks)}>
         <TextField
           placeholder="Work Title"
           margin="normal"
           variant="outlined"
           name="title"
-          value=""
-          error={!!errors.title}
-          helperText={errors.title?.message}
-          inputRef={register}
+          error={!!titleField.errors.title}
+          helperText={titleField.errors.title?.message}
+          inputRef={titleField.register}
         />
+        <Button type="" variant="contained" color="primary">
+          Save
+        </Button>
+        {error && <p>{error}</p>}
+      </form>
+      <form onSubmit={descriptionField.handleSubmit(handleWorks)}>
         <TextField
           placeholder="Work Description"
           margin="normal"
           variant="outlined"
           name="description"
-          value=""
-          error={!!errors.description}
-          helperText={errors.description?.message}
-          inputRef={register}
+          error={!!descriptionField.errors.description}
+          helperText={descriptionField.errors.description?.message}
+          inputRef={descriptionField.register}
         />
+        <Button type="" variant="contained" color="primary">
+          Save
+        </Button>
+        {error && <p>{error}</p>}
+      </form>
+      <form onSubmit={deployUrlField.handleSubmit(handleWorks)}>
         <TextField
           placeholder="Work Deploy_Url"
           margin="normal"
           variant="outlined"
           name="deployUrl"
-          value=""
-          error={!!errors.deployUrl}
-          helperText={errors.deployUrl?.message}
-          inputRef={register}
+          error={!!deployUrlField.errors.deployUrl}
+          helperText={deployUrlField.errors.deployUrl?.message}
+          inputRef={deployUrlField.register}
         />
         <Button type="" variant="contained" color="primary">
           Save

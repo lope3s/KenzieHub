@@ -1,17 +1,3 @@
-<<<<<<< HEAD
-import ButtonNewTechs from "../ButtonNewTechs";
-import ButtonNewWorks from "../ButtonNewWorks";
-import EditTechStatus from "../../components/EditTechStatus";
-import { saveTechID } from "../../store/modules/techId/actions";
-import { useDispatch } from "react-redux";
-import { useState } from "react";
-import axios from "axios";
-import { Container } from "./style";
-import { BsTrashFill } from "react-icons/bs";
-import { AiFillEdit } from "react-icons/ai";
-import { AiOutlineClose } from "react-icons/ai";
-import EditWorkForm from "../EditWorkForm";
-=======
 import ButtonNewTechs from "../ButtonNewTechs"
 import ButtonNewWorks from "../ButtonNewWorks"
 import EditTechStatus from "../../components/EditTechStatus"
@@ -24,7 +10,7 @@ import { BsTrashFill } from "react-icons/bs"
 import { AiFillEdit } from "react-icons/ai"
 import { AiOutlineClose } from "react-icons/ai"
 import ProfilePreferences from '../../components/ProfilePreferences'
->>>>>>> 1731bf2c070b12392674458f9c00e13aafeaf12c
+import EditWorkForm from "../EditWorkForm";
 
 const EditInfos = () => {
   const user = JSON.parse(localStorage.getItem("infoLogged"));

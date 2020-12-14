@@ -35,7 +35,6 @@ const NewWorks = () => {
           },
         }
       )
-      .then(res => console.log(res))
       .catch(() =>
         setError(
           "User Already have this Work, created you can only update it"
