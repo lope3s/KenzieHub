@@ -5,6 +5,7 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
   display: flex;
+
   > div div img {
     width: 150px;
     height: 150px;
@@ -12,7 +13,7 @@ export const Container = styled.div`
     border-radius: 50%;
   }
 
-  > div div div {
+  > div div .Background {
     > span {
       color: white;
       margin-top: 100px;
@@ -31,7 +32,7 @@ export const Container = styled.div`
     left: 37.5%;
     right: 37.5%;
 
-    z-index: -1;
+    z-index: -2;
     border-radius: 5px;
 
     justify-content: center;

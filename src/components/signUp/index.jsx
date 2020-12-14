@@ -9,7 +9,9 @@ import * as yup from "yup";
 import axios from "axios";
 
 import logo from "./page.svg";
+import { TextField, Button } from "@material-ui/core"
 
+import { Container } from "./style";
 const SingUp = () => {
   const [error, setError] = useState(false);
   const [registerSuccessfully, setRegisterSuccessfully] = useState(false);
@@ -31,8 +33,8 @@ const SingUp = () => {
 
     confirmPassword: yup
       .string()
-      .required("Campo Obrigatório")
-      .oneOf([yup.ref("password")], "Senhas Diferentes"),
+      .required("Required field")
+      .oneOf([yup.ref("password")], "Different Passwords"),
   });
 
   const { register, handleSubmit, errors } = useForm({
@@ -74,49 +76,12 @@ const SingUp = () => {
     </div>
   );
   const divSingUpForm = (
-    <div
-      style={{
-        height: "100vh",
-        width: "100vw",
-        display: "flex",
-        alignItems: "center",
-      }}
-    >
-      <div
-        style={{
-          marginLeft: "100px",
-          textAlign: "center",
-          width: "500px",
-          alignItems: "center",
-          height: "500px",
-          background: "rgba(238, 238, 238, 0.04)",
-          borderRadius: "15px",
-        }}
-      >
-        <div
-          style={{
-            marginTop: "20px",
-            marginBottom: "20px",
-            color: "white",
-            fontSize: "25px",
-            fontFamily: "Roboto, sans-serif",
-          }}
-        >
-          Hey! Welcome
-        </div>
-        <form
-          onSubmit={handleSubmit(handleForm)}
-          style={{
-            marginTop: "10px",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            color: "white",
-            fontFamily: "Roboto, sans-serif",
-          }}
-        >
+    <Container>
+      <div className="ContainerInputs">
+        <div>Hey! Welcome</div>
+        <form onSubmit={handleSubmit(handleForm)} className="Form">
           {error && (
-            <div>E-mail já cadastrado, por favor tente novamente !</div>
+            <div>Invalid Registration Information</div>
           )}
           <div
             style={{
@@ -125,22 +90,21 @@ const SingUp = () => {
               marginBottom: "10px",
             }}
           >
-            UserName
           </div>
-          <input
-            type="text"
+          <TextField
             name="name"
-            placeholder="Name"
-            ref={register}
+            type="text"
+            label="UserName"
+            inputRef={register}
             style={{
-              height: "38px",
               width: "300px",
               borderRadius: "5px",
               border: "0",
               backgroundColor: "white",
             }}
+            helperText={errors.name?.message}
+            error={!!errors.name}
           />
-          <p>{errors.name?.message}</p>
           <div
             style={{
               marginLeft: "-245px",
@@ -148,22 +112,22 @@ const SingUp = () => {
               marginBottom: "10px",
             }}
           >
-            E-mail
+
           </div>
-          <input
+          <TextField
             type="text"
             name="email"
-            placeholder="E-mail"
-            ref={register}
+            label="E-mail"
+            inputRef={register}
             style={{
-              height: "38px",
               width: "300px",
               borderRadius: "5px",
               border: "0",
               backgroundColor: "white",
             }}
+            helperText={errors.email?.message}
+            error={!!errors.email}
           />
-          <p>{errors.email?.message}</p>
           <div
             style={{
               marginLeft: "-225px",
@@ -171,22 +135,22 @@ const SingUp = () => {
               marginBottom: "10px",
             }}
           >
-            Password
+
           </div>
-          <input
+          <TextField
             type="password"
             name="password"
-            placeholder="Password"
-            ref={register}
+            label="Password"
+            inputRef={register}
             style={{
-              height: "38px",
               width: "300px",
               borderRadius: "5px",
               border: "0",
               backgroundColor: "white",
             }}
+            helperText={errors.password?.message}
+            error={!!errors.password}
           />
-          <p>{errors.password?.message}</p>
           <div
             style={{
               marginLeft: "-150px",
@@ -194,23 +158,22 @@ const SingUp = () => {
               marginBottom: "10px",
             }}
           >
-            Confirme Password
           </div>
-          <input
+          <TextField
             type="password"
             name="confirmPassword"
-            placeholder="Confirm Password"
-            ref={register}
+            label="Confirm Password"
+            inputRef={register}
             style={{
-              height: "38px",
               width: "300px",
               borderRadius: "5px",
               border: "0",
               backgroundColor: "white",
             }}
+            helperText={errors.confirmPassword?.message}
+            error={!!errors.confirmPassword}
           />
-          <p>{errors.confirmPassword?.message}</p>
-          <button
+          <Button
             type="submit"
             style={{
               marginTop: "10px",
@@ -226,7 +189,7 @@ const SingUp = () => {
             }}
           >
             Register
-          </button>
+          </Button>
         </form>
       </div>
       <img
@@ -234,7 +197,7 @@ const SingUp = () => {
         alt="Image principal na pagina de cadastro"
         style={{ marginLeft: "50px" }}
       ></img>
-    </div>
+    </Container>
   );
 
   return <div>{registerSuccessfully ? divMessageSuccess : divSingUpForm}</div>;

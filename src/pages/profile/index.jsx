@@ -1,23 +1,23 @@
 // import store from "../../store"
-import { Container, ContainerContact } from "./styles"
-import { useDispatch } from "react-redux"
-import { useSelector } from "react-redux"
-import validationThunk from "../../store/modules/validationToken/thunks"
-import { useState, useEffect } from "react"
-import EditInfos from "../../components/EditInfos"
+import { Container } from "./styles";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import validationThunk from "../../store/modules/validationToken/thunks";
+import { useState, useEffect } from "react";
+import EditInfos from "../../components/EditInfos";
 
 const Profile = () => {
-  const dispatch = useDispatch()
-  const [publisher, setPublisher] = useState(false)
-  const [changeTechStatus, setChangeTechStatus] = useState(false)
+  const dispatch = useDispatch();
+  const [publisher, setPublisher] = useState(false);
+  const [changeTechStatus, setChangeTechStatus] = useState(false);
 
-  const auth = useSelector((state) => state.auth)
-  const user = JSON.parse(localStorage.getItem("infoLogged"))
+  const auth = useSelector((state) => state.auth);
+  const user = JSON.parse(localStorage.getItem("infoLogged"));
 
   useEffect(() => {
-    dispatch(validationThunk())
-  }, [])
-  console.log(user)
+    dispatch(validationThunk());
+  }, []);
+  console.log(user);
 
   return (
     <div>
@@ -36,7 +36,7 @@ const Profile = () => {
                 )}
               </div>
               <div>
-                <div>
+                <div className="Background">
                   <span>{user.name}</span>
                 </div>
               </div>
@@ -72,6 +72,7 @@ const Profile = () => {
                     <div>
                       <p>{element.title}</p>
                       <div>{element.description}</div>
+                      <div>{element.deploy_url}</div>
                     </div>
                   ))}
                 </div>
@@ -82,10 +83,10 @@ const Profile = () => {
       ) : (
         <></>
       )}
-      <button onClick={() => setPublisher(!publisher)}>Edição de Perfil</button>
+      <button onClick={() => setPublisher(!publisher)}>edit profile</button>
       {publisher && <EditInfos />}
     </div>
-  )
-}
+  );
+};
 
-export default Profile
+export default Profile;
