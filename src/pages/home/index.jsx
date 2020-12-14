@@ -1,15 +1,25 @@
-import ButtonRedirect from "../../components/ButtonRedirect";
-import { Container, ContainerImage, ContainerRodape } from "./style";
-import logo from "./logo.svg";
+import { ContainerLogo, SectionContent, ImageHomePage } from "./style"
+import homePageImage from "./space discovery wb.svg"
+import logo from "./logo.svg"
+
 const Home = () => {
   return (
-    <div>
-      <ContainerImage>
+    <SectionContent>
+      <ContainerLogo>
         <img src={logo} alt="Logo Home"></img>
-        <div>WELCOME!</div>
-      </ContainerImage>
-    </div>
-  );
-};
+        <p>Hello, Codernaut !</p>
+        <p>Welcome to Our</p>
+        <p>Developer's Space</p>
+      </ContainerLogo>
+      <ImageHomePage>
+        <img src={homePageImage} alt="codernaut" />
+      </ImageHomePage>
+    </SectionContent>
+  )
+}
 
-export default Home;
+export default Home
+
+{
+  /* <ContainerRodape>KENZIEHUB ©</ContainerRodape> */
+}
