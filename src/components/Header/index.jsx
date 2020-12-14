@@ -1,11 +1,10 @@
-import ButtonRedirect from "../../components/ButtonRedirect"
-
 import { useState, useEffect } from "react"
 
 import { useSelector, useDispatch } from "react-redux"
 import { validation } from "../../store/modules/validationToken/action"
 
-import "./header.css" //teste, precisa inserir isso em styled component
+import { HeaderContent, LinksContent } from "./style"
+import ButtonRedirect from "../../components/ButtonRedirect"
 
 const Header = () => {
   const [isAuth, setAuth] = useState(false)
@@ -18,21 +17,21 @@ const Header = () => {
   }
 
   const divLinksAuthenticated = (
-    <div className="links-content">
+    <LinksContent>
       <div className="link-home">
         <ButtonRedirect text={"Home"} link={""} />
       </div>
       <button onClick={logOut}>Log Out</button>
-    </div>
+    </LinksContent>
   )
   const divLinksNotAuthenticated = (
-    <div className="links-content">
+    <LinksContent>
       <div className="link-home">
         <ButtonRedirect text={"Home"} link={""} />
       </div>
       <ButtonRedirect text={"Sign In"} link={"signIn"} />
       <ButtonRedirect text={"Sign Up"} link={"signUp"} />
-    </div>
+    </LinksContent>
   )
 
   useEffect(() => {
@@ -40,9 +39,9 @@ const Header = () => {
   }, [auth])
 
   return (
-    <header className="header-content">
+    <HeaderContent>
       {isAuth ? divLinksAuthenticated : divLinksNotAuthenticated}
-    </header>
+    </HeaderContent>
   )
 }
 

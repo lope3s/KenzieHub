@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "styled-components"
 
 export const Container = styled.div`
   color: white;
@@ -25,7 +25,7 @@ export const Container = styled.div`
     display: flex;
     justify-content: space-between;
   }
-`;
+`
 export const ContainerImage = styled.div`
   color: #3874ac;
   font-family: "Montserrat", sans-serif;
