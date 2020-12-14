@@ -231,7 +231,7 @@ const SingUp = () => {
       </div>
       <img
         src={logo}
-        alt="Image principal na pagina de cadstro"
+        alt="Image principal na pagina de cadastro"
         style={{ marginLeft: "50px" }}
       ></img>
     </div>
