@@ -19,16 +19,16 @@ const SingUp = () => {
   const schema = yup.object().shape({
     name: yup
       .string()
-      .required("Campo Obrigatório")
+      .required("Required field")
       .min(6)
       .matches(
-        /^(.[a-zÀ-ÿ].+\s).+$/i,
-        "nome deve ter sobrenome, deve ser sem número ou caracter especial"
+        /^(.[a-zÀ-ÿ]).+$/i,
+        "name must be without number or special character"
       ),
 
-    password: yup.string().min(6).required("Campo Obrigatório"),
+    password: yup.string().min(6).required("Required field"),
 
-    email: yup.string().email("Email invalído").required("Campo Obrigatório"),
+    email: yup.string().email("Invalid email").required("Required field"),
 
     confirmPassword: yup
       .string()
