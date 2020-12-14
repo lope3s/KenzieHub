@@ -91,7 +91,7 @@ const EditInfos = () => {
         </div>
       </div>
       <div className="PreferencesContainer">
-        <span>Profile Prefrences</span>
+        <span>Profile Preferences</span>
       </div>
     </Container>
   )
