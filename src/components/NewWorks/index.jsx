@@ -4,9 +4,9 @@ import { yupResolver } from "@hookform/resolvers/yup"
 import { TextField, Button } from "@material-ui/core"
 import { useState } from "react"
 import axios from "axios"
+import { Container } from "./style"
 
-const NewWorks = () => {
-  const [level, setLevel] = useState("")
+const NewWorks = ({ setEditWorks }) => {
   const [error, setError] = useState("")
   const schema = yup.object().shape({
     title: yup.string().required("cannot be blank"),
@@ -20,7 +20,7 @@ const NewWorks = () => {
 
   const handleWorks = (ev) => {
     const token = localStorage.getItem("token")
-    console.log(ev.title,ev.description,ev.deployUrl)
+    console.log(ev.title, ev.description, ev.deployUrl)
     axios
       .post(
         "https://kenziehub.me/users/works",
@@ -36,22 +36,15 @@ const NewWorks = () => {
         }
       )
       .catch(() =>
-        setError(
-          "User Already have this Work, created you can only update it"
-        )
+        setError("User Already have this Work, created you can only update it")
       )
   }
 
-  const handleLevel = (ev) => {
-    const WorksLevel = ev.target.value
-    setLevel(WorksLevel)
-  }
-
   return (
-    <>
+    <Container>
       <form onSubmit={handleSubmit(handleWorks)}>
-      <TextField
-      placeholder="Works Title"
+        <TextField
+          placeholder="Title"
           margin="normal"
           variant="outlined"
           name="title"
@@ -59,8 +52,8 @@ const NewWorks = () => {
           helperText={errors.title?.message}
           inputRef={register}
         />
-         <TextField
-         placeholder="Works Description"
+        <TextField
+          placeholder="Description"
           margin="normal"
           variant="outlined"
           name="description"
@@ -68,8 +61,8 @@ const NewWorks = () => {
           helperText={errors.description?.message}
           inputRef={register}
         />
-         <TextField
-         placeholder="Works Deploy_url"
+        <TextField
+          placeholder="Deploy URL"
           margin="normal"
           variant="outlined"
           name="deployUrl"
@@ -77,12 +70,27 @@ const NewWorks = () => {
           helperText={errors.deployUrl?.message}
           inputRef={register}
         />
-        <Button type="" variant="contained" color="primary">
-          Add
-        </Button>
+        <div className="buttons">
+          <Button
+            className="add"
+            type="submit"
+            variant="contained"
+            color="primary"
+          >
+            Add
+          </Button>
+          <Button
+            className="cancel"
+            variant="contained"
+            color="primary"
+            onClick={() => setEditWorks(false)}
+          >
+            Cancel
+          </Button>
+        </div>
         {error && <p>{error}</p>}
       </form>
-    </>
+    </Container>
   )
 }
 

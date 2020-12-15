@@ -12,6 +12,7 @@ import { AiOutlineClose } from "react-icons/ai"
 import ProfilePreferences from "../../components/ProfilePreferences"
 import { Button } from "@material-ui/core"
 import EditWorkForm from "../EditWorkForm"
+import settings from "./settings.svg"
 
 const EditInfos = ({ setPublisher }) => {
   const user = JSON.parse(localStorage.getItem("infoLogged"))
@@ -104,7 +105,7 @@ const EditInfos = ({ setPublisher }) => {
       </div>
       <div className="WorksContainer">
         <div className="NewWorkAcess">
-          <span>Works</span>
+          <span className="SessionName">Works</span>
           <div className="NewWorkContainer">
             <ButtonNewWorks />
           </div>
@@ -124,9 +125,12 @@ const EditInfos = ({ setPublisher }) => {
           ))}
         </div>
       </div>
-      <div className="PreferencesContainer">
-        <span>Profile Prefrences</span>
-        <ProfilePreferences />
+      <div className="preferencesDivisor">
+        <div className="PreferencesContainer">
+          <span className="title">Profile Prefrences</span>
+          <ProfilePreferences />
+        </div>
+        <img src={settings} alt="Settings" />
       </div>
       <Button
         className="close"
