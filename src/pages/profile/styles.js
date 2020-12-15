@@ -51,7 +51,6 @@ export const Container = styled.div`
 
 export const ContainerDiv = styled.div`
   > .Botao {
-    margin-top: 35px;
     background-color: transparent;
     color: white;
     border-radius: 50px;
