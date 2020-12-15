@@ -1,15 +1,36 @@
-import ButtonRedirect from "../../components/ButtonRedirect";
-import { Container, ContainerImage, ContainerRodape } from "./style";
-import logo from "./logo.svg";
+import {
+  ContainerLogo,
+  SectionContent,
+  ImageHomePage,
+  LinkContent,
+} from "./style"
+import homePageImage from "./space discovery wb.svg"
+import logo from "./logo.svg"
+import { Link } from "react-router-dom"
+
 const Home = () => {
   return (
-    <div>
-      <ContainerImage>
-        <img src={logo} alt="Logo Home"></img>
-        <div>WELCOME!</div>
-      </ContainerImage>
-    </div>
-  );
-};
+    <>
+      <SectionContent>
+        <ContainerLogo>
+          <img src={logo} alt="Logo Home"></img>
+          <p>Hello, Codernaut !</p>
+          <p>Welcome to Our</p>
+          <p>Developer's Space</p>
+        </ContainerLogo>
+        <ImageHomePage>
+          <img src={homePageImage} alt="codernaut" />
+        </ImageHomePage>
+      </SectionContent>
+      <LinkContent>
+        <Link to="/list/page=1">meet our members</Link>
+      </LinkContent>
+    </>
+  )
+}
 
-export default Home;
+export default Home
+
+{
+  /* <ContainerRodape>KENZIEHUB ©</ContainerRodape> */
+}

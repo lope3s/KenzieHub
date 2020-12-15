@@ -1,4 +1,12 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+
+export const Main = styled.div`
+  ${({ publisher }) =>
+    publisher &&
+    css`
+      background-color: #00000075;
+    `}
+`;
 
 export const Container = styled.div`
   text-align: center;
@@ -42,6 +50,17 @@ export const Container = styled.div`
 `;
 
 export const ContainerDiv = styled.div`
+  > .Botao {
+    margin-top: 35px;
+    background-color: transparent;
+    color: white;
+    border-radius: 50px;
+    border: 0;
+    > svg {
+      width: 45px;
+      height: 45px;
+    }
+  }
   .Container {
     display: flex;
     flex-direction: column;
