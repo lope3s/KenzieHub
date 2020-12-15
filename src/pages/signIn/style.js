@@ -1,25 +1,22 @@
 import styled from "styled-components"
 
 const Container = styled.main`
-  /* width: 100vw;
-  height: 100vh; */
-
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-
   margin-top: 12vh;
 
   section {
     background: rgba(238, 238, 238, 0.04);
     border-radius: 15px;
-    border: 1px solid black;
 
     width: 21%;
     padding: 3%;
   }
   h3 {
     font-size: 27px;
+    font-family: "Righteous", cursive;
+    color: white;
     margin-bottom: 0;
     margin-top: 0;
   }
@@ -35,7 +32,18 @@ const Container = styled.main`
     height: 330px;
   }
   input {
-    height: 27px;
+    height: 18px;
+
+    padding-top: 27px;
+
+    border-radius: 5px;
+    background-color: white;
+
+    font-family: "Righteous", cursive;
+  }
+  input::placeholder {
+    font-size: 1.2rem;
+    font-family: "Righteous", cursive;
   }
 
   button {
@@ -46,7 +54,9 @@ const Container = styled.main`
     border-radius: 12px;
     border: 1px solid #000000;
 
-    font-weight: bold;
+    font-family: "Righteous", cursive;
+    font-size: 1.3rem;
+    letter-spacing: 2px;
     cursor: pointer;
 
     background: #48a3da;
