@@ -27,7 +27,7 @@ export const Container = styled.div`
       color: white;
       margin-top: 100px;
       font-size: 25px;
-      font-family: "Montserrat", sans-serif;
+      font-family: "Righteous", sans-serif;
     }
     background-color: rgba(258, 258, 258, 0.06);
     background-size: cover;
@@ -70,7 +70,7 @@ export const ContainerDiv = styled.div`
   > div div div .About {
     width: 90vw;
     color: white;
-    font-family: "Roboto", sans-serif;
+    font-family: "Righteous", sans-serif;
     font-size: 55px;
     display: flex;
   }
@@ -96,7 +96,7 @@ export const ContainerDiv = styled.div`
       }
     }
     color: white;
-    font-family: "Roboto", sans-serif;
+    font-family: "Righteous", sans-serif;
     background-color: rgba(258, 258, 258, 0.06);
     border-radius: 5px;
     font-size: 20px;
@@ -114,7 +114,7 @@ export const ContainerDiv = styled.div`
 export const ContainerWork = styled.div`
   font-size: 25px;
   color: white;
-  font-family: "Roboto", sans-serif;
+  font-family: "Righteous", sans-serif;
   margin-top: 50px;
   width: 45vw;
   height: 150px;

@@ -74,7 +74,7 @@ const Profile = () => {
                         </div>
                       ))
                     ) : (
-                      <div>Não temo registro de serviços</div>
+                      <div>Não temo registro de Tecnologias</div>
                     )}
                   </div>
                 </div>
