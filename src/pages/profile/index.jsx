@@ -1,5 +1,5 @@
 // import store from "../../store"
-import { Container } from "./styles";
+import { Container, ContainerDiv, ContainerWork } from "./styles";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import validationThunk from "../../store/modules/validationToken/thunks";
@@ -13,16 +13,15 @@ const Profile = () => {
 
   const auth = useSelector((state) => state.auth);
   const user = JSON.parse(localStorage.getItem("infoLogged"));
-
+  console.log(user);
   useEffect(() => {
     dispatch(validationThunk());
   }, []);
-  console.log(user);
 
   return (
-    <div>
+    <ContainerDiv>
       {auth ? (
-        <div>
+        <div className="Container">
           <Container>
             <div>
               <div>
@@ -36,47 +35,68 @@ const Profile = () => {
                 )}
               </div>
               <div>
-                <div className="Background">
+                <div>
                   <span>{user.name}</span>
                 </div>
               </div>
             </div>
           </Container>
-          <div>
+          <div className="AboutContainer">
             <div>
-              <div>About Me</div>
-              <div>{user.bio}</div>
+              <div className="About">About Me</div>
+              <div className="AboutBio">{user.bio}</div>
             </div>
-            <div>
-              <div>Personal Details</div>
+            <div className="PersonalDetails">
               <div>
-                <div>Email:{user.email}</div>
-                <div>Course Module: {user.course_module}</div>
-              </div>
-            </div>
-            <div>Techs</div>
-            <div>
-              {user.techs.map((element, index) => (
-                <div key={index}>
-                  {element.title} - {element.status}
+                <div>
+                  <b>Personal Details</b>
                 </div>
-              ))}
+                <div className="Info">
+                  <div>Email: {user.email}</div>
+                  <div>
+                    Course Module:
+                    {user.course_module !== "undefined"
+                      ? user.course_module
+                      : " Nada encontrado"}
+                  </div>
+                </div>
+              </div>
+              <div className="Techs">
+                <div>
+                  <b>Techs</b>
+                </div>
+                <div>
+                  {user.techs ? (
+                    user.techs.map((element) => (
+                      <div>
+                        {element.title} - {element.status}
+                      </div>
+                    ))
+                  ) : (
+                    <div>Não temo registro de serviços</div>
+                  )}
+                </div>
+              </div>
             </div>
           </div>
           <div>
-            <div>
+            <ContainerWork>
               <div>Works</div>
               <div>
-                <div>
-                  {user.works.map((element) => (
-                    <div>
-                      <p>{element.title}</p>
-                      <div>{element.description}</div>
-                    </div>
-                  ))}
+                <div className="MapWorks">
+                  {user.work ? (
+                    user.works.map((element) => (
+                      <div>
+                        <div>{element.title}</div>
+                        <div>{element.description}</div>
+                      </div>
+                    ))
+                  ) : (
+                    <div>Não temo registro de serviços</div>
+                  )}
                 </div>
               </div>
-            </div>
+            </ContainerWork>
           </div>
         </div>
       ) : (
@@ -84,7 +104,7 @@ const Profile = () => {
       )}
       <button onClick={() => setPublisher(!publisher)}>Edição de Perfil</button>
       {publisher && <EditInfos />}
-    </div>
+    </ContainerDiv>
   );
 };
 
