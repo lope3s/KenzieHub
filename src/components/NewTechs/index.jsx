@@ -59,6 +59,7 @@ const NewTech = ({ setEditTechs }) => {
           inputRef={register}
         />
         <Select
+          placeholder="Status"
           variant="outlined"
           inputRef={register}
           name="status"

@@ -102,7 +102,7 @@ export const Container = styled.div`
     .NewWorkAcess {
       display: flex;
       align-items: flex-start;
-      span {
+      .SessionName {
         font-family: "Roboto", sans-serif;
         color: #fff;
         font-size: 20px;
@@ -110,16 +110,26 @@ export const Container = styled.div`
       }
     }
   }
-  .PreferencesContainer {
-    margin: 20px;
-    span {
-      font-family: "Roboto", sans-serif;
-      color: #fff;
-      font-size: 20px;
-      margin-right: 63px;
+  .preferencesDivisor {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .PreferencesContainer {
+      margin: 20px;
+      width: 330px;
+      .title {
+        font-family: "Roboto", sans-serif;
+        color: #fff;
+        font-size: 20px;
+        margin-right: 63px;
+      }
+    }
+    img {
+      width: 300px;
     }
   }
-
   .close {
     background-color: #3f51b5;
     color: #fff;
