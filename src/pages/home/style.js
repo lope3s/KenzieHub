@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "styled-components"
 
 export const SectionContent = styled.section`
   display: flex;
@@ -33,15 +33,15 @@ export const LinkContent = styled.div`
 
   a {
     text-decoration: none;
-    padding: 1%;
+    padding: 2%;
 
     font-size: 2.1rem;
     font-family: "Righteous", cursive;
 
-    background-color: white;
+    background: rgba(238, 238, 238, 0.09);
+    border-radius: 15px;
     border: 3px solid #162864;
     color: #162864;
-    border-radius: 3px 12px 3px 9px;
 
     transition: 0.3s;
   }
