@@ -10,8 +10,8 @@ import UsersFind from "../../components/listComponent-UsersFind";
 import UsersMap from "../../components/listComponent-UsersMap";
 
 import Pagination from "@material-ui/lab/Pagination";
-import { Select, MenuItem } from "@material-ui/core";
-import { UsersPageContainer, PaginationContainer } from "./style";
+import { Select, MenuItem, TextField, Button } from "@material-ui/core";
+import { UsersPageContainer, PaginationContainer, SearchContainer, UsersContainerTitle } from "./style";
 
 const List = () => {
   const [seek, setSeek] = useState(null);
@@ -86,13 +86,22 @@ const List = () => {
 
   return (
     <>
-      <input
+    <SearchContainer>
+      <TextField
+        margin="normal"
+        variant="outlined"
+        placeholder = 'Search Field'
         value={search}
         onChange={handleSearchInput}
-        placeholder="pesquisar usuário"
       />
-      <button onClick={() => handleSearchButton()}>Search</button>
-
+      <Button variant="contained" color="secondary" onClick={() => handleSearchButton()}>Search</Button>
+      </SearchContainer>
+      <UsersContainerTitle>
+        <span>Profile</span>
+        <span>Name</span>
+        <span>Couser Module</span>
+        <span class = 'contact'>Contact</span>
+      </UsersContainerTitle>
       <UsersPageContainer>
         {seek ? (
           <div>Loading...</div>
@@ -124,7 +133,7 @@ const List = () => {
             <MenuItem value={100}>100/Page</MenuItem>
           </Select>
         </PaginationContainer>
-      </UsersPageContainer>
+        </UsersPageContainer>
     </>
   );
 };
