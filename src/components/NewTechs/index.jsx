@@ -4,8 +4,9 @@ import { yupResolver } from "@hookform/resolvers/yup"
 import { TextField, Button, Select } from "@material-ui/core"
 import { useState } from "react"
 import axios from "axios"
+import { Container } from "./style"
 
-const NewTech = () => {
+const NewTech = ({ setEditTechs }) => {
   const [level, setLevel] = useState("")
   const [error, setError] = useState("")
   const schema = yup.object().shape({
@@ -46,7 +47,7 @@ const NewTech = () => {
   }
 
   return (
-    <>
+    <Container>
       <form onSubmit={handleSubmit(handleTechs)}>
         <TextField
           placeholder="Tech Name"
@@ -58,6 +59,7 @@ const NewTech = () => {
           inputRef={register}
         />
         <Select
+          placeholder="Status"
           variant="outlined"
           inputRef={register}
           name="status"
@@ -71,16 +73,30 @@ const NewTech = () => {
           }}
         >
           <option aria-label="None" value="" />
-          <option value="Iniciante">Iniciante</option>
-          <option value="Intermediário">Intermediário</option>
-          <option value="Avançado">Avançado</option>
+          <option value="Iniciante">Beginner</option>
+          <option value="Intermediário">intermediate</option>
+          <option value="Avançado">Advanced</option>
         </Select>
-        <Button type="submit" variant="contained" color="primary">
-          Add
-        </Button>
+        <div className="buttons">
+          <Button
+            className="add"
+            type="submit"
+            variant="contained"
+            color="primary"
+          >
+            Add
+          </Button>
+          <Button
+            className="cancel"
+            variant="contained"
+            onClick={() => setEditTechs(false)}
+          >
+            Cancel
+          </Button>
+        </div>
         {error && <p>{error}</p>}
       </form>
-    </>
+    </Container>
   )
 }
 

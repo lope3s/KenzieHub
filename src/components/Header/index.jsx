@@ -5,6 +5,7 @@ import { validation } from "../../store/modules/validationToken/action"
 
 import { HeaderContent, LinksContent } from "./style"
 import ButtonRedirect from "../../components/ButtonRedirect"
+import { Link } from "react-router-dom"
 
 const Header = () => {
   const location = useLocation();
