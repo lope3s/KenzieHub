@@ -48,7 +48,7 @@ const Login = () => {
 
   return (
     <section>
-      <h3>HEY!</h3>
+      <h3>Hey!</h3>
       <h3>Welcome Back</h3>
       {error && <span>It was not possible to login, please try again</span>}
       <form onSubmit={handleSubmit(sendData)}>
@@ -56,7 +56,7 @@ const Login = () => {
           margin="normal"
           variant="outlined"
           name="email"
-          label="e-mail"
+          placeholder="e-mail"
           error={!!errors.email}
           helperText={errors.email?.message}
           inputRef={register}
@@ -66,7 +66,7 @@ const Login = () => {
           variant="outlined"
           name="password"
           type="password"
-          label="password"
+          placeholder="password"
           error={!!errors.password}
           helperText={errors.password?.message}
           inputRef={register}

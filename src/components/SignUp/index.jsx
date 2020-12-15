@@ -24,7 +24,7 @@ const SingUp = () => {
       .min(6)
       .matches(
         /^(.[a-zÀ-ÿ]).+$/i,
-        "name must be without number or special character"
+        "Name must be without number or special character"
       ),
 
     password: yup.string().min(6).required("Required field"),
@@ -78,14 +78,17 @@ const SingUp = () => {
   const divSingUpForm = (
     <Container>
       <div className="ContainerInputs">
-        <div>Hey! Welcome</div>
+        <div className="h3-content">
+          <h3>Hey!</h3>
+          <h3>Welcome</h3>
+        </div>
         <form onSubmit={handleSubmit(handleForm)} className="Form">
           {error && <div>Invalid Registration Information</div>}
           <div
             style={{
               marginLeft: "-220px",
-              marginTop: "10px",
-              marginBottom: "10px",
+              // marginTop: "10px",
+              // marginBottom: "10px",
             }}
           ></div>
           <TextField
@@ -93,13 +96,12 @@ const SingUp = () => {
             color="primary"
             name="name"
             type="text"
-            label="UserName"
+            placeholder="UserName"
             inputRef={register}
             style={{
               width: "300px",
               borderRadius: "5px",
               border: "0",
-              backgroundColor: "white",
             }}
             helperText={errors.name?.message}
             error={!!errors.name}
@@ -107,8 +109,8 @@ const SingUp = () => {
           <div
             style={{
               marginLeft: "-245px",
-              marginTop: "10px",
-              marginBottom: "10px",
+              // marginTop: "10px",
+              // marginBottom: "10px",
             }}
           ></div>
           <TextField
@@ -116,13 +118,12 @@ const SingUp = () => {
             color="primary"
             type="text"
             name="email"
-            label="E-mail"
+            placeholder="E-mail"
             inputRef={register}
             style={{
               width: "300px",
               borderRadius: "5px",
               border: "0",
-              backgroundColor: "white",
             }}
             helperText={errors.email?.message}
             error={!!errors.email}
@@ -130,8 +131,8 @@ const SingUp = () => {
           <div
             style={{
               marginLeft: "-225px",
-              marginTop: "10px",
-              marginBottom: "10px",
+              // marginTop: "10px",
+              // marginBottom: "10px",
             }}
           ></div>
           <TextField
@@ -139,13 +140,12 @@ const SingUp = () => {
             color="primary"
             type="password"
             name="password"
-            label="Password"
+            placeholder="Password"
             inputRef={register}
             style={{
               width: "300px",
               borderRadius: "5px",
               border: "0",
-              backgroundColor: "white",
             }}
             helperText={errors.password?.message}
             error={!!errors.password}
@@ -153,8 +153,8 @@ const SingUp = () => {
           <div
             style={{
               marginLeft: "-150px",
-              marginTop: "10px",
-              marginBottom: "10px",
+              // marginTop: "10px",
+              // marginBottom: "10px",
             }}
           ></div>
           <TextField
@@ -162,13 +162,12 @@ const SingUp = () => {
             color="primary"
             type="password"
             name="confirmPassword"
-            label="Confirm Password"
+            placeholder="Confirm Password"
             inputRef={register}
             style={{
               width: "300px",
               borderRadius: "5px",
               border: "0",
-              backgroundColor: "white",
             }}
             helperText={errors.confirmPassword?.message}
             error={!!errors.confirmPassword}
@@ -176,16 +175,17 @@ const SingUp = () => {
           <Button
             type="submit"
             style={{
-              marginTop: "10px",
+              marginTop: "36px",
               background: "#48A3DA",
               border: "0",
               boxSizing: "border-box",
-              boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
-              borderRadius: "12px",
+              borderRadius: "10px",
               width: "150px",
-              height: "50px",
-              color: "white",
+              height: "45px",
               fontSize: "20px",
+              fontFamily: "Righteous, cursive",
+              background: "#48a3da",
+              letterSpacing: "2px",
             }}
           >
             Register

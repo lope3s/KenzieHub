@@ -1,6 +1,6 @@
-import Login from "../../components/login"
+import Login from "../../components/Login"
 import Container from "./style"
-import loginImage from "../../images/web-development-bw 1.png"
+import loginImage from "./web-development-bw 1.png"
 
 const SignIn = () => {
   return (
