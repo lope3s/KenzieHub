@@ -54,13 +54,19 @@ const ProfilePreferences = () => {
   const courseField = useForm({ resolver: yupResolver(courseSchema) })
   const bioField = useForm({ resolver: yupResolver(bioSchema) })
 
+  console.log(JSON.parse(localStorage.getItem("infoLogged")))
+
   const handleSubmit = (data) => {
     console.log(data)
     axios
       .put("https://kenziehub.me/profile", data, {
         headers: { Authorization: `Bearer ${token}` },
       })
-      .then((res) => console.log(res))
+      .then((res) => {
+        // localStorage.removeItem("infoLogged")
+        localStorage.setItem("infoLogged", JSON.stringify(res.data))
+        console.log(JSON.parse(localStorage.getItem("infoLogged")))
+      })
   }
 
   const handleAvatarChange = (e) => {
