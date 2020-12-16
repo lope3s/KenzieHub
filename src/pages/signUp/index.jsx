@@ -1,4 +1,4 @@
-import SingUp from "../../components/SignUp"
+import SingUp from "../../components/signUp"
 
 const RegisterUser = () => {
   return (
