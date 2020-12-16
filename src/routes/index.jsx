@@ -4,6 +4,7 @@ import List from "../pages/list";
 import Profile from "../pages/profile";
 import SignIn from "../pages/signIn";
 import SingnUp from "../pages/signUp";
+import UserSearch from '../pages/userSearch'
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
@@ -22,6 +23,7 @@ const Routes = () => {
         </Route>
         <Route exact path="/signIn" component={SignIn} />
         <Route exact path="/signUp" component={SingnUp} />
+        <Route exact path="/userSearch" component={UserSearch} />
       </Switch>
     </>
   );

@@ -46,20 +46,6 @@ export const Container = styled.div`
 
     justify-content: center;
     display: flex;
-    @media (max-width: 800px) {
-      width: 25%;
-      top: 12%;
-      height: 15%;
-      left: 37.5%;
-      right: 37.5%;
-    }
-    @media (max-width: 500px) {
-      width: 25%;
-      top: 15%;
-      height: 0%;
-      left: 37.5%;
-      right: 37.5%;
-    }
   }
 `;
 
@@ -86,9 +72,6 @@ export const ContainerDiv = styled.div`
     font-family: "Righteous", sans-serif;
     font-size: 55px;
     display: flex;
-    @media (max-width: 800px) {
-      font-size: 35px;
-    }
   }
   > div .AboutContainer {
     width: 90vw;
@@ -100,10 +83,6 @@ export const ContainerDiv = styled.div`
       justify-content: space-between;
       width: 100vw;
       height: 100px;
-      @media (max-width: 800px) {
-        height: 150px;
-        width: 90vw;
-      }
       > div .Info div {
         margin-left: 25px;
       }
@@ -112,9 +91,6 @@ export const ContainerDiv = styled.div`
         margin-right: 25px;
         > div b {
           font-size: 25px;
-          @media (max-width: 800px) {
-            font-size: 15px;
-          }
         }
       }
     }
@@ -128,11 +104,6 @@ export const ContainerDiv = styled.div`
     flex-flow: wrap;
     margin-top: 110px;
     text-align: center;
-    @media (max-width: 800px) {
-      margin-top: 100px;
-      font-size: 15px;
-    }
-
     > div div {
       display: flex;
       flex-direction: column;
@@ -147,12 +118,6 @@ export const ContainerWork = styled.div`
   width: 45vw;
   height: 150px;
   border-radius: 5px;
-  @media (max-width: 800px) {
-    font-size: 20px;
-    margin-top: 20px;
-    width: 60vw;
-  }
-
   background-color: rgba(258, 258, 258, 0.06);
   display: flex;
   flex-direction: column;
@@ -160,9 +125,6 @@ export const ContainerWork = styled.div`
   > div .MapWorks {
     > div div {
       font-size: 25px;
-      @media (max-width: 800px) {
-        font-size: 15px;
-      }
     }
   }
 `;

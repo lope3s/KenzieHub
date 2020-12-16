@@ -15,9 +15,9 @@ console.log(location)
   const dispatch = useDispatch()
 
   const logOut = () => {
-    localStorage.removeItem("token")
-    dispatch(validation(false))
-  }
+    localStorage.removeItem("token");
+    dispatch(validation(false));
+  };
 
   const divLinksAuthenticated = (
     <LinksContent>
@@ -30,7 +30,7 @@ console.log(location)
       {location.pathname.slice(0,5) === '/list' && <ButtonRedirect text={"Voltar"} link={"profile"} />}
       <button onClick={logOut}>Log Out</button>
     </LinksContent>
-  )
+  );
   const divLinksNotAuthenticated = (
     <LinksContent>
       <div className="link-home">
@@ -40,17 +40,17 @@ console.log(location)
       <ButtonRedirect text={"Sign In"} link={"signIn"} />
       <ButtonRedirect text={"Sign Up"} link={"signUp"} />
     </LinksContent>
-  )
+  );
 
   useEffect(() => {
-    auth ? setAuth(true) : setAuth(false)
-  }, [auth])
+    auth ? setAuth(true) : setAuth(false);
+  }, [auth]);
 
   return (
     <HeaderContent>
       {isAuth ? divLinksAuthenticated : divLinksNotAuthenticated}
     </HeaderContent>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;
