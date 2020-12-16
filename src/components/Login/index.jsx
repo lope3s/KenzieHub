@@ -18,8 +18,8 @@ const Login = () => {
   const [error, setError] = useState(false)
 
   const schema = yup.object().shape({
-    email: yup.string().email("Invalid E-mail").required("Cannot be blank"),
-    password: yup.string().required("Cannot be blank"),
+    email: yup.string().email("Invalid E-mail").required("Required field"),
+    password: yup.string().required("Required field"),
   })
   const { register, errors, handleSubmit } = useForm({
     resolver: yupResolver(schema),
@@ -50,7 +50,11 @@ const Login = () => {
     <section>
       <h3>Hey!</h3>
       <h3>Welcome Back</h3>
-      {error && <span>It was not possible to login, please try again</span>}
+      {error && (
+        <span className="login-messageError">
+          It was not possible to login, please try again
+        </span>
+      )}
       <form onSubmit={handleSubmit(sendData)}>
         <TextField
           margin="normal"
