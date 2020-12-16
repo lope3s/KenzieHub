@@ -3,7 +3,7 @@ import NewTech from "../NewTechs"
 import { Button } from "@material-ui/core"
 import { Container } from "./style"
 
-const ButtonNewTechs = () => {
+const ButtonNewTechs = ({ setUpdateInfo }) => {
   const [editTechs, setEditTechs] = useState(false)
   const handleShowTechs = () => {
     setEditTechs(true)
@@ -13,7 +13,9 @@ const ButtonNewTechs = () => {
       <Button variant="contained" color="primary" onClick={handleShowTechs}>
         New Tech
       </Button>
-      {editTechs && <NewTech setEditTechs={setEditTechs} />}
+      {editTechs && (
+        <NewTech setEditTechs={setEditTechs} setUpdateInfo={setUpdateInfo} />
+      )}
     </Container>
   )
 }

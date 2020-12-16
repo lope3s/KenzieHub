@@ -5,9 +5,20 @@ import { TextField, Button, Select, InputLabel } from "@material-ui/core"
 import { Container } from "./style"
 
 import axios from "axios"
+import { useState, useEffect } from "react"
 
 const ProfilePreferences = () => {
+  const [sucess, setSucess] = useState(null)
+  const dataLocal = JSON.parse(localStorage.getItem("infoLogged"))
   const token = localStorage.getItem("token")
+
+  useEffect(() => {
+    if (sucess) {
+      setTimeout(() => {
+        setSucess(null)
+      }, 3000)
+    }
+  }, [sucess])
 
   const contactSchema = yup.object().shape({
     contact: yup.string().required("Cannot be blank"),
@@ -66,7 +77,9 @@ const ProfilePreferences = () => {
         // localStorage.removeItem("infoLogged")
         localStorage.setItem("infoLogged", JSON.stringify(res.data))
         console.log(JSON.parse(localStorage.getItem("infoLogged")))
+        setSucess(true)
       })
+      .catch((error) => setSucess(false))
   }
 
   const handleAvatarChange = (e) => {
@@ -81,11 +94,23 @@ const ProfilePreferences = () => {
           Authorization: `Bearer ${token}`,
         },
       })
-      .then((res) => console.log(res.data.avatar_url))
+      .then((res) => {
+        dataLocal.avatar_url = res.data.avatar_url
+        localStorage.setItem("infoLogged", JSON.stringify(dataLocal))
+        setSucess(true)
+      })
+      .catch((error) => setSucess(false))
   }
 
   return (
     <Container>
+      {sucess ? (
+        <p className="message sucess">Modifications saved successfully!</p>
+      ) : sucess === false ? (
+        <p className="message error">An error has occurred</p>
+      ) : (
+        ""
+      )}
       <form onSubmit={contactField.handleSubmit(handleSubmit)}>
         <div className="inputField">
           <TextField

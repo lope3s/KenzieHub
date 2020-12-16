@@ -1,7 +1,24 @@
 import styled from "styled-components"
 
 export const Container = styled.div`
-  /* background-color: red; */
+  .message {
+    border: 1px solid #fff;
+    border-radius: 4px;
+    padding: 5px;
+    font-family: "Righteous", cursive;
+  }
+
+  .sucess {
+    background-color: #afa;
+    color: #070;
+    border-color: #070;
+  }
+
+  .error {
+    background-color: #faa;
+    color: #700;
+    border-color: #700;
+  }
   form {
     display: flex;
     flex-direction: column;
