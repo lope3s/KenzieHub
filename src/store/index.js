@@ -2,7 +2,7 @@ import { createStore, combineReducers, applyMiddleware } from "redux"
 import thunk from "redux-thunk"
 import ListOfUsersReducer from "./modules/listOfUsers/reducer"
 import validationReducer from "./modules/validationToken/reducer"
-import techInfosReducer from "./modules/techId/reducer"
+import techInfosReducer from "./modules/techInfos/reducer"
 
 const reducers = combineReducers({
   listOfUsers: ListOfUsersReducer,
