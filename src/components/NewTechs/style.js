@@ -36,5 +36,27 @@ export const Container = styled.div`
         font-weight: 700;
       }
     }
+    .message {
+      font-family: "Righteous", cursive;
+      padding: 5px;
+      width: 20vw;
+      box-sizing: border-box;
+      border: 2px solid #fff;
+      border-radius: 5px;
+      margin-top: 10px;
+
+      font-size: 14px;
+    }
+    .sucess {
+      color: #060;
+      background-color: #afa;
+      border-color: #060;
+    }
+
+    .error {
+      color: #600;
+      background-color: #faa;
+      border-color: #600;
+    }
   }
 `

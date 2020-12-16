@@ -51,6 +51,15 @@ const EditInfos = ({ setPublisher }) => {
 
   return (
     <Container>
+      <div className="closeContainer">
+        <Button
+          className="close"
+          variant="contained"
+          onClick={() => setPublisher(false)}
+        >
+          Finish
+        </Button>
+      </div>
       <div className="TechContainer">
         <div className="NewTechAcess">
           <span className="SessionName">Techs</span>
@@ -132,13 +141,6 @@ const EditInfos = ({ setPublisher }) => {
         </div>
         <img src={settings} alt="Settings" />
       </div>
-      <Button
-        className="close"
-        variant="contained"
-        onClick={() => setPublisher(false)}
-      >
-        Close
-      </Button>
     </Container>
   )
 }

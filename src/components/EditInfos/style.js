@@ -113,7 +113,7 @@ export const Container = styled.div`
   .preferencesDivisor {
     width: 100%;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: space-between;
 
     .PreferencesContainer {
@@ -130,12 +130,18 @@ export const Container = styled.div`
       width: 300px;
     }
   }
-  .close {
-    background-color: #3f51b5;
-    color: #fff;
-    margin-bottom: 20px;
-  }
-  .close:hover {
-    background-color: #303f9f;
+  .closeContainer {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    .close {
+      background-color: #0a0;
+      color: #fff;
+      margin-bottom: 20px;
+      transition: 0.2s;
+    }
+    .close:hover {
+      background-color: #070;
+    }
   }
 `
