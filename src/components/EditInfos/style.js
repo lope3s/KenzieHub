@@ -5,7 +5,7 @@ export const Container = styled.div`
   border-radius: 20px;
   background-color: #1d2f60;
   padding: 10px;
-  min-height: 723px;
+  /* min-height: 723px; */
   max-height: 830px;
   width: 671px;
   position: absolute;
@@ -263,7 +263,47 @@ export const Container = styled.div`
       }
     }
     .close:hover {
-      background-color: #070;
+      background-color: #0a0;
     }
+  }
+
+  @media screen and (max-width: 640px) {
+    width: 85vw;
+    height: 80vh;
+
+    .iDRUQh {
+      width: 0;
+      height: 0;
+    }
+
+    .TechContainer {
+      margin: 5px;
+
+      .TechListContainer {
+        margin: 0;
+      }
+    }
+    .preferencesDivisor {
+      flex-direction: column;
+      align-items: center;
+
+      .PreferencesContainer {
+        width: 100%;
+      }
+
+      img {
+        display: none;
+      }
+    }
+  }
+  @media screen and (min-width: 640px) and (max-width: 768px) {
+    height: 90vh;
+    width: 90vw;
+  }
+  @media screen and (min-width: 768px) and (max-width: 1024px) {
+    height: 90vh;
+  }
+  @media screen and (min-width: 1024px) and (max-width: 1280px) {
+    height: 90vh;
   }
 `

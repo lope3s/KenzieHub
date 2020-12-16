@@ -5,14 +5,14 @@ import addUserThunk from "../../store/modules/listOfUsers/thunks"
 import { useDispatch } from "react-redux"
 
 const SignIn = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-  dispatch(addUserThunk([]))
+  dispatch(addUserThunk([]));
   return (
     <Container>
       <img src={loginImage} alt="login" />
       <Login />
     </Container>
-  )
-}
-export default SignIn
+  );
+};
+export default SignIn;
