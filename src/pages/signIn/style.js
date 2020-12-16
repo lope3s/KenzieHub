@@ -61,9 +61,43 @@ const Container = styled.main`
 
     background: #48a3da;
   }
-
   img {
     max-width: 630px;
+  }
+
+  @media screen and (max-width: 510px) {
+    flex-direction: column;
+    margin-top: 0px;
+
+    section {
+      width: 72%;
+    }
+    img {
+      max-width: 270px;
+    }
+  }
+  @media screen and (min-width: 540px) and (max-width: 790px) {
+    flex-direction: column;
+    margin-top: 0px;
+
+    section {
+      width: 42%;
+      margin-left: auto;
+      margin-right: 12%;
+    }
+    img {
+      max-width: 420px;
+      margin-right: auto;
+      margin-left: 6%;
+    }
+  }
+  @media screen and (min-width: 810px) and (max-width: 1024px) {
+    section {
+      width: 30%;
+    }
+    img {
+      max-width: 510px;
+    }
   }
 `
 

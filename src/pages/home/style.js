@@ -5,6 +5,10 @@ export const SectionContent = styled.section`
   flex-wrap: wrap;
   justify-content: space-evenly;
   align-items: center;
+
+  @media screen and (min-height: 660px) and (max-width: 425px) {
+    margin-top: -6vh;
+  }
 `
 
 export const ImageHomePage = styled.div`
@@ -14,7 +18,18 @@ export const ImageHomePage = styled.div`
     margin-right: 6vw;
   }
 
-  @media screen and (max-width: 540px) {
+  @media screen and (max-width: 374px) {
+    img {
+      max-width: 300px;
+      margin-top: 0px;
+    }
+  }
+  @media screen and (min-height: 650px) and (max-width: 425px) {
+    img {
+      max-width: 240px;
+    }
+  }
+  @media screen and (min-width: 375px) and (max-width: 540px) {
     img {
       width: 360px;
       margin-top: 0px;
@@ -31,14 +46,24 @@ export const ImageHomePage = styled.div`
       margin-right: 0px;
     }
   }
+  @media screen and (min-height: 1300px) and (max-width: 1025px) {
+    img {
+      width: 600px;
+    }
+  }
   @media screen and (min-width: 820px) and (max-width: 1024px) {
     img {
       width: 480px;
       margin-top: 12vh;
-      margin-right: 4vw;
+      margin-right: 8vw;
     }
   }
-  @media screen and (min-width: 1200px) {
+  @media screen and (min-width: 1025px) and (max-width: 1300px) {
+    img {
+      max-width: 510px;
+    }
+  }
+  @media screen and (min-width: 1301px) {
     margin-left: auto;
 
     img {
@@ -60,7 +85,15 @@ export const ContainerLogo = styled.div`
     width: 210px;
   }
 
-  @media screen and (max-width: 540px) {
+  @media screen and (max-width: 374px) {
+    font-size: 1.5rem;
+    margin-top: 3vh;
+
+    img {
+      max-width: 99px;
+    }
+  }
+  @media screen and (min-width: 375px) and (max-width: 540px) {
     font-size: 1.8rem;
     margin-top: 9vh;
 
@@ -78,9 +111,15 @@ export const ContainerLogo = styled.div`
   @media screen and (min-width: 820px) and (max-width: 1024px) {
     margin-top: 3%;
     margin-right: auto;
-    margin-left: 6%;
+    margin-left: 3%;
+
+    font-size: 2.5rem;
   }
-  @media screen and (min-width: 1200px) {
+  @media screen and (min-width: 1025px) and (max-width: 1300px) {
+    margin-left: 0%;
+    margin-top: 3%;
+  }
+  @media screen and (min-width: 1301px) {
     margin-block-end: auto;
     margin-top: 9vh;
     margin-left: auto;
@@ -111,7 +150,18 @@ export const LinkContent = styled.div`
     color: white;
   }
 
-  @media screen and (max-width: 540px) {
+  @media screen and (max-width: 374px) {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+
+    a {
+      font-size: 1.5rem;
+    }
+  }
+
+  @media screen and (min-width: 375px) and (max-width: 540px) {
     width: 90%;
     margin: 0 auto;
     text-align: center;
@@ -134,7 +184,12 @@ export const LinkContent = styled.div`
     margin-left: auto;
     padding-top: 15%;
   }
-  @media screen and (min-width: 1200px) {
+  @media screen and (min-width: 1025px) and (max-width: 1300px) {
+    width: 30%;
+    padding-top: 9%;
+    margin-right: auto;
+  }
+  @media screen and (min-width: 1301px) {
     margin-right: 3%;
     padding-top: 4%;
   }
