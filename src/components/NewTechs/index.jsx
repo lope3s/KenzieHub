@@ -82,9 +82,9 @@ const NewTech = ({ setEditTechs }) => {
           }}
         >
           <option aria-label="None" value="" />
-          <option value="Iniciante">Beginner</option>
-          <option value="Intermediário">intermediate</option>
-          <option value="Avançado">Advanced</option>
+          <option value="Begginner">Beginner</option>
+          <option value="Intermediate">Intermediate</option>
+          <option value="Advanced">Advanced</option>
         </Select>
         <div className="buttons">
           <Button

@@ -1,1 +1,1 @@
-export const ADD_ID = "@techId/ADD"
+export const ADD_TECH = "@techId/ADD"

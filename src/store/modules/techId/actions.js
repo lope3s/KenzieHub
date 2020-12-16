@@ -1,6 +1,6 @@
-import { ADD_ID } from "./actionTYpe"
+import { ADD_TECH } from "./actionTYpe"
 
-export const saveTechID = (id) => ({
-  type: ADD_ID,
-  id,
+export const saveTechInfos = (techInfos) => ({
+  type: ADD_TECH,
+  techInfos,
 })

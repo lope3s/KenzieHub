@@ -1,14 +1,14 @@
-import { ADD_ID } from "./actionTYpe"
+import { ADD_TECH } from "./actionTYpe"
 
-const techIDReducer = (state = "", action) => {
+const techInfosReducer = (state = {}, action) => {
   switch (action.type) {
-    case ADD_ID:
-      const { id } = action
-      return id
+    case ADD_TECH:
+      const { techInfos } = action
+      return techInfos
 
     default:
       return state
   }
 }
 
-export default techIDReducer
+export default techInfosReducer

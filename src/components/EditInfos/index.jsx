@@ -1,14 +1,13 @@
 import ButtonNewTechs from "../ButtonNewTechs"
 import ButtonNewWorks from "../ButtonNewWorks"
 import EditTechStatus from "../../components/EditTechStatus"
-import { saveTechID } from "../../store/modules/techId/actions"
+import { saveTechInfos } from "../../store/modules/techId/actions"
 import { useDispatch } from "react-redux"
 import { useState } from "react"
 import axios from "axios"
 import { Container } from "./style"
 import { BsTrashFill } from "react-icons/bs"
 import { AiFillEdit } from "react-icons/ai"
-import { AiOutlineClose } from "react-icons/ai"
 import ProfilePreferences from "../../components/ProfilePreferences"
 import { Button } from "@material-ui/core"
 import EditWorkForm from "../EditWorkForm"
@@ -57,7 +56,7 @@ const EditInfos = ({ setPublisher }) => {
           variant="contained"
           onClick={() => setPublisher(false)}
         >
-          Finish
+          <span>Finish</span>
         </Button>
       </div>
       <div className="TechContainer">
@@ -69,18 +68,19 @@ const EditInfos = ({ setPublisher }) => {
         </div>
 
         <div className="TechsEdits">
-          <div className="TechListConatainer">
+          <div className="TechListContainer">
             {user.techs.map((tech, index) => {
               return (
                 <div className="TechContainer" key={index}>
-                  <span className="TechInfo">
-                    {tech.title} - {tech.status}
-                  </span>
+                  <div className="TechInfo">
+                    <span className="title">{tech.title}</span>
+                    <span className="status">{tech.status}</span>
+                  </div>
                   <div className="buttonsContainer">
                     <button
                       className="EditTechStatusButton"
                       onClick={() => {
-                        dispatch(saveTechID(tech.id))
+                        dispatch(saveTechInfos(tech))
                         setChangeTechStatus(true)
                       }}
                     >
@@ -101,13 +101,7 @@ const EditInfos = ({ setPublisher }) => {
           </div>
           {changeTechStatus && (
             <div className="EditTechStatusContainer">
-              <EditTechStatus />
-              <button
-                className="CloseEditTechStatus"
-                onClick={() => setChangeTechStatus(false)}
-              >
-                <AiOutlineClose />
-              </button>
+              <EditTechStatus setChangeTechStatus={setChangeTechStatus} />
             </div>
           )}
         </div>
