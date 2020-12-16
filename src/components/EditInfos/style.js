@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 
 export const Container = styled.div`
   border: 1px solid black;
@@ -47,7 +47,7 @@ export const Container = styled.div`
         /* background-color: lightblue; */
         box-sizing: border-box;
         padding: 5px;
-        border: 1px solid #1d3f70;
+        /* border: 1px solid #1d3f70; */
         border-radius: 10px;
 
         .TechContainer {
@@ -146,14 +146,85 @@ export const Container = styled.div`
   }
   .WorksContainer {
     margin-top: 20px;
+    width: 100%;
     .NewWorkAcess {
       display: flex;
       align-items: flex-start;
+      justify-content: center;
       .SessionName {
         font-family: "Righteous", cursive;
         color: #fff;
         font-size: 20px;
         margin-right: 63px;
+      }
+    }
+    .WorkCardsContainer {
+      box-sizing: border-box;
+      padding: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 10px;
+
+      /* border: 1px solid #1d3f70; */
+      border-radius: 10px;
+
+      .WorkCardContainer {
+        width: 45%;
+        min-height: 150px;
+        margin: 5px;
+        background-color: #1d3f7075;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-family: "Righteous", cursive;
+
+        .title {
+          color: #fff;
+          font-size: 20px;
+        }
+
+        .description {
+          color: #1d4ff0;
+        }
+
+        .url {
+          text-decoration: outline;
+          color: #aa0;
+          font-size: 14px;
+        }
+
+        .buttons {
+          margin-top: 5px;
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          .edit {
+            box-sizing: border-box;
+            border: 1px solid #fff;
+            width: 30px;
+            height: 30px;
+            color: #1d4ff0;
+            border-radius: 2px;
+            margin-right: 10px;
+            background-color: #fff;
+            cursor: pointer;
+          }
+
+          .delete {
+            box-sizing: border-box;
+            border: 1px solid #f00;
+            width: 30px;
+            height: 30px;
+            color: #fff;
+            border-radius: 2px;
+            cursor: pointer;
+            background-color: #f00;
+          }
+        }
       }
     }
   }

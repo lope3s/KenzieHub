@@ -113,16 +113,27 @@ const EditInfos = ({ setPublisher }) => {
             <ButtonNewWorks />
           </div>
         </div>
-        <div>
+        <div className="WorkCardsContainer">
           {user.works.map((element) => (
-            <div>
-              <div>
-                <p>{element.title}</p>
+            <div className="WorkCardContainer">
+              <div className="WorkInfoContainer">
+                <p className="title">{element.title}</p>
+                <p className="description">{element.description}</p>
+                <a className="url" href={element.deploy_url}>
+                  {element.deploy_url}
+                </a>
               </div>
-              <button onClick={editWork}>Edit Work</button>
-              <button onClick={() => deleteWork(element.id)}>
-                Delete Work
-              </button>
+              <div className="buttons">
+                <button className="edit" onClick={editWork}>
+                  <AiFillEdit />
+                </button>
+                <button
+                  className="delete"
+                  onClick={() => deleteWork(element.id)}
+                >
+                  <BsTrashFill />
+                </button>
+              </div>
               {edit && <EditWorkForm id={element.id} />}
             </div>
           ))}

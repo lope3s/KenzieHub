@@ -8,13 +8,21 @@ export const Container = styled.div`
     input {
       padding: 10px;
       width: 100%;
-      color: #fff;
+      background-color: #fff;
+      border-radius: 4px;
+      font-family: "Righteous", cursive;
     }
 
     select {
       padding: 10px;
       width: 100%;
-      color: #fff;
+      font-family: "Righteous", cursive;
+      background-color: #fff;
+    }
+
+    select:focus {
+      background-color: #fff;
+      border-radius: 4px;
     }
     .buttons {
       margin-top: 10px;
