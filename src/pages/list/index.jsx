@@ -6,12 +6,20 @@ import { useSelector } from "react-redux"
 
 import axios from "axios"
 
-import UsersFind from "../../components/ListComponent-UsersFind"
-import UsersMap from "../../components/ListComponent-UsersMap"
+import UsersFind from "../../components/listComponent-UsersFind"
+import UsersMap from "../../components/listComponent-UsersMap"
 
 import Pagination from "@material-ui/lab/Pagination"
-import { Select, MenuItem } from "@material-ui/core"
-import { UsersPageContainer, PaginationContainer } from "./style"
+import { Select, MenuItem, TextField, Button } from "@material-ui/core"
+import {
+  UsersPageContainer,
+  PaginationContainer,
+  SearchContainer,
+  UsersContainerTitle,
+} from "./style"
+
+import LoadingDiv from "../../components/loadingComponent"
+import img from './seo-bw.png'
 
 const List = () => {
   const [seek, setSeek] = useState(null)
@@ -28,11 +36,12 @@ const List = () => {
 
   const dispatch = useDispatch()
 
+  
   useEffect(() => {
     setSeek(true)
-    loading()
-  }, [dispatch, nextUrl])
-
+      loading()
+    }, [dispatch, nextUrl])
+  
   useEffect(() => {
     if (search === "") {
       setSearchResult(undefined)
@@ -49,25 +58,25 @@ const List = () => {
   // }, []);
 
   const loading = async () => {
-    try {
-      const res = await axios.get(nextUrl)
-      await dispatch(addUserThunk(res.data))
-      if (res.data.length > 0) {
-        setNextUrl(res.headers.nexturl)
-        console.log(res)
-        return
+      try {
+        const res = await axios.get(nextUrl)
+        if (res.data.length > 0) {
+          await dispatch(addUserThunk(res.data))
+          setNextUrl(res.headers.nexturl)
+          console.log(res)
+          return
+        }
+        setSeek(null)
+      } catch (error) {
+        console.log(error)
       }
-      setSeek(null)
-    } catch (error) {
-      console.log(error)
-    }
   }
 
   const handleSearchButton = async () => {
     //busca na API com o nome salvo no estado search e altera o estado searchResult;
     setSeek(true)
     await setSearchResult(
-      listOfUsers.filter((user) => user.name.includes(search))
+      listOfUsers.filter((user) => user.name.toLowerCase().includes(search))  
     )
     setSeek(null)
   }
@@ -78,7 +87,7 @@ const List = () => {
 
   const handleSearchInput = (ev) => {
     // pegar valor digitado no input
-    setSearch(ev.target.value)
+    setSearch(ev.target.value.toLowerCase())
   }
   const handleSetPage = (evt, value) => {
     history.push(`/list/page=${value}`)
@@ -86,17 +95,32 @@ const List = () => {
 
   return (
     <>
-      <input
-        value={search}
-        onChange={handleSearchInput}
-        placeholder="search user"
-      />
-      <button onClick={() => handleSearchButton()}>Search</button>
-
+      <SearchContainer>
+        <TextField
+          margin="normal"
+          variant="outlined"
+          placeholder="Search Field"
+          value={search}
+          onChange={handleSearchInput}
+        />
+        <Button
+          variant="contained"
+          color="secondary"
+          onClick={() => handleSearchButton()}
+        >
+          Search
+        </Button>
+      </SearchContainer>
+      <UsersContainerTitle>
+        <span>Profile</span>
+        <span>Name</span>
+        <span>Couser Module</span>
+        <span class="contact">Contact</span>
+      </UsersContainerTitle>
       <UsersPageContainer>
         {seek ? (
-          <div>Loading...</div>
-        ) : seek === null ? (
+          <LoadingDiv img ={img} text = 'Loading ...'/>
+        ) : seek === null && (
           searchResult ? (
             <UsersFind searchResult={searchResult} />
           ) : (
@@ -106,10 +130,7 @@ const List = () => {
               page={page}
             />
           )
-        ) : (
-          <div>No match found</div>
         )}
-
         <PaginationContainer>
           <Pagination
             count={pageCount}

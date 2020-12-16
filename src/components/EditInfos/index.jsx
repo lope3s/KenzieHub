@@ -1,17 +1,17 @@
 import ButtonNewTechs from "../ButtonNewTechs"
 import ButtonNewWorks from "../ButtonNewWorks"
 import EditTechStatus from "../../components/EditTechStatus"
-import { saveTechID } from "../../store/modules/techId/actions"
+import { saveTechInfos } from "../../store/modules/techInfos/actions"
+import { saveWorkInfos } from "../../store/modules/WorkInfos/actions"
 import { useDispatch } from "react-redux"
 import { useState } from "react"
 import axios from "axios"
 import { Container } from "./style"
 import { BsTrashFill } from "react-icons/bs"
 import { AiFillEdit } from "react-icons/ai"
-import { AiOutlineClose } from "react-icons/ai"
 import ProfilePreferences from "../../components/ProfilePreferences"
 import { Button } from "@material-ui/core"
-import EditWorkForm from "../EditWorkForm"
+import EditWorkForm2 from "../EditWorkForm2"
 import settings from "./settings.svg"
 
 const EditInfos = ({ setPublisher }) => {
@@ -51,6 +51,15 @@ const EditInfos = ({ setPublisher }) => {
 
   return (
     <Container>
+      <div className="closeContainer">
+        <Button
+          className="close"
+          variant="contained"
+          onClick={() => setPublisher(false)}
+        >
+          <span>Finish</span>
+        </Button>
+      </div>
       <div className="TechContainer">
         <div className="NewTechAcess">
           <span className="SessionName">Techs</span>
@@ -60,18 +69,19 @@ const EditInfos = ({ setPublisher }) => {
         </div>
 
         <div className="TechsEdits">
-          <div className="TechListConatainer">
+          <div className="TechListContainer">
             {user.techs.map((tech, index) => {
               return (
                 <div className="TechContainer" key={index}>
-                  <span className="TechInfo">
-                    {tech.title} - {tech.status}
-                  </span>
+                  <div className="TechInfo">
+                    <span className="title">{tech.title}</span>
+                    <span className="status">{tech.status}</span>
+                  </div>
                   <div className="buttonsContainer">
                     <button
                       className="EditTechStatusButton"
                       onClick={() => {
-                        dispatch(saveTechID(tech.id))
+                        dispatch(saveTechInfos(tech))
                         setChangeTechStatus(true)
                       }}
                     >
@@ -92,13 +102,7 @@ const EditInfos = ({ setPublisher }) => {
           </div>
           {changeTechStatus && (
             <div className="EditTechStatusContainer">
-              <EditTechStatus />
-              <button
-                className="CloseEditTechStatus"
-                onClick={() => setChangeTechStatus(false)}
-              >
-                <AiOutlineClose />
-              </button>
+              <EditTechStatus setChangeTechStatus={setChangeTechStatus} />
             </div>
           )}
         </div>
@@ -110,19 +114,32 @@ const EditInfos = ({ setPublisher }) => {
             <ButtonNewWorks />
           </div>
         </div>
-        <div>
+        <div className="WorkCardsContainer">
           {user.works.map((element) => (
-            <div>
-              <div>
-                <p>{element.title}</p>
+            <div className="WorkCardContainer">
+              <div className="WorkInfoContainer">
+                <p className="title">{element.title}</p>
+                <p className="description">{element.description}</p>
+                <a className="url" href={element.deploy_url}>
+                  {element.deploy_url}
+                </a>
               </div>
-              <button onClick={editWork}>Edit Work</button>
-              <button onClick={() => deleteWork(element.id)}>
-                Delete Work
-              </button>
-              {edit && <EditWorkForm id={element.id} />}
+              <div className="buttons">
+                <button className="edit" onClick={() => {
+                        dispatch(saveWorkInfos(element))
+                        setEdit(true)}}>
+                  <AiFillEdit />
+                </button>
+                <button
+                  className="delete"
+                  onClick={() => deleteWork(element.id)}
+                >
+                  <BsTrashFill />
+                </button>
+              </div>
             </div>
           ))}
+          {edit && <EditWorkForm2 setEdit={setEdit} />}
         </div>
       </div>
       <div className="preferencesDivisor">
@@ -132,13 +149,6 @@ const EditInfos = ({ setPublisher }) => {
         </div>
         <img src={settings} alt="Settings" />
       </div>
-      <Button
-        className="close"
-        variant="contained"
-        onClick={() => setPublisher(false)}
-      >
-        Close
-      </Button>
     </Container>
   )
 }

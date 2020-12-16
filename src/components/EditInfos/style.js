@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 
 export const Container = styled.div`
   border: 1px solid black;
@@ -19,39 +19,76 @@ export const Container = styled.div`
 
   .TechContainer {
     margin-top: 20px;
+    width: 100%;
 
     .NewTechAcess {
+      width: 100%;
       display: flex;
       align-items: flex-start;
+      justify-content: center;
       .SessionName {
-        font-family: "Roboto", sans-serif;
+        font-family: "Righteous", cursive;
         color: #fff;
         font-size: 20px;
         margin-right: 63px;
       }
     }
     .TechsEdits {
-      display: flex;
+      /* background-color: lightcoral; */
+      /* display: flex;
       flex-direction: column;
-      align-items: center;
-      .TechListConatainer {
+      align-items: center; */
+      .TechListContainer {
+        margin-top: 10px;
         display: flex;
         flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        /* background-color: lightblue; */
+        box-sizing: border-box;
+        padding: 5px;
+        /* border: 1px solid #1d3f70; */
+        border-radius: 10px;
 
         .TechContainer {
+          box-sizing: border-box;
+          background-color: #1d3f7075;
+          border-radius: 5px;
+          padding: 5px;
+          width: 150px;
           display: flex;
           flex-direction: column;
           margin-right: 5px;
 
+          .TechInfo {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: "Righteous", cursive;
+
+            .title {
+              color: #fff;
+              font-size: 16px;
+            }
+
+            .status {
+              color: #1d4ff0;
+              font-size: 14px;
+            }
+          }
+
           .buttonsContainer {
+            margin-top: 5px;
             display: flex;
             justify-content: space-around;
             align-items: center;
 
             button {
+              box-sizing: border-box;
               width: 30px;
               height: 30px;
-              border: none;
+              border: 1px solid #000;
               border-radius: 2px;
               background-color: #fff;
               transition: 0.2s;
@@ -61,9 +98,18 @@ export const Container = styled.div`
               cursor: pointer;
             }
 
+            .EditTechStatusButton {
+              background-color: #e5e5e5;
+              color: #1d4ff0;
+              border-color: #a2a2a2;
+            }
+            .EditTechStatusButton:hover {
+              background-color: #a2a2a2;
+            }
             .RemoveTechButton {
               color: #fff;
               background-color: #f00;
+              border-color: #a00;
             }
             .RemoveTechButton:hover {
               background-color: #a00;
@@ -72,8 +118,9 @@ export const Container = styled.div`
         }
       }
       .EditTechStatusContainer {
+        width: 100%;
         display: flex;
-        border: 1px solid #00000075;
+        justify-content: center;
         margin-top: 10px;
         padding: 5px;
         border-radius: 5px;
@@ -99,28 +146,99 @@ export const Container = styled.div`
   }
   .WorksContainer {
     margin-top: 20px;
+    width: 100%;
     .NewWorkAcess {
       display: flex;
       align-items: flex-start;
+      justify-content: center;
       .SessionName {
-        font-family: "Roboto", sans-serif;
+        font-family: "Righteous", cursive;
         color: #fff;
         font-size: 20px;
         margin-right: 63px;
+      }
+    }
+    .WorkCardsContainer {
+      box-sizing: border-box;
+      padding: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 10px;
+
+      /* border: 1px solid #1d3f70; */
+      border-radius: 10px;
+
+      .WorkCardContainer {
+        width: 45%;
+        min-height: 150px;
+        margin: 5px;
+        background-color: #1d3f7075;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-family: "Righteous", cursive;
+
+        .title {
+          color: #fff;
+          font-size: 20px;
+        }
+
+        .description {
+          color: #1d4ff0;
+        }
+
+        .url {
+          text-decoration: outline;
+          color: #aa0;
+          font-size: 14px;
+        }
+
+        .buttons {
+          margin-top: 5px;
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          .edit {
+            box-sizing: border-box;
+            border: 1px solid #fff;
+            width: 30px;
+            height: 30px;
+            color: #1d4ff0;
+            border-radius: 2px;
+            margin-right: 10px;
+            background-color: #fff;
+            cursor: pointer;
+          }
+
+          .delete {
+            box-sizing: border-box;
+            border: 1px solid #f00;
+            width: 30px;
+            height: 30px;
+            color: #fff;
+            border-radius: 2px;
+            cursor: pointer;
+            background-color: #f00;
+          }
+        }
       }
     }
   }
   .preferencesDivisor {
     width: 100%;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: space-between;
 
     .PreferencesContainer {
       margin: 20px;
       width: 330px;
       .title {
-        font-family: "Roboto", sans-serif;
+        font-family: "Righteous", cursive;
         color: #fff;
         font-size: 20px;
         margin-right: 63px;
@@ -130,12 +248,22 @@ export const Container = styled.div`
       width: 300px;
     }
   }
-  .close {
-    background-color: #3f51b5;
-    color: #fff;
-    margin-bottom: 20px;
-  }
-  .close:hover {
-    background-color: #303f9f;
+  .closeContainer {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    .close {
+      background-color: #0a0;
+      color: #fff;
+      margin-bottom: 20px;
+      transition: 0.2s;
+      span {
+        font-family: "Righteous", cursive;
+        text-transform: none;
+      }
+    }
+    .close:hover {
+      background-color: #070;
+    }
   }
 `

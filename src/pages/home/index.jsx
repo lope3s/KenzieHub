@@ -7,8 +7,14 @@ import {
 import homePageImage from "./space discovery wb.svg"
 import logo from "./logo.svg"
 import { Link } from "react-router-dom"
+import addUserThunk from "../../store/modules/listOfUsers/thunks"
+import { useDispatch } from "react-redux"
 
 const Home = () => {
+  const dispatch = useDispatch()
+  
+  dispatch(addUserThunk([]))
+
   return (
     <>
       <SectionContent>

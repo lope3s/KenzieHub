@@ -106,8 +106,7 @@ export const Container = styled.div`
     font-size: 27px;
 
     margin-top: 0;
-    margin-left: 88.5px;
-    text-align: initial;
+    text-align: center;
   }
 
   input {
@@ -115,5 +114,156 @@ export const Container = styled.div`
   }
   input::placeholder {
     font-family: "Righteous", cursive;
+  }
+
+  @media screen and (max-width: 320px) and (min-height: 545px) {
+    .MuiFormControl-root {
+      height: 84px !important;
+    }
+    button {
+      margin-top: 0vh !important;
+      font-size: 1rem !important;
+      width: 50% !important;
+      height: 6vh !important;
+    }
+  }
+  @media screen and (max-width: 289px) {
+    margin-top: 3vh;
+
+    .ContainerInputs {
+      margin: 0px;
+      width: 90%;
+      height: 81vh;
+      padding-bottom: 9%;
+    }
+    img {
+      display: none;
+    }
+    h3 {
+      text-align: center;
+    }
+    button {
+      margin-top: 0vh !important;
+      font-size: 1rem !important;
+      width: 50% !important;
+      height: 6vh !important;
+    }
+    input {
+      width: 180px;
+      height: 1vh;
+    }
+    .MuiFormControl-root {
+      width: 210px !important;
+    }
+  }
+  @media screen and (min-width: 290px) and (max-width: 360px) {
+    margin-top: 6vh;
+
+    .ContainerInputs {
+      margin: 0px;
+      width: 90%;
+      height: 72vh;
+      padding-bottom: 18%;
+    }
+    img {
+      display: none;
+    }
+    img {
+      display: none;
+    }
+    h3 {
+      text-align: center;
+    }
+    button {
+      margin-top: 0vh !important;
+    }
+    .MuiFormControl-root {
+      width: 270px !important;
+    }
+  }
+
+  @media screen and (min-width: 361px) and (max-width: 640px) {
+    margin-top: 6vh;
+
+    .ContainerInputs {
+      margin: 0px;
+      width: 90%;
+      height: 72vh;
+      padding-bottom: 12%;
+    }
+
+    img {
+      display: none;
+    }
+    h3 {
+      text-align: center;
+    }
+    button {
+      margin-top: 0vh !important;
+      font-size: 1rem !important;
+      width: 40% !important;
+      height: 6vh !important;
+    }
+  }
+  @media screen and (min-width: 640px) and (max-width: 768px) {
+    justify-content: center;
+    margin-top: 12vh;
+
+    img {
+      display: none;
+    }
+    .ContainerInputs {
+      height: 51vh;
+      padding-bottom: 12%;
+      margin: 0 auto;
+    }
+    .MuiFormControl-root {
+      margin-top: 2% !important;
+    }
+  }
+  @media screen and (min-width: 768px) and (max-width: 1024px) {
+    margin-top: 6vh;
+
+    .ContainerInputs {
+      height: 66vh;
+      padding-bottom: 12%;
+      margin: 0 auto;
+    }
+  }
+  @media screen and (min-width: 768px) and (max-width: 1024px) and (min-height: 1200px) {
+    flex-direction: column;
+
+    img {
+      display: none;
+    }
+    .MuiFormControl-root {
+      margin-top: 2% !important;
+    }
+    .ContainerInputs {
+      margin: 0 auto;
+      margin-top: 6vh !important;
+      height: 54vh;
+    }
+  }
+  @media screen and (min-width: 1024px) and (max-width: 1200px) and (min-height: 900px) {
+    img {
+      display: none;
+    }
+    .ContainerInputs {
+      margin-top: 3vh !important;
+      padding-bottom: 1%;
+    }
+  }
+  @media screen and (min-width: 1024px) and (max-width: 1280px) {
+    img {
+      width: 540px;
+    }
+    .MuiFormControl-root {
+      margin-top: 1% !important;
+      height: 9vh;
+    }
+    .ContainerInputs {
+      margin-top: -6vh;
+    }
   }
 `

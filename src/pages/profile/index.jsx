@@ -1,22 +1,26 @@
 // import store from "../../store"
-import { Main, Container, ContainerDiv, ContainerWork } from "./styles";
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
-import validationThunk from "../../store/modules/validationToken/thunks";
-import { useState, useEffect } from "react";
-import EditInfos from "../../components/EditInfos";
-import { FiSettings } from "react-icons/fi";
-const Profile = () => {
-  const dispatch = useDispatch();
-  const [publisher, setPublisher] = useState(false);
-  const [changeTechStatus, setChangeTechStatus] = useState(false);
+import { Main, Container, ContainerDiv, ContainerWork } from "./styles"
+import { useDispatch } from "react-redux"
+import { useSelector } from "react-redux"
+import validationThunk from "../../store/modules/validationToken/thunks"
+import { useState, useEffect } from "react"
+import EditInfos from "../../components/EditInfos"
+import { FiSettings } from "react-icons/fi"
+import addUserThunk from "../../store/modules/listOfUsers/thunks"
 
-  const auth = useSelector((state) => state.auth);
-  const user = JSON.parse(localStorage.getItem("infoLogged"));
-  console.log(user);
+const Profile = () => {  
+  const dispatch = useDispatch()
+  dispatch(addUserThunk([]))
+  const [publisher, setPublisher] = useState(false)
+  const [changeTechStatus, setChangeTechStatus] = useState(false)
+
+  const auth = useSelector((state) => state.auth)
+  const user = JSON.parse(localStorage.getItem("infoLogged"))
+  const token = localStorage.getItem("token")
+  console.log(user)
   useEffect(() => {
-    dispatch(validationThunk());
-  }, []);
+    dispatch(validationThunk())
+  }, [])
 
   return (
     <Main publisher={publisher}>
@@ -43,6 +47,13 @@ const Profile = () => {
               </div>
             </Container>
             <div className="AboutContainer">
+              {token && (
+                <div className="buttonContainer">
+                  <button className="Botao" onClick={() => setPublisher(true)}>
+                    <FiSettings />
+                  </button>
+                </div>
+              )}
               <div>
                 <div className="About">About Me</div>
                 <div className="AboutBio">{user.bio}</div>
@@ -103,13 +114,11 @@ const Profile = () => {
         ) : (
           <></>
         )}
-        <button className="Botao" onClick={() => setPublisher(true)}>
-          <FiSettings />
-        </button>
+
         {publisher && <EditInfos setPublisher={setPublisher} />}
       </ContainerDiv>
     </Main>
-  );
-};
+  )
+}
 
-export default Profile;
+export default Profile

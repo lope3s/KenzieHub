@@ -61,9 +61,71 @@ const Container = styled.main`
 
     background: #48a3da;
   }
-
   img {
     max-width: 630px;
+  }
+  .login-messageError {
+    font-family: "Righteous", cursive;
+    color: #f44336;
+  }
+
+  @media screen and (max-width: 320px) and (min-height: 568px) {
+    button {
+      width: 80%;
+    }
+  }
+
+  @media screen and (max-width: 540px) {
+    flex-direction: column;
+    align-items: center;
+
+    section {
+      width: 72%;
+    }
+    img {
+      display: none;
+    }
+    input {
+      height: 1vh;
+    }
+  }
+  @media screen and (min-width: 541px) and (max-width: 790px) {
+    flex-direction: column;
+    margin-top: 0px;
+
+    section {
+      width: 42%;
+      margin-left: auto;
+      margin-right: 12%;
+    }
+    img {
+      max-width: 420px;
+      margin-right: auto;
+      margin-left: 6%;
+    }
+  }
+
+  @media screen and (min-height: 1300px) and (max-width: 1024px) {
+    flex-direction: column;
+    margin-top: 3%;
+
+    img {
+      min-width: 666px;
+      margin-right: auto;
+      margin-left: 5%;
+    }
+    section {
+      margin-top: 7vh;
+    }
+  }
+
+  @media screen and (min-width: 810px) and (max-width: 1024px) {
+    section {
+      width: 30%;
+    }
+    img {
+      max-width: 510px;
+    }
   }
 `
 
