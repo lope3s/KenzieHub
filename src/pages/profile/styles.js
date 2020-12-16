@@ -110,6 +110,11 @@ export const ContainerDiv = styled.div`
       > .Techs {
         font-size: 16px;
         margin-right: 25px;
+        margin-top: -20px;
+        > div div {
+          margin-bottom: 0;
+        }
+
         > div b {
           font-size: 25px;
           @media (max-width: 800px) {
