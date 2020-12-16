@@ -5,7 +5,7 @@ export const UsersPageContainer = styled.div`
   height: 75vh;
   overflow-y: auto;
   overflow-x: hidden;
-  @media (min-width: 320px) and (max-width: 768px) {
+  @media (min-width: 280px) and (max-width: 768px){
     height: 70vh;
   }
 `
@@ -15,15 +15,7 @@ export const PaginationContainer = styled.div`
   align-items: center;
   justify-content: space-between;
 
-  nav > ul > li > button {
-    color: #fff;
-  }
-
-  .MuiInputBase-root {
-    color: #fff;
-  }
-
-  @media (min-width: 320px) and (max-width: 768px) {
+  @media (min-width: 280px) and (max-width: 768px){
     margin: 2vw;
 
     nav > ul > li > button {
@@ -72,7 +64,7 @@ export const UsersContainerTitle = styled.div`
   color: #fff;
   font-family: "Righteous", cursive;
 
-  @media (min-width: 320px) and (max-width: 768px) {
+  @media (min-width: 280px) and (max-width: 768px){
     margin: 0px;
   }
 `

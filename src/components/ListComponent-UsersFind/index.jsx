@@ -1,5 +1,5 @@
-import { UserContainer } from "../Users/style";
-import { UsersContainer } from "../ListComponent-UsersMap/style";
+import { UserContainer } from "../Users/style"
+import { UsersContainer } from "../listComponent-UsersMap/style"
 
 import { useHistory } from "react-router-dom";
 
