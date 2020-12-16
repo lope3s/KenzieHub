@@ -8,7 +8,9 @@ export const Container = styled.div`
     input {
       padding: 10px;
       width: 100%;
-      color: #fff;
+      background-color: #fff;
+      border-radius: 4px;
+      font-family: "Righteous", cursive;
     }
 
     .buttons {
@@ -31,5 +33,27 @@ export const Container = styled.div`
         font-weight: 700;
       }
     }
+  }
+
+  .message {
+    font-family: "Righteous", cursive;
+    width: 100%;
+    margin-top: 10px;
+    border-radius: 5px;
+    box-sizing: border-box;
+    padding: 5px;
+    text-align: center;
+  }
+
+  .sucess {
+    color: #070;
+    border: 1px solid #070;
+    background-color: #afa;
+  }
+
+  .error {
+    color: #700;
+    border: 1px solid #700;
+    background-color: #faa;
   }
 `

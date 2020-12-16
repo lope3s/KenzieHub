@@ -195,8 +195,9 @@ const ProfilePreferences = () => {
         </div>
       </form>
       <form onSubmit={bioField.handleSubmit(handleSubmit)}>
-        <div className="inputField">
+        <div className="inputField inputFieldBio">
           <TextField
+            className="bio"
             margin="normal"
             variant="outlined"
             placeholder="Bio"
@@ -214,6 +215,7 @@ const ProfilePreferences = () => {
       </form>
       <div className="inputField">
         <TextField
+          className="file"
           type="file"
           margin="normal"
           variant="outlined"

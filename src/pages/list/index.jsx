@@ -10,8 +10,15 @@ import UsersFind from "../../components/ListComponent-UsersFind"
 import UsersMap from "../../components/ListComponent-UsersMap"
 
 import Pagination from "@material-ui/lab/Pagination"
-import { Select, MenuItem } from "@material-ui/core"
-import { UsersPageContainer, PaginationContainer } from "./style"
+import { Select, MenuItem, TextField, Button } from "@material-ui/core"
+import {
+  UsersPageContainer,
+  PaginationContainer,
+  SearchContainer,
+  UsersContainerTitle,
+} from "./style"
+
+import LoadingDiv from "../../components/loadingComponent"
 
 const List = () => {
   const [seek, setSeek] = useState(null)
@@ -86,16 +93,31 @@ const List = () => {
 
   return (
     <>
-      <input
-        value={search}
-        onChange={handleSearchInput}
-        placeholder="search user"
-      />
-      <button onClick={() => handleSearchButton()}>Search</button>
-
+      <SearchContainer>
+        <TextField
+          margin="normal"
+          variant="outlined"
+          placeholder="Search Field"
+          value={search}
+          onChange={handleSearchInput}
+        />
+        <Button
+          variant="contained"
+          color="secondary"
+          onClick={() => handleSearchButton()}
+        >
+          Search
+        </Button>
+      </SearchContainer>
+      <UsersContainerTitle>
+        <span>Profile</span>
+        <span>Name</span>
+        <span>Couser Module</span>
+        <span class="contact">Contact</span>
+      </UsersContainerTitle>
       <UsersPageContainer>
         {seek ? (
-          <div>Loading...</div>
+          <LoadingDiv />
         ) : seek === null ? (
           searchResult ? (
             <UsersFind searchResult={searchResult} />
