@@ -3,7 +3,7 @@ import ButtonNewWorks from "../ButtonNewWorks"
 import EditTechStatus from "../../components/EditTechStatus"
 import { saveTechInfos } from "../../store/modules/techInfos/actions"
 import { useDispatch } from "react-redux"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import axios from "axios"
 import { Container } from "./style"
 import { BsTrashFill } from "react-icons/bs"
@@ -14,10 +14,26 @@ import EditWorkForm from "../EditWorkForm"
 import settings from "./settings.svg"
 
 const EditInfos = ({ setPublisher }) => {
-  const user = JSON.parse(localStorage.getItem("infoLogged"))
+  let user = JSON.parse(localStorage.getItem("infoLogged"))
   const dispatch = useDispatch()
   const [changeTechStatus, setChangeTechStatus] = useState(false)
   const [edit, setEdit] = useState(false)
+  const [updateInfo, setUpdateInfo] = useState(false)
+
+  const changeInfos = () => {
+    user = JSON.parse(localStorage.getItem("infoLogged"))
+    setUpdateInfo(false)
+  }
+
+  useEffect(() => {
+    if (updateInfo) {
+      console.log({
+        updateInfo,
+        techs: user.techs,
+      })
+      changeInfos()
+    }
+  }, [updateInfo])
 
   const handleRemoveTech = (id) => {
     console.log(id)
@@ -32,6 +48,7 @@ const EditInfos = ({ setPublisher }) => {
         let currentTechs = user.techs.filter((current) => current.id !== id)
         user.techs = currentTechs
         localStorage.setItem("infoLogged", JSON.stringify(user))
+        setUpdateInfo(true)
       })
       .catch((error) => console.log(error))
   }
@@ -71,7 +88,7 @@ const EditInfos = ({ setPublisher }) => {
         <div className="NewTechAcess">
           <span className="SessionName">Techs</span>
           <div className="NewTechContainer">
-            <ButtonNewTechs />
+            <ButtonNewTechs setUpdateInfo={setUpdateInfo} />
           </div>
         </div>
 
@@ -109,7 +126,10 @@ const EditInfos = ({ setPublisher }) => {
           </div>
           {changeTechStatus && (
             <div className="EditTechStatusContainer">
-              <EditTechStatus setChangeTechStatus={setChangeTechStatus} />
+              <EditTechStatus
+                setChangeTechStatus={setChangeTechStatus}
+                setUpdateInfo={setUpdateInfo}
+              />
             </div>
           )}
         </div>
@@ -137,7 +157,9 @@ const EditInfos = ({ setPublisher }) => {
                 </button>
                 <button
                   className="delete"
-                  onClick={() => deleteWork(element.id)}
+                  onClick={() => {
+                    deleteWork(element.id)
+                  }}
                 >
                   <BsTrashFill />
                 </button>

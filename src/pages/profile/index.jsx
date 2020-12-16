@@ -93,11 +93,11 @@ const Profile = () => {
                 <div>Works</div>
                 <div>
                   <div className="MapWorks">
-                    {user.works ? (
+                    {user.works.length ? (
                       user.works.map((element) => (
                         <div>
-                          <div>{element.title}</div>
-                          <div>{element.description}</div>
+                          {element.title} - {element.description}
+                          {element.deploy_url}
                         </div>
                       ))
                     ) : (
