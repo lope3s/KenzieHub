@@ -54,13 +54,19 @@ const ProfilePreferences = () => {
   const courseField = useForm({ resolver: yupResolver(courseSchema) })
   const bioField = useForm({ resolver: yupResolver(bioSchema) })
 
+  console.log(JSON.parse(localStorage.getItem("infoLogged")))
+
   const handleSubmit = (data) => {
     console.log(data)
     axios
       .put("https://kenziehub.me/profile", data, {
         headers: { Authorization: `Bearer ${token}` },
       })
-      .then((res) => console.log(res))
+      .then((res) => {
+        // localStorage.removeItem("infoLogged")
+        localStorage.setItem("infoLogged", JSON.stringify(res.data))
+        console.log(JSON.parse(localStorage.getItem("infoLogged")))
+      })
   }
 
   const handleAvatarChange = (e) => {
@@ -189,8 +195,9 @@ const ProfilePreferences = () => {
         </div>
       </form>
       <form onSubmit={bioField.handleSubmit(handleSubmit)}>
-        <div className="inputField">
+        <div className="inputField inputFieldBio">
           <TextField
+            className="bio"
             margin="normal"
             variant="outlined"
             placeholder="Bio"
@@ -208,6 +215,7 @@ const ProfilePreferences = () => {
       </form>
       <div className="inputField">
         <TextField
+          className="file"
           type="file"
           margin="normal"
           variant="outlined"

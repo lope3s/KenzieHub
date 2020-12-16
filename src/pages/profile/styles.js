@@ -1,12 +1,13 @@
-import styled, { css } from "styled-components";
+import styled, { css } from "styled-components"
 
 export const Main = styled.div`
+  height: 94vh;
   ${({ publisher }) =>
     publisher &&
     css`
       background-color: #00000075;
-    `}
-`;
+    `};
+`
 
 export const Container = styled.div`
   text-align: center;
@@ -61,17 +62,17 @@ export const Container = styled.div`
       right: 37.5%;
     }
   }
-`;
+`
 
 export const ContainerDiv = styled.div`
-  > .Botao {
+  .Botao {
     background-color: transparent;
     color: white;
     border-radius: 50px;
     border: 0;
     > svg {
-      width: 45px;
-      height: 45px;
+      width: 30px;
+      height: 30px;
     }
   }
   .Container {
@@ -92,6 +93,12 @@ export const ContainerDiv = styled.div`
   }
   > div .AboutContainer {
     width: 90vw;
+    .buttonContainer {
+      padding: 5px;
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+    }
     > div .AboutBio {
       font-size: 25px;
     }
@@ -138,7 +145,7 @@ export const ContainerDiv = styled.div`
       flex-direction: column;
     }
   }
-`;
+`
 export const ContainerWork = styled.div`
   font-size: 25px;
   color: white;
@@ -165,4 +172,4 @@ export const ContainerWork = styled.div`
       }
     }
   }
-`;
+`

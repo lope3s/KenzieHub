@@ -2,12 +2,12 @@ import { useForm } from "react-hook-form"
 import * as yup from "yup"
 import { yupResolver } from "@hookform/resolvers/yup"
 import { TextField, Button } from "@material-ui/core"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import axios from "axios"
 import { Container } from "./style"
 
 const NewWorks = ({ setEditWorks }) => {
-  const [error, setError] = useState("")
+  const [sucess, setSucess] = useState(null)
   const schema = yup.object().shape({
     title: yup.string().required("cannot be blank"),
     description: yup.string().required("cannot be blank"),
@@ -35,10 +35,17 @@ const NewWorks = ({ setEditWorks }) => {
           },
         }
       )
-      .catch(() =>
-        setError("User Already have this Work, created you can only update it")
-      )
+      .then((res) => setSucess(true))
+      .catch((error) => setSucess(false))
   }
+
+  useEffect(() => {
+    if (sucess) {
+      setTimeout(() => {
+        setEditWorks(false)
+      }, 3000)
+    }
+  }, [sucess])
 
   return (
     <Container>
@@ -88,8 +95,14 @@ const NewWorks = ({ setEditWorks }) => {
             Cancel
           </Button>
         </div>
-        {error && <p>{error}</p>}
       </form>
+      {sucess === true ? (
+        <p className="message sucess">You have successfully added your work!</p>
+      ) : sucess === false ? (
+        <p className="message error">An error has occurred</p>
+      ) : (
+        ""
+      )}
     </Container>
   )
 }
