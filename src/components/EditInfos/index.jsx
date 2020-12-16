@@ -1,7 +1,7 @@
 import ButtonNewTechs from "../ButtonNewTechs"
 import ButtonNewWorks from "../ButtonNewWorks"
 import EditTechStatus from "../../components/EditTechStatus"
-import { saveTechInfos } from "../../store/modules/techId/actions"
+import { saveTechInfos } from "../../store/modules/techInfos/actions"
 import { useDispatch } from "react-redux"
 import { useState } from "react"
 import axios from "axios"

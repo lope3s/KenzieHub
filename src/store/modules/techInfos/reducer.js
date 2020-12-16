@@ -1,4 +1,4 @@
-import { ADD_TECH } from "./actionTYpe"
+import { ADD_TECH } from "./actionType"
 
 const techInfosReducer = (state = {}, action) => {
   switch (action.type) {
