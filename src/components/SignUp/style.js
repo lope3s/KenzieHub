@@ -116,6 +116,17 @@ export const Container = styled.div`
     font-family: "Righteous", cursive;
   }
 
+  @media screen and (max-width: 320px) and (min-height: 545px) {
+    .MuiFormControl-root {
+      height: 84px !important;
+    }
+    button {
+      margin-top: 0vh !important;
+      font-size: 1rem !important;
+      width: 50% !important;
+      height: 6vh !important;
+    }
+  }
   @media screen and (max-width: 289px) {
     margin-top: 3vh;
 
@@ -178,7 +189,7 @@ export const Container = styled.div`
       margin: 0px;
       width: 90%;
       height: 72vh;
-      padding-bottom: 9%;
+      padding-bottom: 12%;
     }
 
     img {
@@ -189,6 +200,9 @@ export const Container = styled.div`
     }
     button {
       margin-top: 0vh !important;
+      font-size: 1rem !important;
+      width: 40% !important;
+      height: 6vh !important;
     }
   }
   @media screen and (min-width: 640px) and (max-width: 768px) {
@@ -207,21 +221,49 @@ export const Container = styled.div`
       margin-top: 2% !important;
     }
   }
+  @media screen and (min-width: 768px) and (max-width: 1024px) {
+    margin-top: 6vh;
+
+    .ContainerInputs {
+      height: 66vh;
+      padding-bottom: 12%;
+      margin: 0 auto;
+    }
+  }
   @media screen and (min-width: 768px) and (max-width: 1024px) and (min-height: 1200px) {
     flex-direction: column;
 
     img {
+      display: none;
     }
     .MuiFormControl-root {
       margin-top: 2% !important;
     }
     .ContainerInputs {
       margin: 0 auto;
+      margin-top: 6vh !important;
+      height: 54vh;
+    }
+  }
+  @media screen and (min-width: 1024px) and (max-width: 1200px) and (min-height: 900px) {
+    img {
+      display: none;
+    }
+    .ContainerInputs {
+      margin-top: 3vh !important;
+      padding-bottom: 1%;
     }
   }
   @media screen and (min-width: 1024px) and (max-width: 1280px) {
+    img {
+      width: 540px;
+    }
     .MuiFormControl-root {
-      margin-top: 2% !important;
+      margin-top: 1% !important;
+      height: 9vh;
+    }
+    .ContainerInputs {
+      margin-top: -6vh;
     }
   }
 `
