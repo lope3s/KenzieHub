@@ -1,13 +1,13 @@
-import styled, { css } from "styled-components"
+import styled, { css } from "styled-components";
 
 export const Main = styled.div`
-  height: 94vh;
+  height: 91vh;
   ${({ publisher }) =>
     publisher &&
     css`
       background-color: #00000075;
     `};
-`
+`;
 
 export const Container = styled.div`
   text-align: center;
@@ -15,23 +15,75 @@ export const Container = styled.div`
   align-items: center;
   display: flex;
   overflow: hidden;
+  @media (max-width: 500px) {
+    > div {
+      justify-content: space-between;
+      width: 90vw;
+    }
+  }
+  > div div {
+    @media (max-width: 770px) {
+      margin-bottom: 110px;
+    }
+    @media (max-width: 370px) {
+      margin-bottom: 0;
+    }
+  }
   > div div img {
     margin-top: 15px;
     width: 150px;
     height: 150px;
-    @media (max-width: 800px) {
+    @media (max-width: 600px) {
+      margin-top: 0;
+      margin-bottom: 100px;
+    }
+    @media (max-width: 600px) {
+      margin-top: 17px;
+      margin-bottom: 100px;
+    }
+    @media (max-width: 500px) {
       height: 120px;
       width: 120px;
+      margin-bottom: 5vh;
     }
+
     display: flex;
     border-radius: 50%;
   }
   > div div div {
     > span {
       color: white;
-      margin-top: 100px;
+      margin-top: 90px;
       font-size: 25px;
       font-family: "Righteous", sans-serif;
+
+      @media (max-width: 1300px) {
+        margin-top: 50px;
+      }
+      @media (max-width: 770px) {
+        font-size: 20px;
+        margin-top: 60px;
+        margin-left: 15px;
+      }
+      @media (max-width: 600px) {
+        font-size: 20px;
+        margin-top: 15px;
+        margin-left: 15px;
+      }
+      @media (max-width: 500px) {
+        font-size: 20px;
+        margin-top: 0px;
+      }
+      @media (max-width: 400px) {
+        font-size: 20px;
+        margin-top: 0px;
+        margin-left: 80px;
+      }
+      @media (max-width: 300px) {
+        font-size: 20px;
+        margin-top: 0px;
+        margin-left: 80px;
+      }
     }
     background-color: rgba(258, 258, 258, 0.06);
     background-size: cover;
@@ -40,6 +92,9 @@ export const Container = styled.div`
     top: 18%;
 
     height: 20%;
+    @media (max-width: 1300px) {
+      height: 15%;
+    }
     width: 15%;
 
     left: 42.5%;
@@ -50,15 +105,16 @@ export const Container = styled.div`
     justify-content: center;
     display: flex;
     @media (max-width: 800px) {
-      > div {
-        justify-content: space-between;
-        width: 90vw;
-      }
-    }
-    @media (max-width: 800px) {
       width: 25%;
       top: 12%;
       height: 15%;
+      left: 37.5%;
+      right: 37.5%;
+    }
+    @media (max-width: 770px) {
+      width: 25%;
+      top: 30%;
+      height: 13%;
       left: 37.5%;
       right: 37.5%;
     }
@@ -69,8 +125,11 @@ export const Container = styled.div`
       left: 37.5%;
       right: 37.5%;
     }
+    @media (max-width: 600px) {
+      background-color: transparent;
+    }
   }
-`
+`;
 
 export const ContainerDiv = styled.div`
   .Botao {
@@ -88,6 +147,7 @@ export const ContainerDiv = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
     @media (max-width: 800px) {
       height: 83vh;
     }
@@ -104,6 +164,9 @@ export const ContainerDiv = styled.div`
   }
   > div .AboutContainer {
     width: 90vw;
+    @media (max-width: 600px) {
+      margin-bottom: 110px;
+    }
     .buttonContainer {
       padding: 5px;
       width: 100%;
@@ -164,7 +227,7 @@ export const ContainerDiv = styled.div`
       flex-direction: column;
     }
   }
-`
+`;
 export const ContainerWork = styled.div`
   font-size: 25px;
   color: white;
@@ -174,8 +237,12 @@ export const ContainerWork = styled.div`
   border-radius: 5px;
   @media (max-width: 800px) {
     font-size: 20px;
-    margin-top: 20px;
+    margin-top: -50px;
     width: 60vw;
+  }
+  @media (max-width: 770px) {
+    font-size: 20px;
+    margin-top: -100px;
   }
 
   background-color: rgba(258, 258, 258, 0.06);
@@ -190,4 +257,14 @@ export const ContainerWork = styled.div`
       }
     }
   }
-`
+  @media (max-width: 770px) {
+    font-size: 20px;
+    margin-top: 50px;
+    width: 60vw;
+  }
+  @media (max-width: 550px) {
+    font-size: 20px;
+    margin-top: -50px;
+    width: 60vw;
+  }
+`;
