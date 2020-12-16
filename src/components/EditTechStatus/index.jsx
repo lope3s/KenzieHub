@@ -7,7 +7,8 @@ import { useState, useEffect } from "react"
 import axios from "axios"
 import { Container } from "./style"
 
-const EditTechStatus = ({ setChangeTechStatus }) => {
+const EditTechStatus = ({ setChangeTechStatus, setUpdateInfo }) => {
+  const dataLocal = JSON.parse(localStorage.getItem("infoLogged"))
   const [newStatus, setNewStatus] = useState("")
   const [sucess, setSucess] = useState(null)
   const techInfos = useSelector((state) => state.techInfos)
@@ -35,7 +36,18 @@ const EditTechStatus = ({ setChangeTechStatus }) => {
           },
         }
       )
-      .then((res) => setSucess(true))
+      .then((res) => {
+        let index = dataLocal.techs.findIndex((obj) => obj.id === res.data.id)
+        dataLocal.techs[index] = res.data
+        localStorage.setItem("infoLogged", JSON.stringify(dataLocal))
+        console.log({
+          name: dataLocal.techs[index].title,
+          index,
+          editStatus: res,
+        })
+        setSucess(true)
+        setUpdateInfo(true)
+      })
       .catch((error) => setSucess(false))
   }
 
@@ -70,9 +82,9 @@ const EditTechStatus = ({ setChangeTechStatus }) => {
           }}
         >
           <option aria-label="None" value="" />
-          <option value="Iniciante">Beginner</option>
-          <option value="Intermediário">intermediary</option>
-          <option value="Avançado">Advanced</option>
+          <option value="Begginer">Beginner</option>
+          <option value="Intermediate">Intermediate</option>
+          <option value="Advanced">Advanced</option>
         </Select>
         <div className="buttons">
           <Button
