@@ -1,13 +1,12 @@
 import {Container} from './style'
-import loadingImage from './seo-bw.png'
 
-const LoadingDiv = () => {
+const LoadingDiv = ({img, text}) => {
 
     return(
 
         <Container>
-            <img src = {loadingImage} />
-            <div>Loading ...</div>
+            <img src = {img} />
+            <div>{text}</div>
         </Container>
     )
 

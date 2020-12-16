@@ -1,7 +1,17 @@
 import { Main, Container, ContainerDiv, ContainerWork } from "./styles"
+import { useDispatch } from "react-redux"
+import addUserThunk from "../../store/modules/listOfUsers/thunks"
+
 const UserSearch = () => {
+  const dispatch = useDispatch()
+  
+  dispatch(addUserThunk([]))
+
+
+  localStorage.setItem('lastPath', '')
+
   const user = JSON.parse(localStorage.getItem("userSearch"))
-  console.log(user)
+  
 
   return (
     <Main>

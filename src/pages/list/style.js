@@ -4,12 +4,24 @@ export const UsersPageContainer = styled.div`
   width: 100vw;
   height: 75vh;
   overflow-y: auto;
+  overflow-x: hidden;
+  @media (min-width: 320px) and (max-width: 768px){
+    height: 70vh;
+  }
 `;
 export const PaginationContainer = styled.div`
   margin: 0 5vw 0 5vw;
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  @media (min-width: 320px) and (max-width: 768px){
+    margin: 2vw;
+
+    nav > ul > li > button {
+      min-width: 0.6rem;
+    }
+  }
 `;
 
 export const SearchContainer = styled.div`
@@ -21,7 +33,7 @@ export const SearchContainer = styled.div`
   button {
     margin-top: 1.3vh;
     margin-left: 3vw;
-    height: 9vh;
+    height: 56px;
     align-self: center;
     background-color: #48A3DA;
     min-width: 15vw;
@@ -51,5 +63,9 @@ export const UsersContainerTitle = styled.div`
   justify-content: space-around;
   color: #fff;
   font-family:"Righteous", cursive;
+
+  @media (min-width: 320px) and (max-width: 768px){
+    margin: 0px;
+  }
 
 `
