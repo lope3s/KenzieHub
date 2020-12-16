@@ -84,4 +84,8 @@ export const Container = styled.div`
   .error {
     color: #700;
   }
+
+  @media screen and (max-width: 640px) {
+    width: 80vw;
+  }
 `

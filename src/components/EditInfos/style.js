@@ -263,7 +263,34 @@ export const Container = styled.div`
       }
     }
     .close:hover {
-      background-color: #070;
+      background-color: #0a0;
     }
+  }
+
+  @media screen and (max-width: 640px) {
+    width: 85vw;
+    height: 80vh;
+    .preferencesDivisor {
+      flex-direction: column;
+      align-items: center;
+
+      .PreferencesContainer {
+        width: 100%;
+      }
+
+      img {
+        display: none;
+      }
+    }
+  }
+  @media screen and (min-width: 640px) and (max-width: 768px) {
+    height: 90vh;
+    width: 90vw;
+  }
+  @media screen and (min-width: 768px) and (max-width: 1024px) {
+    height: 90vh;
+  }
+  @media screen and (min-width: 1024px) and (max-width: 1280px) {
+    height: 90vh;
   }
 `
