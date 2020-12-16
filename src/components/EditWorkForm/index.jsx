@@ -56,6 +56,7 @@ const EditWorkForm = ({ setEdit, setUpdateInfo }) => {
         let index = dataLocal.works.findIndex((obj) => obj.id === res.data.id)
         dataLocal.works[index] = res.data
         localStorage.setItem("infoLogged", JSON.stringify(dataLocal))
+        setSucess(true)
         setUpdateInfo(true)
       })
       .catch(() =>
@@ -79,81 +80,94 @@ const EditWorkForm = ({ setEdit, setUpdateInfo }) => {
 
   return (
     <Container>
+      {sucess ? (
+        <p className="message sucess">Modifications saved successfully!</p>
+      ) : sucess === false ? (
+        <p className="message error">An error has occurred</p>
+      ) : (
+        ""
+      )}
       <p className="title">{techInfos.title}</p>
       <p className="description">{techInfos.description}</p>
       <p className="deployUrl">{techInfos.deploy_url}</p>
       <form onSubmit={titleField.handleSubmit(handleWorks)}>
-        <TextField
-          placeholder="Work Title"
-          margin="normal"
-          variant="outlined"
-          name="title"
-          error={!!titleField.errors.title}
-          helperText={titleField.errors.title?.message}
-          inputRef={titleField.register}
-        />
-        <Button
-          className="btn change"
-          type="submit"
-          variant="contained"
-          color="primary"
-        >
-          Save
-        </Button>
-        {error && <p>{error}</p>}
+        <div className="InputField">
+          <TextField
+            placeholder="Title"
+            margin="normal"
+            variant="outlined"
+            name="title"
+            error={!!titleField.errors.title}
+            helperText={titleField.errors.title?.message}
+            inputRef={titleField.register}
+          />
+          <Button
+            className="btn change"
+            type="submit"
+            variant="contained"
+            color="primary"
+          >
+            Save
+          </Button>
+          {error && <p>{error}</p>}
+        </div>
       </form>
       <form onSubmit={descriptionField.handleSubmit(handleWorks)}>
-        <TextField
-          placeholder="Work Description"
-          margin="normal"
-          variant="outlined"
-          name="description"
-          error={!!descriptionField.errors.description}
-          helperText={descriptionField.errors.description?.message}
-          inputRef={descriptionField.register}
-        />
-        <Button
-          className="btn change"
-          type="submit"
-          variant="contained"
-          color="primary"
-        >
-          Save
-        </Button>
-        {error && <p>{error}</p>}
+        <div className="InputField">
+          <TextField
+            placeholder="Description"
+            margin="normal"
+            variant="outlined"
+            name="description"
+            error={!!descriptionField.errors.description}
+            helperText={descriptionField.errors.description?.message}
+            inputRef={descriptionField.register}
+          />
+          <Button
+            className="btn change"
+            type="submit"
+            variant="contained"
+            color="primary"
+          >
+            Save
+          </Button>
+          {error && <p>{error}</p>}
+        </div>
       </form>
       <form onSubmit={deployUrlField.handleSubmit(handleWorks)}>
-        <TextField
-          placeholder="Work Deploy_Url"
-          margin="normal"
-          variant="outlined"
-          name="deployUrl"
-          error={!!deployUrlField.errors.deployUrl}
-          helperText={deployUrlField.errors.deployUrl?.message}
-          inputRef={deployUrlField.register}
-        />
-        <Button
-          className="btn change"
-          type="submit"
-          variant="contained"
-          color="primary"
-        >
-          Save
-        </Button>
-        {error && <p>{error}</p>}
+        <div className="InputField">
+          <TextField
+            placeholder="Deploy URL"
+            margin="normal"
+            variant="outlined"
+            name="deployUrl"
+            error={!!deployUrlField.errors.deployUrl}
+            helperText={deployUrlField.errors.deployUrl?.message}
+            inputRef={deployUrlField.register}
+          />
+          <Button
+            className="btn change"
+            type="submit"
+            variant="contained"
+            color="primary"
+          >
+            Save
+          </Button>
+          {error && <p>{error}</p>}
+        </div>
       </form>
-      <from>
+      <form>
         <Button
           className="btn cancel"
           variant="contained"
-          color="secondary"
+          color="primary"
           onClick={() => {
             setEdit(false)
           }}
         >
           Cancel
         </Button>
-      </from>
+      </form>
     </Container>
   )
 }

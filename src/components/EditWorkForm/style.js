@@ -36,46 +36,42 @@ export const Container = styled.div`
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    /* background-color: lightcoral; */
+    width: 100%;
 
-    select {
+    .InputField {
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+
+    input {
       background-color: #fff;
       padding: 10px;
-    }
-
-    select:focus {
-      background-color: #fff;
       border-radius: 4px;
+      font-family: "Righteous", cursive;
+      width: 150px;
     }
 
-    .buttons {
-      margin-top: 10px;
+    .btn {
+      font-family: "Righteous", cursive;
+    }
 
-      .btn {
+    .change {
+      margin-top: 5px;
+      margin-left: 5px;
+      background-color: #48a3da;
+    }
+
+    .cancel {
+      background-color: #f00;
+      span {
         font-family: "Righteous", cursive;
-        text-transform: none;
-        box-sizing: border-box;
-        border: none;
-      }
-
-      .change {
-        margin-right: 5px;
-        background-color: #0a0;
-        transition: 0.2s;
-      }
-      .change:hover {
-        background-color: #070;
-      }
-
-      .cancel {
-        background-color: #a00;
-        transition: 0.2s;
-      }
-
-      .cancel:hover {
-        background-color: #700;
       }
     }
   }
+
   .message {
     width: 100%;
     margin-top: 5px;
