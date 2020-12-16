@@ -1,17 +1,17 @@
-import { Switch, Route } from "react-router-dom";
-import Home from "../pages/home";
-import List from "../pages/list";
-import Profile from "../pages/profile";
-import SignIn from "../pages/signIn";
-import SingnUp from "../pages/signUp";
-import UserSearch from '../pages/userSearch'
-import { useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { Switch, Route } from "react-router-dom"
+import Home from "../pages/home"
+import List from "../pages/list"
+import Profile from "../pages/profile"
+import SignIn from "../pages/signIn"
+import SingnUp from "../pages/signUp"
+import UserSearch from "../pages/userSearch"
+import { useSelector } from "react-redux"
+import { useHistory } from "react-router-dom"
 
 const Routes = () => {
-  const isAuth = useSelector((state) => state.auth);
-  const history = useHistory();
-  console.log(isAuth);
+  const isAuth = useSelector((state) => state.auth)
+  const history = useHistory()
+  console.log(isAuth)
   return (
     <>
       <Switch>
@@ -26,7 +26,7 @@ const Routes = () => {
         <Route exact path="/userSearch" component={UserSearch} />
       </Switch>
     </>
-  );
-};
+  )
+}
 
-export default Routes;
+export default Routes
