@@ -2,6 +2,7 @@ import ButtonNewTechs from "../ButtonNewTechs"
 import ButtonNewWorks from "../ButtonNewWorks"
 import EditTechStatus from "../../components/EditTechStatus"
 import { saveTechInfos } from "../../store/modules/techInfos/actions"
+import { saveWorkInfos } from "../../store/modules/WorkInfos/actions"
 import { useDispatch } from "react-redux"
 import { useEffect, useState } from "react"
 import axios from "axios"
@@ -153,7 +154,13 @@ const EditInfos = ({ setPublisher }) => {
                 </a>
               </div>
               <div className="buttons">
-                <button className="edit" onClick={editWork}>
+                <button
+                  className="edit"
+                  onClick={() => {
+                    dispatch(saveWorkInfos(element))
+                    setEdit(true)
+                  }}
+                >
                   <AiFillEdit />
                 </button>
                 <button
@@ -165,11 +172,11 @@ const EditInfos = ({ setPublisher }) => {
                   <BsTrashFill />
                 </button>
               </div>
-              {edit && (
-                <EditWorkForm id={element.id} setUpdateInfo={setUpdateInfo} />
-              )}
             </div>
           ))}
+          {edit && (
+            <EditWorkForm setEdit={setEdit} setUpdateInfo={setUpdateInfo} />
+          )}
         </div>
       </div>
       <div className="preferencesDivisor">

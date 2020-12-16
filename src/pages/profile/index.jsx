@@ -6,8 +6,11 @@ import validationThunk from "../../store/modules/validationToken/thunks"
 import { useState, useEffect } from "react"
 import EditInfos from "../../components/EditInfos"
 import { FiSettings } from "react-icons/fi"
-const Profile = () => {
+import addUserThunk from "../../store/modules/listOfUsers/thunks"
+
+const Profile = () => {  
   const dispatch = useDispatch()
+  dispatch(addUserThunk([]))
   const [publisher, setPublisher] = useState(false)
   const [changeTechStatus, setChangeTechStatus] = useState(false)
 

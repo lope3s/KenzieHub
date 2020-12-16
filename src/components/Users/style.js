@@ -14,7 +14,13 @@ export const UserContainer = styled.div`
     overflow-y: auto;
     overflow-x: auto;
     width: 15vw;
-    font-family:Roboto, sans-serif
+    font-family:Roboto, sans-serif;
+    font-size: 1em;
+
+    @media (min-width: 320px) and (max-width: 768px) {
+    margin: 0 2vw 0 2vw;
+    font-size: 0.65rem;
+    }
   }
   
   img{
@@ -22,4 +28,8 @@ export const UserContainer = styled.div`
     height:40px;
     border-radius:100%;
   }
+
+  @media (min-width: 320px) and (max-width: 768px) {
+    height: 15vh;
+    }
 `;
