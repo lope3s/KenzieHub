@@ -1,16 +1,20 @@
 import { useState } from "react"
 import NewWorks from "../NewWorks"
+import { Button } from "@material-ui/core"
+import { Container } from "./style"
 
 const ButtonNewWorks = () => {
   const [editWorks, setEditWorks] = useState(false)
   const handleShowWorks = () => {
-    setEditWorks(!editWorks)
+    setEditWorks(true)
   }
   return (
-    <>
-      <button onClick={handleShowWorks}>New Works</button>
-      {editWorks && <NewWorks />}
-    </>
+    <Container>
+      <Button variant="contained" color="primary" onClick={handleShowWorks}>
+        New Works
+      </Button>
+      {editWorks && <NewWorks setEditWorks={setEditWorks} />}
+    </Container>
   )
 }
 

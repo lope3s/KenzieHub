@@ -2,7 +2,9 @@ import {useState, useEffect} from 'react'
 import User from "../Users"
 import { UsersContainer} from "./style";
 const UsersMap = ({listOfUsers,usersPerPage,page}) => {
+
   const [usersInPage, setUsersInPage] = useState([]);
+
   useEffect(() => {
     const initial = usersPerPage * (page - 1);
     const end = initial + usersPerPage;

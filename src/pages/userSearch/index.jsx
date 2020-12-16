@@ -1,27 +1,18 @@
-// import store from "../../store"
 import { Main, Container, ContainerDiv, ContainerWork } from "./styles";
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
-import validationThunk from "../../store/modules/validationToken/thunks";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import EditInfos from "../../components/EditInfos";
 import { FiSettings } from "react-icons/fi";
-const Profile = () => {
-  const dispatch = useDispatch();
+const UserSearch = () => {
+  
   const [publisher, setPublisher] = useState(false);
-  const [changeTechStatus, setChangeTechStatus] = useState(false);
 
-  const auth = useSelector((state) => state.auth);
-  const user = JSON.parse(localStorage.getItem("infoLogged"));
+  const user = JSON.parse(localStorage.getItem("userSearch"));
   console.log(user);
-  useEffect(() => {
-    dispatch(validationThunk());
-  }, []);
+
 
   return (
     <Main publisher={publisher}>
       <ContainerDiv>
-        {auth ? (
           <div className="Container">
             <Container>
               <div>
@@ -74,7 +65,7 @@ const Profile = () => {
                         </div>
                       ))
                     ) : (
-                      <div>Não temo registro de Tecnologias</div>
+                      <div>Não tenho registro de Tecnologias</div>
                     )}
                   </div>
                 </div>
@@ -100,9 +91,6 @@ const Profile = () => {
               </ContainerWork>
             </div>
           </div>
-        ) : (
-          <></>
-        )}
         <button className="Botao" onClick={() => setPublisher(true)}>
           <FiSettings />
         </button>
@@ -112,4 +100,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default UserSearch;
