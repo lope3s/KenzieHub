@@ -114,6 +114,7 @@ const SingUp = () => {
             }}
           ></div>
           <TextField
+            id="inputs"
             variant="outlined"
             color="primary"
             name="name"
