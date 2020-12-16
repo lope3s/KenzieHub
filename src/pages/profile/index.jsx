@@ -55,7 +55,7 @@ const Profile = () => {
                   <div className="Info">
                     <div>Email: {user.email}</div>
                     <div>
-                      Course Module:
+                      Course Module:{" "}
                       {user.course_module !== "undefined"
                         ? user.course_module
                         : " Nada encontrado"}

@@ -18,9 +18,12 @@ export const Container = styled.div`
     margin-top: 15px;
     width: 150px;
     height: 150px;
+    @media (max-width: 800px) {
+      height: 120px;
+      width: 120px;
+    }
     display: flex;
     border-radius: 50%;
-    z-index: 1;
   }
   > div div div {
     > span {
@@ -33,7 +36,7 @@ export const Container = styled.div`
     background-size: cover;
 
     position: absolute;
-    top: 15%;
+    top: 18%;
 
     height: 20%;
     width: 15%;
@@ -41,11 +44,16 @@ export const Container = styled.div`
     left: 42.5%;
     right: 42.5%;
 
-    z-index: 0;
     border-radius: 5px;
 
     justify-content: center;
     display: flex;
+    @media (max-width: 800px) {
+      > div {
+        justify-content: space-between;
+        width: 90vw;
+      }
+    }
     @media (max-width: 800px) {
       width: 25%;
       top: 12%;
@@ -79,6 +87,9 @@ export const ContainerDiv = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    @media (max-width: 800px) {
+      height: 83vh;
+    }
   }
   > div div div .About {
     width: 90vw;
@@ -99,16 +110,17 @@ export const ContainerDiv = styled.div`
       display: flex;
       justify-content: space-between;
       width: 100vw;
-      height: 100px;
       @media (max-width: 800px) {
-        height: 150px;
         width: 90vw;
       }
       > div .Info div {
         margin-left: 25px;
+        @media (max-width: 800px) {
+          font-size: 13px;
+        }
       }
       > .Techs {
-        font-size: 16px;
+        font-size: 13px;
         margin-right: 25px;
         margin-top: -20px;
         > div div {
@@ -118,7 +130,8 @@ export const ContainerDiv = styled.div`
         > div b {
           font-size: 25px;
           @media (max-width: 800px) {
-            font-size: 15px;
+            font-size: 13px;
+            margin-top: 20px;
           }
         }
       }
@@ -132,9 +145,10 @@ export const ContainerDiv = styled.div`
     justify-content: space-between;
     flex-flow: wrap;
     margin-top: 110px;
+
     text-align: center;
     @media (max-width: 800px) {
-      margin-top: 100px;
+      margin-top: 0px;
       font-size: 15px;
     }
 
@@ -150,7 +164,6 @@ export const ContainerWork = styled.div`
   font-family: "Righteous", sans-serif;
   margin-top: 50px;
   width: 45vw;
-  height: 150px;
   border-radius: 5px;
   @media (max-width: 800px) {
     font-size: 20px;
