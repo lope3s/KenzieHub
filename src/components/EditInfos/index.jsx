@@ -2,6 +2,7 @@ import ButtonNewTechs from "../ButtonNewTechs"
 import ButtonNewWorks from "../ButtonNewWorks"
 import EditTechStatus from "../../components/EditTechStatus"
 import { saveTechInfos } from "../../store/modules/techInfos/actions"
+import { saveWorkInfos } from "../../store/modules/WorkInfos/actions"
 import { useDispatch } from "react-redux"
 import { useState } from "react"
 import axios from "axios"
@@ -10,7 +11,7 @@ import { BsTrashFill } from "react-icons/bs"
 import { AiFillEdit } from "react-icons/ai"
 import ProfilePreferences from "../../components/ProfilePreferences"
 import { Button } from "@material-ui/core"
-import EditWorkForm from "../EditWorkForm"
+import EditWorkForm2 from "../EditWorkForm2"
 import settings from "./settings.svg"
 
 const EditInfos = ({ setPublisher }) => {
@@ -124,7 +125,9 @@ const EditInfos = ({ setPublisher }) => {
                 </a>
               </div>
               <div className="buttons">
-                <button className="edit" onClick={editWork}>
+                <button className="edit" onClick={() => {
+                        dispatch(saveWorkInfos(element))
+                        setEdit(true)}}>
                   <AiFillEdit />
                 </button>
                 <button
@@ -134,9 +137,9 @@ const EditInfos = ({ setPublisher }) => {
                   <BsTrashFill />
                 </button>
               </div>
-              {edit && <EditWorkForm id={element.id} />}
             </div>
           ))}
+          {edit && <EditWorkForm2 setEdit={setEdit} />}
         </div>
       </div>
       <div className="preferencesDivisor">
