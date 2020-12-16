@@ -1,21 +1,22 @@
-import { useForm } from "react-hook-form";
-import * as yup from "yup";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { TextField, Button } from "@material-ui/core";
-import { useState } from "react";
-import axios from "axios";
+import { useForm } from "react-hook-form"
+import * as yup from "yup"
+import { yupResolver } from "@hookform/resolvers/yup"
+import { TextField, Button } from "@material-ui/core"
+import { useState } from "react"
+import axios from "axios"
 
-const EditWorkForm = ({id}) => {
-  const [error, setError] = useState("");
+const EditWorkForm = ({ id }) => {
+  const dataLocal = JSON.parse(localStorage.getItem("infoLogged"))
+  const [error, setError] = useState("")
   const titleSchema = yup.object().shape({
-    title: yup.string().required("cannot be blank")
-  });
-  const descriptionSchema =yup.object().shape({
-    description: yup.string().required("cannot be blank")
-  });
-  const deployUrlSchema = yup.object().shape({  
-    deployUrl: yup.string().required("cannot be blank")
-  });
+    title: yup.string().required("cannot be blank"),
+  })
+  const descriptionSchema = yup.object().shape({
+    description: yup.string().required("cannot be blank"),
+  })
+  const deployUrlSchema = yup.object().shape({
+    deployUrl: yup.string().required("cannot be blank"),
+  })
 
   // const { register, errors, handleSubmit } = useForm({
   //   resolver: yupResolver(schema),
@@ -25,7 +26,7 @@ const EditWorkForm = ({id}) => {
   const deployUrlField = useForm({ resolver: yupResolver(deployUrlSchema) })
 
   const handleWorks = (ev) => {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("token")
     axios
       .put(
         `https://kenziehub.me/users/works/${id}`,
@@ -40,12 +41,17 @@ const EditWorkForm = ({id}) => {
           },
         }
       )
+      .then((res) => {
+        let index = dataLocal.works.findIndex((obj) => obj.id === res.data.id)
+        dataLocal.works[index] = res.data
+        localStorage.setItem("infoLogged", JSON.stringify(dataLocal))
+      })
       .catch(() =>
         setError(
           "The user has already created this job, you can only update it"
         )
-      );
-  };
+      )
+  }
 
   return (
     <>
@@ -95,7 +101,7 @@ const EditWorkForm = ({id}) => {
         {error && <p>{error}</p>}
       </form>
     </>
-      );
-    };
-    
-    export default EditWorkForm;
+  )
+}
+
+export default EditWorkForm

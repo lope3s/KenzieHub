@@ -7,6 +7,7 @@ import axios from "axios"
 import { Container } from "./style"
 
 const NewTech = ({ setEditTechs }) => {
+  const dataLocal = JSON.parse(localStorage.getItem("infoLogged"))
   const [level, setLevel] = useState("")
   const [error, setError] = useState(false)
   const [sucess, setSucess] = useState(false)
@@ -35,6 +36,8 @@ const NewTech = ({ setEditTechs }) => {
         }
       )
       .then((res) => {
+        dataLocal.techs.push(res.data)
+        localStorage.setItem("infoLogged", JSON.stringify(dataLocal))
         setSucess(true)
       })
       .catch(() => setError(true))

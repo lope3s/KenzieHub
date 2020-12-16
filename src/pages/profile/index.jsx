@@ -93,7 +93,7 @@ const Profile = () => {
                 <div>Works</div>
                 <div>
                   <div className="MapWorks">
-                    {user.work ? (
+                    {user.works ? (
                       user.works.map((element) => (
                         <div>
                           <div>{element.title}</div>

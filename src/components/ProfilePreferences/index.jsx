@@ -7,6 +7,7 @@ import { Container } from "./style"
 import axios from "axios"
 
 const ProfilePreferences = () => {
+  const dataLocal = JSON.parse(localStorage.getItem("infoLogged"))
   const token = localStorage.getItem("token")
 
   const contactSchema = yup.object().shape({
@@ -81,7 +82,10 @@ const ProfilePreferences = () => {
           Authorization: `Bearer ${token}`,
         },
       })
-      .then((res) => console.log(res.data.avatar_url))
+      .then((res) => {
+        dataLocal.avatar_url = res.data.avatar_url
+        localStorage.setItem("infoLogged", JSON.stringify(dataLocal))
+      })
   }
 
   return (

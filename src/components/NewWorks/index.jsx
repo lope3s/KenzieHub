@@ -7,6 +7,7 @@ import axios from "axios"
 import { Container } from "./style"
 
 const NewWorks = ({ setEditWorks }) => {
+  const dataLocal = JSON.parse(localStorage.getItem("infoLogged"))
   const [sucess, setSucess] = useState(null)
   const schema = yup.object().shape({
     title: yup.string().required("cannot be blank"),
@@ -35,7 +36,11 @@ const NewWorks = ({ setEditWorks }) => {
           },
         }
       )
-      .then((res) => setSucess(true))
+      .then((res) => {
+        dataLocal.works.push(res.data)
+        localStorage.setItem("infoLogged", JSON.stringify(dataLocal))
+        setSucess(true)
+      })
       .catch((error) => setSucess(false))
   }
 

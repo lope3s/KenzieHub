@@ -28,7 +28,11 @@ const EditInfos = ({ setPublisher }) => {
           Authorization: `Bearer ${token}`,
         },
       })
-      .then((res) => console.log(res))
+      .then((res) => {
+        let currentTechs = user.techs.filter((current) => current.id !== id)
+        user.techs = currentTechs
+        localStorage.setItem("infoLogged", JSON.stringify(user))
+      })
       .catch((error) => console.log(error))
   }
 
@@ -44,7 +48,11 @@ const EditInfos = ({ setPublisher }) => {
           Authorization: `Bearer ${token}`,
         },
       })
-      .then((res) => console.log(res))
+      .then((res) => {
+        let currentWorks = user.works.filter((current) => current.id !== id)
+        user.works = currentWorks
+        localStorage.setItem("infoLogged", JSON.stringify(user))
+      })
       .catch((error) => console.log(error))
   }
 
