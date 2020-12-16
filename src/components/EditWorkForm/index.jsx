@@ -5,7 +5,7 @@ import { TextField, Button } from "@material-ui/core"
 import { useState } from "react"
 import axios from "axios"
 
-const EditWorkForm = ({ id }) => {
+const EditWorkForm = ({ id, setUpdateInfo }) => {
   const dataLocal = JSON.parse(localStorage.getItem("infoLogged"))
   const [error, setError] = useState("")
   const titleSchema = yup.object().shape({
@@ -45,6 +45,7 @@ const EditWorkForm = ({ id }) => {
         let index = dataLocal.works.findIndex((obj) => obj.id === res.data.id)
         dataLocal.works[index] = res.data
         localStorage.setItem("infoLogged", JSON.stringify(dataLocal))
+        setUpdateInfo(true)
       })
       .catch(() =>
         setError(

@@ -69,6 +69,7 @@ const EditInfos = ({ setPublisher }) => {
         let currentWorks = user.works.filter((current) => current.id !== id)
         user.works = currentWorks
         localStorage.setItem("infoLogged", JSON.stringify(user))
+        setUpdateInfo(true)
       })
       .catch((error) => console.log(error))
   }
@@ -138,7 +139,7 @@ const EditInfos = ({ setPublisher }) => {
         <div className="NewWorkAcess">
           <span className="SessionName">Works</span>
           <div className="NewWorkContainer">
-            <ButtonNewWorks />
+            <ButtonNewWorks setUpdateInfo={setUpdateInfo} />
           </div>
         </div>
         <div className="WorkCardsContainer">
@@ -164,7 +165,9 @@ const EditInfos = ({ setPublisher }) => {
                   <BsTrashFill />
                 </button>
               </div>
-              {edit && <EditWorkForm id={element.id} />}
+              {edit && (
+                <EditWorkForm id={element.id} setUpdateInfo={setUpdateInfo} />
+              )}
             </div>
           ))}
         </div>
