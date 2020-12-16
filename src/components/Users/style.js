@@ -17,7 +17,7 @@ export const UserContainer = styled.div`
     font-family:Roboto, sans-serif;
     font-size: 1em;
 
-    @media (min-width: 320px) and (max-width: 768px) {
+    @media (min-width: 280px) and (max-width: 768px) {
     margin: 0 2vw 0 2vw;
     font-size: 0.65rem;
     }
@@ -29,7 +29,7 @@ export const UserContainer = styled.div`
     border-radius:100%;
   }
 
-  @media (min-width: 320px) and (max-width: 768px) {
+  @media (min-width: 280px) and (max-width: 768px) {
     height: 15vh;
     }
 `;

@@ -6,8 +6,8 @@ import { useSelector } from "react-redux"
 
 import axios from "axios"
 
-import UsersFind from "../../components/ListComponent-UsersFind"
-import UsersMap from "../../components/ListComponent-UsersMap"
+import UsersFind from "../../components/listComponent-UsersFind"
+import UsersMap from "../../components/listComponent-UsersMap"
 
 import Pagination from "@material-ui/lab/Pagination"
 import { Select, MenuItem, TextField, Button } from "@material-ui/core"

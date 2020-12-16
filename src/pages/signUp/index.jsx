@@ -1,4 +1,4 @@
-import SingUp from "../../components/SignUp"
+import SingUp from "../../components/signUp"
 import addUserThunk from "../../store/modules/listOfUsers/thunks"
 import { useDispatch } from "react-redux"
 

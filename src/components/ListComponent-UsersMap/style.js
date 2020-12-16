@@ -10,7 +10,7 @@ export const UsersContainer = styled.div`
   height: 80vh;
   overflow-y: auto;
 
-  @media (min-width: 320px) and (max-width: 768px){
+  @media (min-width: 280px) and (max-width: 768px){
     margin: 0px;
   }
 `;
