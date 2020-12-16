@@ -10,12 +10,27 @@ import axios from "axios"
 
 import logo from "./page.svg"
 import { TextField, Button } from "@material-ui/core"
-
+import React from 'react';
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
+import { makeStyles } from '@material-ui/core/styles';
 import { Container } from "./style"
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    width: '100%',
+    '& > * + *': {
+      marginTop: theme.spacing(2),
+    },
+  },
+}));
+
 const SingUp = () => {
   const [error, setError] = useState(false)
   const [registerSuccessfully, setRegisterSuccessfully] = useState(false)
   const history = useHistory()
+  const classes = useStyles();
+  const [open, setOpen] = React.useState(false);
 
   const schema = yup.object().shape({
     name: yup
@@ -66,17 +81,24 @@ const SingUp = () => {
   }
 
   const handleForm = (value) => {
-    // onClick do formulário
     registerUserRequest(value)
+    setOpen(true);
   }
 
-  const divMessageSuccess = (
-    <div>
-      <h3>You Have Been Registered Successfully</h3>
-    </div>
-  )
+  const Alert = (props) => {
+    return <MuiAlert elevation={6} variant="filled" {...props} />;
+  }
+
+    const handleClose = (event, reason) => {
+      if (reason === 'clickaway') {
+        return;
+      }
+      setOpen(false);
+    };
+
   const divSingUpForm = (
     <Container>
+
       <div className="ContainerInputs">
         <div className="h3-content">
           <h3>Hey!</h3>
@@ -172,6 +194,7 @@ const SingUp = () => {
             helperText={errors.confirmPassword?.message}
             error={!!errors.confirmPassword}
           />
+
           <Button
             type="submit"
             style={{
@@ -196,7 +219,14 @@ const SingUp = () => {
     </Container>
   )
 
-  return <div>{registerSuccessfully ? divMessageSuccess : divSingUpForm}</div>
+  return <div>{registerSuccessfully ?(
+    <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+      <Alert onClose={handleClose} severity="success">
+      You Have Been Registered Successfully
+      </Alert>
+    </Snackbar>
+  )
+  : divSingUpForm}</div>
 }
 
 export default SingUp
