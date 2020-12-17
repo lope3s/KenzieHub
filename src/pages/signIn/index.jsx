@@ -1,24 +1,18 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { addUsers } from "../../store/modules/listOfUsers/actions";
+import Login from "../../components/Login"
+import Container from "./style"
+import loginImage from "./web-development-bw 1.png"
+import addUserThunk from "../../store/modules/listOfUsers/thunks"
+import { useDispatch } from "react-redux"
 
-const Login = () => {
-  const [users, setUsers] = useState([]);
-  const dispatch = useDispatch();
+const SignIn = () => {
+  const dispatch = useDispatch()
 
-  useEffect(() => {
-    axios
-      .get("https://kenziehub.me/users")
-      .then((res) => {
-        setUsers(res.data);
-        dispatch(addUsers(users));
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, [users, dispatch]);
-
-  return <></>;
-};
-export default Login;
+  dispatch(addUserThunk([]))
+  return (
+    <Container>
+      <img src={loginImage} alt="login" />
+      <Login />
+    </Container>
+  )
+}
+export default SignIn
