@@ -4,14 +4,12 @@ import addUserThunk from "../../store/modules/listOfUsers/thunks"
 
 const UserSearch = () => {
   const dispatch = useDispatch()
-  
+
   dispatch(addUserThunk([]))
 
-
-  localStorage.setItem('lastPath', '')
+  localStorage.setItem("lastPath", "")
 
   const user = JSON.parse(localStorage.getItem("userSearch"))
-  
 
   return (
     <Main>
@@ -76,7 +74,7 @@ const UserSearch = () => {
           </div>
           <div>
             <ContainerWork>
-              <div>Works</div>
+              <div className="works">Works</div>
               <div>
                 <div className="MapWorks">
                   {user.work ? (

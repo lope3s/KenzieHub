@@ -1,17 +1,17 @@
-import SingUp from "../../components/signUp"
+import SingUp from "../../components/SignUp"
 import addUserThunk from "../../store/modules/listOfUsers/thunks"
 import { useDispatch } from "react-redux"
 
 const RegisterUser = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
-  dispatch(addUserThunk([]));
+  dispatch(addUserThunk([]))
 
   return (
     <>
       <SingUp />
     </>
-  );
-};
+  )
+}
 
-export default RegisterUser;
+export default RegisterUser

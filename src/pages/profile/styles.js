@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled, { css } from "styled-components"
 
 export const Main = styled.div`
   height: 91vh;
@@ -7,7 +7,7 @@ export const Main = styled.div`
     css`
       background-color: #00000075;
     `};
-`;
+`
 
 export const Container = styled.div`
   text-align: center;
@@ -129,7 +129,7 @@ export const Container = styled.div`
       background-color: transparent;
     }
   }
-`;
+`
 
 export const ContainerDiv = styled.div`
   .Botao {
@@ -162,6 +162,22 @@ export const ContainerDiv = styled.div`
       font-size: 35px;
     }
   }
+  .AboutContainer > div {
+    overflow-x: auto;
+  }
+  .About {
+    color: #40a1f7 !important;
+  }
+  b {
+    color: #40a1f7;
+  }
+  .works {
+    color: #40a1f7;
+  }
+  .Techs {
+    overflow-y: auto;
+    max-height: 18vh;
+  }
   > div .AboutContainer {
     width: 90vw;
     @media (max-width: 600px) {
@@ -180,6 +196,7 @@ export const ContainerDiv = styled.div`
       display: flex;
       justify-content: space-between;
       width: 100vw;
+      padding: 3%;
       @media (max-width: 800px) {
         width: 90vw;
       }
@@ -227,7 +244,7 @@ export const ContainerDiv = styled.div`
       flex-direction: column;
     }
   }
-`;
+`
 export const ContainerWork = styled.div`
   font-size: 25px;
   color: white;
@@ -267,4 +284,4 @@ export const ContainerWork = styled.div`
     margin-top: -50px;
     width: 60vw;
   }
-`;
+`
