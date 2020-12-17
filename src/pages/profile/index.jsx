@@ -8,7 +8,7 @@ import EditInfos from "../../components/EditInfos"
 import { FiSettings } from "react-icons/fi"
 import addUserThunk from "../../store/modules/listOfUsers/thunks"
 
-const Profile = () => {  
+const Profile = () => {
   const dispatch = useDispatch()
   dispatch(addUserThunk([]))
   const [publisher, setPublisher] = useState(false)
@@ -93,7 +93,7 @@ const Profile = () => {
             </div>
             <div>
               <ContainerWork>
-                <div>Works</div>
+                <div className="works">Works</div>
                 <div>
                   <div className="MapWorks">
                     {user.works.length ? (

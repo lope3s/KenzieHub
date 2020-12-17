@@ -74,7 +74,7 @@ const UserSearch = () => {
           </div>
           <div>
             <ContainerWork>
-              <div>Works</div>
+              <div className="works">Works</div>
               <div>
                 <div className="MapWorks">
                   {user.work ? (

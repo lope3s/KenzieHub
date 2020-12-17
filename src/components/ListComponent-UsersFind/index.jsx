@@ -1,23 +1,23 @@
-import { UserContainer } from "../Users/style";
-import { UsersContainer } from "../ListComponent-UsersMap/style";
+import { UserContainer } from "../Users/style"
+import { UsersContainer } from "../ListComponent-UsersMap/style"
 
-import { useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom"
 
-import axios from "axios";
+import axios from "axios"
 
-import LoadingDiv from "../loadingComponent";
+import LoadingDiv from "../loadingComponent"
 
-import img from "./no-match-found-bw.png";
+import img from "./no-match-found-bw.png"
 
 const UsersFind = ({ searchResult }) => {
-  const history = useHistory();
+  const history = useHistory()
 
   const handleRedirect = async (identity) => {
-    const res = await axios.get(`https://kenziehub.me/users/${identity}`);
-    localStorage.setItem("userSearch", JSON.stringify(res.data));
+    const res = await axios.get(`https://kenziehub.me/users/${identity}`)
+    localStorage.setItem("userSearch", JSON.stringify(res.data))
 
-    history.push("/userSearch");
-  };
+    history.push("/userSearch")
+  }
 
   return searchResult.length > 0 ? (
     <UsersContainer>
@@ -39,13 +39,13 @@ const UsersFind = ({ searchResult }) => {
               <span>{course_module !== "undefined" && course_module}</span>
               <span>{contact !== "undefined" && contact}</span>
             </UserContainer>
-          );
+          )
         }
       )}
     </UsersContainer>
   ) : (
     <LoadingDiv img={img} text="No Match Found" />
-  );
-};
+  )
+}
 
-export default UsersFind;
+export default UsersFind

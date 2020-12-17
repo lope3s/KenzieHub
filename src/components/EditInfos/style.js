@@ -5,7 +5,7 @@ export const Container = styled.div`
   border-radius: 20px;
   background-color: #1d2f60;
   padding: 10px;
-  min-height: 723px;
+  /* min-height: 723px; */
   max-height: 830px;
   width: 671px;
   position: absolute;
@@ -270,6 +270,19 @@ export const Container = styled.div`
   @media screen and (max-width: 640px) {
     width: 85vw;
     height: 80vh;
+
+    .iDRUQh {
+      width: 0;
+      height: 0;
+    }
+
+    .TechContainer {
+      margin: 5px;
+
+      .TechListContainer {
+        margin: 0;
+      }
+    }
     .preferencesDivisor {
       flex-direction: column;
       align-items: center;

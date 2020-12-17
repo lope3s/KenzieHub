@@ -165,8 +165,18 @@ export const ContainerDiv = styled.div`
   .AboutContainer > div {
     overflow-x: auto;
   }
+  .About {
+    color: #40a1f7 !important;
+  }
+  b {
+    color: #40a1f7;
+  }
+  .works {
+    color: #40a1f7;
+  }
   .Techs {
     overflow-y: auto;
+    max-height: 18vh;
   }
   > div .AboutContainer {
     width: 90vw;
@@ -186,6 +196,7 @@ export const ContainerDiv = styled.div`
       display: flex;
       justify-content: space-between;
       width: 100vw;
+      padding: 3%;
       @media (max-width: 800px) {
         width: 90vw;
       }
