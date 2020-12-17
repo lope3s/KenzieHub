@@ -15,6 +15,11 @@ export const Container = styled.div`
   align-items: center;
   display: flex;
   overflow: hidden;
+
+  .username {
+    margin-bottom: 2vh;
+  }
+
   @media (max-width: 500px) {
     > div {
       justify-content: space-between;

@@ -39,7 +39,7 @@ const Profile = () => {
                     ></img>
                   )}
                 </div>
-                <div>
+                <div className="username">
                   <div>
                     <span>{user.name}</span>
                   </div>

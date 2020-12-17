@@ -15,6 +15,9 @@ export const Container = styled.div`
   align-items: center;
   display: flex;
   overflow: hidden;
+  .username {
+    margin: 0 0 2vh 0;
+  }
   @media (max-width: 500px) {
     > div {
       justify-content: space-between;
@@ -159,7 +162,7 @@ export const ContainerDiv = styled.div`
     font-size: 55px;
     display: flex;
     @media (max-width: 800px) {
-      font-size: 35px;
+      font-size: 0.9rem;
     }
   }
   .AboutContainer > div {
@@ -173,6 +176,9 @@ export const ContainerDiv = styled.div`
   }
   .works {
     color: #40a1f7;
+    @media (max-width: 800px) {
+      font-size: 0.7rem;
+    }
   }
   .Techs {
     overflow-y: auto;
@@ -190,7 +196,10 @@ export const ContainerDiv = styled.div`
       justify-content: flex-end;
     }
     > div .AboutBio {
-      font-size: 25px;
+      font-size: 1em;
+      @media (max-width: 800px) {
+        font-size: 0.7rem;
+      }
     }
     > .PersonalDetails {
       display: flex;
@@ -199,11 +208,12 @@ export const ContainerDiv = styled.div`
       padding: 3%;
       @media (max-width: 800px) {
         width: 90vw;
+        font-size: 0.7rem;
       }
       > div .Info div {
         margin-left: 25px;
         @media (max-width: 800px) {
-          font-size: 13px;
+          font-size: 0.7rem;
         }
       }
       > .Techs {
@@ -212,12 +222,15 @@ export const ContainerDiv = styled.div`
         margin-top: -20px;
         > div div {
           margin-bottom: 0;
+          @media (max-width: 800px) {
+            font-size: 0.7rem;
+          }
         }
 
         > div b {
           font-size: 25px;
           @media (max-width: 800px) {
-            font-size: 13px;
+            font-size: 0.7rem;
             margin-top: 20px;
           }
         }
@@ -267,10 +280,13 @@ export const ContainerWork = styled.div`
   flex-direction: column;
   text-align: center;
   > div .MapWorks {
+    @media (max-width: 800px) {
+      font-size: 0.7rem;
+    }
     > div div {
       font-size: 25px;
       @media (max-width: 800px) {
-        font-size: 15px;
+        font-size: 0.7rem;
       }
     }
   }

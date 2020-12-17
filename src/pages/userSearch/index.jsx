@@ -27,7 +27,7 @@ const UserSearch = () => {
                   ></img>
                 )}
               </div>
-              <div>
+              <div className="username">
                 <div>
                   <span>{user.name}</span>
                 </div>
@@ -66,7 +66,7 @@ const UserSearch = () => {
                       </div>
                     ))
                   ) : (
-                    <div>Não tenho registro de Tecnologias</div>
+                    <div>No registration of Technologies</div>
                   )}
                 </div>
               </div>
@@ -85,7 +85,7 @@ const UserSearch = () => {
                       </div>
                     ))
                   ) : (
-                    <div>Não temo registro de serviços</div>
+                    <div>No work registration</div>
                   )}
                 </div>
               </div>
